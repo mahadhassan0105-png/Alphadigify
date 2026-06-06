@@ -8,7 +8,7 @@ import Footer from "@/components/public/Footer";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight, Code, Database, Layout, Zap, Search,
-  ShieldCheck, ChevronDown, Sparkles
+  ShieldCheck, ChevronDown, Sparkles, Globe
 } from "lucide-react";
 import Image from "next/image";
 
@@ -28,6 +28,96 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: num
     }
   }, [from, to, prefix, suffix, hasAnimated]);
   return <span ref={ref}>{prefix}{from}{suffix}</span>;
+}
+
+/* ─── 3D Layered Browser Mockup ─── */
+function BrowserMockup() {
+  return (
+    <div className="relative w-full h-full flex items-center justify-center perspective-[1200px] mt-10 lg:mt-0">
+      <motion.div
+        animate={{ rotateX: [8, 12, 8], rotateY: [-10, -14, -10], y: [-8, 8, -8] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full max-w-[480px]"
+      >
+        {/* Shadow layer */}
+        <div
+          className="absolute inset-0 m-auto w-[85%] h-[90%] rounded-2xl bg-yellow-400/20 blur-2xl"
+          style={{ transform: "translateZ(-60px) translateY(30px)" }}
+        />
+
+        {/* Back card */}
+        <div
+          className="absolute top-6 left-0 w-full rounded-2xl bg-slate-900 border border-slate-700 p-4 flex flex-col gap-3"
+          style={{ transform: "translateZ(-50px)" }}
+        >
+          {/* Header mock */}
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+            <div className="w-3 h-3 rounded-full bg-green-500/80" />
+            <div className="ml-2 w-1/3 h-4 rounded bg-slate-800" />
+          </div>
+          {/* Body mock */}
+          <div className="w-full h-24 rounded bg-slate-800 flex items-center justify-center">
+            <Code className="w-8 h-8 text-slate-600" />
+          </div>
+          <div className="w-2/3 h-4 rounded bg-slate-800" />
+          <div className="w-1/2 h-4 rounded bg-slate-800" />
+        </div>
+
+        {/* Front card (Main UI) */}
+        <div className="relative w-full rounded-2xl bg-white dark:bg-[#1e202e] border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden z-10 flex flex-col">
+          {/* Browser Top */}
+          <div className="bg-slate-100 dark:bg-[#161822] border-b border-slate-200 dark:border-slate-700 p-3 flex items-center gap-3">
+            <div className="flex gap-1.5">
+              <div className="w-3 h-3 rounded-full bg-red-400" />
+              <div className="w-3 h-3 rounded-full bg-yellow-400" />
+              <div className="w-3 h-3 rounded-full bg-green-400" />
+            </div>
+            <div className="flex-1 bg-white dark:bg-[#2a2d3e] rounded-md h-6 flex items-center px-3 border border-slate-200 dark:border-slate-600">
+              <span className="text-[10px] text-slate-400 font-mono flex items-center gap-2">
+                <Globe className="w-3 h-3" /> alphadigify.com
+              </span>
+            </div>
+          </div>
+
+          {/* Page Content */}
+          <div className="p-5 flex-1 flex flex-col gap-4">
+            {/* Hero */}
+            <div className="space-y-2 pt-2">
+              <div className="w-4/5 h-6 bg-slate-800 dark:bg-slate-200 rounded" />
+              <div className="w-3/5 h-6 bg-slate-800 dark:bg-slate-200 rounded" />
+              <div className="w-2/3 h-3.5 bg-slate-300 dark:bg-slate-600 rounded mt-2" />
+              <div className="w-24 h-8 bg-yellow-400 rounded-lg mt-3" />
+            </div>
+
+            {/* Stats row */}
+            <div className="grid grid-cols-3 gap-2 pt-1">
+              {["#34D399", "#60A5FA", "#FACC15"].map((c, i) => (
+                <div key={i} className="rounded-xl p-3 border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#2a2d3e] text-center">
+                  <div className="h-5 rounded mb-1.5 mx-auto w-12" style={{ background: c + "40" }} />
+                  <div className="h-2 bg-slate-200 dark:bg-slate-700 rounded-full" />
+                </div>
+              ))}
+            </div>
+
+            {/* Cards */}
+            <div className="grid grid-cols-2 gap-2">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="h-20 bg-slate-50 dark:bg-[#2a2d3e] rounded-xl border border-slate-100 dark:border-slate-700 p-3">
+                  <div className="w-6 h-6 rounded-lg bg-yellow-400 mb-2" />
+                  <div className="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full" />
+                  <div className="w-3/4 h-2 bg-slate-200 dark:bg-slate-700 rounded-full mt-1.5" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </motion.div>
+    </div>
+  );
 }
 
 
@@ -100,24 +190,8 @@ export default function WebDevServicePageRedesigned() {
               </div>
             </div>
             {/* Right Visual */}
-            <div className="w-full lg:w-1/2 mt-12 lg:mt-0 relative block">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="relative w-full aspect-square max-w-[600px] mx-auto"
-              >
-                <div className="absolute inset-0 bg-yellow-400/20 rounded-full blur-3xl" />
-                <div className="relative w-full h-[400px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl border border-white/10 mt-10">
-                  <Image 
-                    src="/web-dev-hero.jpg" 
-                    alt="Web Development" 
-                    fill 
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </motion.div>
+            <div className="w-full lg:w-1/2 h-[400px] lg:h-[600px] mt-12 lg:mt-0 block relative">
+              <BrowserMockup />
             </div>
           </div>
         </div>
