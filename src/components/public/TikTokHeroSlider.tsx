@@ -48,7 +48,7 @@ export default function TikTokHeroSlider() {
       <div className="absolute inset-0 z-[1] dark:bg-gradient-to-b dark:from-[#1a1a2e]/80 dark:via-[#10101c]/60 dark:to-[#0c0c16]/90 bg-gradient-to-b from-black/10 via-transparent to-black/20" style={{ clipPath: 'ellipse(120% 95% at 50% 0%)' }} />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center pt-32 sm:pt-24 lg:pt-36">
+      <div className="relative z-10 flex flex-col items-center pt-12 sm:pt-24 lg:pt-36">
         <header className="text-center mb-6 sm:mb-8 lg:mb-12 px-4 sm:px-6">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.1] drop-shadow-lg">
             TikTok Shop. <br className="hidden sm:block" /><span className="text-yellow-400">Sell Virally.</span>
