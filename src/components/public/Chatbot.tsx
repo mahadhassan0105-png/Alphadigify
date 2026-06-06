@@ -439,7 +439,7 @@ export default function Chatbot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] font-sans antialiased text-slate-800 dark:text-slate-100">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[9999] font-sans antialiased text-slate-800 dark:text-slate-100">
       
       {/* 5-second automatic sliding greeting bubble */}
       {showGreeting && !isDialOpen && !isOpen && (
@@ -568,7 +568,7 @@ export default function Chatbot() {
       {isOpen && (
         <div 
           ref={chatContainerRef}
-          className="relative flex flex-col w-[calc(100vw-2rem)] min-[350px]:w-[350px] sm:w-[420px] h-[550px] sm:h-[600px] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-800/80 rounded-3xl shadow-2xl overflow-hidden animate-chat-popup z-50 flex-shrink-0 transition-colors duration-300"
+          className="relative flex flex-col w-[calc(100vw-2rem)] sm:w-[420px] max-w-[calc(100vw-2rem)] sm:max-w-none h-[80vh] max-h-[550px] sm:h-[600px] sm:max-h-none bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-800/80 rounded-3xl shadow-2xl overflow-hidden animate-chat-popup z-50 flex-shrink-0 transition-colors duration-300"
         >
           
           {/* Header Banner - Yellow & White / High Contrast */}
