@@ -140,7 +140,7 @@ export default function WebDevServicePageRedesigned() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden lg:overflow-visible min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-20 md:pb-24 lg:pt-44 lg:pb-32 overflow-visible min-h-[100vh] sm:min-h-[800px] lg:min-h-[90vh] flex items-center">
         <div className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]">
           <div className="absolute inset-0 z-0 opacity-40">
              <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
@@ -166,8 +166,10 @@ export default function WebDevServicePageRedesigned() {
               </div>
             </div>
             {/* Right Visual */}
-            <div className="w-full lg:w-1/2 h-[400px] lg:h-[600px] mt-12 lg:mt-0 block relative z-20 lg:translate-y-20">
-              <BrowserMockup />
+            <div className="w-full lg:w-1/2 h-[320px] sm:h-[400px] lg:h-[600px] mt-8 lg:mt-0 block relative z-20 lg:translate-y-20 flex items-center justify-center">
+              <div className="transform scale-[0.85] sm:scale-100 origin-center">
+                <BrowserMockup />
+              </div>
             </div>
           </div>
         </div>
