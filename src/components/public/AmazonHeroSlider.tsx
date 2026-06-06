@@ -70,7 +70,7 @@ export default function AmazonHeroSlider() {
       />
 
       {/* Content — overflows below the hero */}
-      <div className="relative z-10 flex flex-col items-center pt-20 sm:pt-16 lg:pt-20">
+      <div className="relative z-10 flex flex-col items-center pt-4 sm:pt-16 lg:pt-20">
         {/* Tagline */}
         <header className="text-center mb-6 sm:mb-8 lg:mb-12 px-4 sm:px-6">
           {/* Amazon Partner Badges */}
@@ -108,7 +108,7 @@ export default function AmazonHeroSlider() {
         </header>
 
         {/* Slider — hangs half below the hero */}
-        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12">
+        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12 mt-16 sm:mt-0">
           <AmazonMockupShowcase currentIndex={currentIndex} direction={direction} />
         </div>
       </div>
