@@ -32,7 +32,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
   if (layoutId === 2) {
     // LAYOUT 2: TikTok Shop Seller Center (Matching Screenshot)
     return (
-      <article className={`w-full h-full bg-[#f4f5f5] text-slate-800 flex flex-col font-sans overflow-hidden`}>
+      <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-[#f4f5f5] text-slate-800'} flex flex-col font-sans overflow-hidden`}>
         <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
           {/* Top Navbar */}
           <motion.header variants={itemVariants} className="w-full h-12 bg-black text-white flex items-center justify-between px-4 shrink-0 shadow-sm relative z-20">
@@ -80,7 +80,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
             <div className="absolute top-3 right-[18%] w-3 h-3 bg-[#FE2C55] z-0 rotate-45" />
 
             {/* Sidebar */}
-            <motion.aside variants={itemVariants} className="w-36 lg:w-44 bg-white border-r border-slate-200 flex flex-col py-3 shrink-0 z-10 shadow-sm relative h-full overflow-y-auto [&::-webkit-scrollbar]:hidden">
+            <motion.aside variants={itemVariants} className={`w-36 lg:w-44 ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} border-r flex flex-col py-3 shrink-0 z-10 shadow-sm relative h-full overflow-y-auto [&::-webkit-scrollbar]:hidden`}>
               {[
                 { icon: '🏠', label: 'Home', active: true },
                 { icon: '⭐', label: 'Quick access ↗' },
@@ -112,7 +112,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                
                <div className="flex flex-col lg:flex-row gap-4 w-full pt-6 lg:pt-8">
                  {/* Left big card */}
-                 <motion.div variants={itemVariants} className="bg-white rounded-lg p-5 shadow-sm flex-1 border border-slate-100 flex flex-col justify-center min-h-[140px]">
+                 <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-100'} rounded-lg p-5 shadow-sm flex-1 border flex flex-col justify-center min-h-[140px]`}>
                    <div className="flex justify-between items-center mb-6">
                      <div className="text-xs text-slate-800 font-medium cursor-pointer flex items-center">Last 7 days <span className="ml-1 text-[8px]">˅</span></div>
                      <div className="text-[10px] text-slate-500 flex items-center">Updated on May 3, 00:00 (GMT-08:00) <span className="ml-2 text-slate-400">📝</span></div>
@@ -138,7 +138,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                  </motion.div>
 
                  {/* Right small card */}
-                 <motion.div variants={itemVariants} className="bg-gradient-to-br from-white to-[#EAFDFB] rounded-lg p-5 shadow-sm w-full lg:w-64 border border-slate-100 flex flex-col">
+                 <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-gradient-to-br from-white to-[#EAFDFB] border-slate-100'} rounded-lg p-5 shadow-sm w-full lg:w-64 border flex flex-col`}>
                    <div className="flex justify-between items-center mb-4">
                      <div className="text-xs font-bold flex items-center text-slate-800"><span className="mr-2 text-[10px]">📈</span> Shop performance</div>
                      <div className="text-slate-400 text-[10px]">{'<'} {'>'}</div>
@@ -153,7 +153,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                  <h3 className="text-sm font-bold text-slate-800 mb-0.5">To-do list</h3>
                  <p className="text-[10px] text-slate-500 mb-3">These are the key daily tasks for your shop.</p>
                  
-                 <div className="bg-white rounded-lg p-5 shadow-sm border border-slate-100 grid grid-cols-2 lg:grid-cols-5 gap-4">
+                 <div className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-100'} rounded-lg p-5 shadow-sm border grid grid-cols-2 lg:grid-cols-5 gap-4`}>
                     {[
                       { label: "Orders to ship", count: 12, sub: "Pending dispatch" },
                       { label: "Pending returns", count: 3, sub: "Needs review" },
@@ -182,7 +182,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
   if (layoutId === 3) {
     // LAYOUT 3: TikTok Shop Ads Dashboard (Matching Screenshot)
     return (
-      <article className={`w-full h-full bg-[#f4f5f5] text-slate-800 flex flex-col font-sans overflow-hidden`}>
+      <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-[#f4f5f5] text-slate-800'} flex flex-col font-sans overflow-hidden`}>
         <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
           {/* Top Navbar */}
           <motion.header variants={itemVariants} className="w-full h-12 bg-[#1A1A1A] text-white flex items-center justify-between px-4 shrink-0 shadow-sm relative z-20">
@@ -219,7 +219,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
 
           <div className="flex flex-1 overflow-hidden relative">
             {/* Sidebar */}
-            <motion.aside variants={itemVariants} className="w-36 lg:w-44 bg-white border-r border-slate-200 flex flex-col py-3 shrink-0 z-10 shadow-sm relative h-full overflow-y-auto [&::-webkit-scrollbar]:hidden">
+            <motion.aside variants={itemVariants} className={`w-36 lg:w-44 ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} border-r flex flex-col py-3 shrink-0 z-10 shadow-sm relative h-full overflow-y-auto [&::-webkit-scrollbar]:hidden`}>
               {[
                 { icon: '🏠', label: 'Home' },
                 { icon: '⭐', label: 'Quick access' },
@@ -268,13 +268,13 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                <div className="flex gap-4 h-full w-full">
                  
                  {/* GMV Max Sidebar */}
-                 <motion.div variants={itemVariants} className="w-40 lg:w-48 bg-white rounded-lg shadow-sm border border-slate-200 flex flex-col p-4 shrink-0 h-full overflow-y-auto [&::-webkit-scrollbar]:hidden">
+                 <motion.div variants={itemVariants} className={`w-40 lg:w-48 ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} rounded-lg shadow-sm border flex flex-col p-4 shrink-0 h-full overflow-y-auto [&::-webkit-scrollbar]:hidden`}>
                    <div className="flex justify-between items-center mb-6">
-                     <span className="font-bold text-sm text-slate-800">GMV Max</span>
+                     <span className={`font-bold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>GMV Max</span>
                      <span className="text-slate-400 text-[10px]">≡</span>
                    </div>
                    <div className="flex flex-col gap-1">
-                     <div className="flex items-center space-x-2 text-xs font-semibold text-slate-800 bg-slate-50 py-2 px-2 border-l-2 border-[#00A3A0] rounded-r">
+                     <div className={`flex items-center space-x-2 text-xs font-semibold ${isDark ? 'text-slate-200 bg-slate-800' : 'text-slate-800 bg-slate-50'} py-2 px-2 border-l-2 border-[#00A3A0] rounded-r`}>
                        <span className="text-slate-500">🔊</span>
                        <span>Campaigns</span>
                      </div>
@@ -301,7 +301,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                        <span className="text-[#00A3A0] font-semibold lg:ml-2 cursor-pointer">Add billing info</span>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-sm border border-slate-200 p-4 lg:p-6 flex-1 flex flex-col min-w-0">
+                    <div className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} rounded-lg shadow-sm border p-4 lg:p-6 flex-1 flex flex-col min-w-0`}>
                       
                       <div className="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
                         <span className="font-bold text-sm text-slate-800">HandMoto</span>
@@ -377,8 +377,8 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
 
   // DEFAULT (LAYOUT 1): TikTok Shop Services Overview
   return (
-    <article className={`w-full h-full ${isDark ? 'bg-slate-900 text-slate-200' : 'bg-slate-50 text-slate-800'} flex flex-col overflow-hidden font-sans`}>
-      <div className={`absolute inset-0 ${isDark ? 'bg-slate-900' : 'bg-white'}`} />
+    <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-slate-50 text-slate-800'} flex flex-col overflow-hidden font-sans`}>
+      <div className={`absolute inset-0 ${isDark ? 'bg-[#0f1117]' : 'bg-white'}`} />
       <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
         <motion.header variants={itemVariants} className="w-full h-12 lg:h-14 bg-[#161823] text-white border-b border-[#2a2d3a] flex items-center justify-between px-4 lg:px-6 shrink-0">
           <span className="font-bold text-sm lg:text-base">Alphadigify</span>

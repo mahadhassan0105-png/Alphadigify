@@ -52,7 +52,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const bg = isDark ? theme.bgGradient : theme.bgLight;
   const bdr = isDark ? "border-slate-700/80" : theme.borderLight;
-  const cardBg = isDark ? "bg-slate-800" : "bg-white/80";
+  const cardBg = isDark ? "bg-[#1a1d27]" : "bg-white/80";
   const cardBgHover = isDark ? "hover:bg-slate-700" : "hover:bg-white";
   const textPrimary = isDark ? "text-white" : "text-gray-900";
   const textSecondary = isDark ? "text-slate-300" : "text-gray-600";
@@ -67,7 +67,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
   const gridLineColor = isDark
     ? "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)"
     : "linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px)";
-  const sidebarBg = isDark ? "bg-slate-900" : "bg-gray-100/80";
+  const sidebarBg = isDark ? "bg-[#0f1117]" : "bg-gray-100/80";
   const innerCardBg = isDark ? "bg-slate-700" : "bg-white shadow-md";
 
   const containerVariants: Variants = {
@@ -120,7 +120,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
     const pathClicks = chartData.map((d, i) => `${i === 0 ? 'M' : 'L'} ${i * 110 + 30},${d.clicks}`).join(" ");
 
     return (
-      <article className={`w-full h-full ${isDark ? 'bg-slate-900 text-slate-200' : 'bg-white text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
+      <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-white text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
         <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
           
           {/* Top Navbar (Amazon Ads Header) */}
@@ -140,28 +140,28 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
 
           <div className="flex flex-1 overflow-hidden">
             {/* Sidebar */}
-            <motion.aside variants={itemVariants} className={`w-24 lg:w-32 border-r ${isDark ? 'border-slate-700 bg-slate-800/50' : 'border-slate-200 bg-white'} flex flex-col pt-2 shrink-0`}>
+            <motion.aside variants={itemVariants} className={`w-24 lg:w-32 border-r ${isDark ? 'border-white/10 bg-[#1a1d27]/50' : 'border-slate-200 bg-white'} flex flex-col pt-2 shrink-0`}>
                {["Portfolios", "Campaigns", "Drafts", "Products", "Targeting", "Budgets", "History"].map((item, i) => (
-                 <div key={i} className={`text-[9px] lg:text-[10px] py-1.5 px-3 cursor-pointer ${item === 'Campaigns' ? `${isDark ? 'bg-slate-800 text-white' : 'bg-slate-100 text-slate-900'} font-bold border-l-2 border-[#E77600]` : `${isDark ? 'text-slate-400 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-50'}`}`}>
+                 <div key={i} className={`text-[9px] lg:text-[10px] py-1.5 px-3 cursor-pointer ${item === 'Campaigns' ? `${isDark ? 'bg-[#1a1d27] text-white' : 'bg-slate-100 text-slate-900'} font-bold border-l-2 border-[#E77600]` : `${isDark ? 'text-slate-400 hover:bg-[#1a1d27]' : 'text-slate-600 hover:bg-slate-50'}`}`}>
                    {item}
                  </div>
                ))}
             </motion.aside>
 
             {/* Main Content Area */}
-            <main className={`flex-1 flex flex-col p-3 lg:p-4 ${isDark ? 'bg-slate-900/50' : 'bg-[#F8F9FA]'} overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}>
+            <main className={`flex-1 flex flex-col p-3 lg:p-4 ${isDark ? 'bg-[#0f1117]/50' : 'bg-[#F8F9FA]'} overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}>
               
               {/* Tabs */}
                             <motion.div variants={itemVariants} className="flex space-x-2 mb-3">
                 {["All", "Sponsored Products", "Sponsored Brands", "Display, Video, & Audio"].map((tab, i) => (
-                  <div key={i} className={`text-[8px] lg:text-[9px] px-2 py-1 border rounded shadow-sm ${i === 0 ? `${isDark ? 'bg-slate-700 border-slate-600 text-white' : 'bg-white border-slate-300 text-slate-800'} font-bold` : `${isDark ? 'bg-slate-800 border-slate-700 text-slate-400' : 'bg-white border-slate-200 text-slate-600'}`}`}>
+                  <div key={i} className={`text-[8px] lg:text-[9px] px-2 py-1 border rounded shadow-sm ${i === 0 ? `${isDark ? 'bg-slate-700 border-slate-600 text-white' : 'bg-white border-slate-300 text-slate-800'} font-bold` : `${isDark ? 'bg-[#1a1d27] border-slate-700 text-slate-400' : 'bg-white border-slate-200 text-slate-600'}`}`}>
                     {tab}
                   </div>
                 ))}
               </motion.div>
 
               {/* Metrics Row */}
-                            <motion.div variants={itemVariants} className={`${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-lg p-2 lg:p-3 mb-3 flex items-start justify-between shadow-sm`}>
+                            <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} border rounded-lg p-2 lg:p-3 mb-3 flex items-start justify-between shadow-sm`}>
                 <div className={`flex flex-col border-r ${isDark ? 'border-slate-700' : 'border-slate-200'} pr-4`}>
                   <span className="text-[8px] lg:text-[9px] text-slate-500 font-bold mb-1">Date range i</span>
                   <span className="text-[9px] lg:text-[10px] font-bold">Apr 17, 2026 v</span>
@@ -185,7 +185,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
               </motion.div>
 
               {/* Chart Area */}
-                            <motion.div variants={itemVariants} className={`${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border rounded-lg p-3 lg:p-4 shadow-sm flex-1 flex flex-col`}>
+                            <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} border rounded-lg p-3 lg:p-4 shadow-sm flex-1 flex flex-col`}>
                 <h2 className={`text-[11px] lg:text-[13px] font-black mb-3 ${isDark ? 'text-white' : 'text-slate-900'}`}>Performance <span className={`text-[9px] font-normal ${isDark ? 'text-slate-400' : 'text-slate-500'} ml-1`}>Apr 15 - Apr 22, 2026</span></h2>
                 <div className="flex justify-between px-2 mb-4">
                   {[
@@ -238,7 +238,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
     // LAYOUT 3: Amazon Seller Central Dashboard Mockup
     
     return (
-      <article className={`w-full h-full ${isDark ? 'bg-slate-900 text-slate-200' : 'bg-[#F2F4F8] text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
+      <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-[#F2F4F8] text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
         <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
           
           {/* Top Navbar (Teal) */}
@@ -272,7 +272,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
           </motion.header>
 
           {/* Sub Header (Welcome) */}
-          <motion.div variants={itemVariants} className={`w-full h-10 lg:h-12 ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'} border-b flex items-center justify-between px-3 lg:px-6 shrink-0 shadow-sm z-10`}>
+          <motion.div variants={itemVariants} className={`w-full h-10 lg:h-12 ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} border-b flex items-center justify-between px-3 lg:px-6 shrink-0 shadow-sm z-10`}>
             <div className="flex items-center text-[10px] lg:text-xs">
               <span className={`${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Good evening, your account health is</span>
               <span className="ml-2 bg-[#42801F] text-white px-2 py-0.5 rounded-sm font-bold shadow-sm">Healthy</span>
@@ -285,23 +285,23 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
           </motion.div>
 
           {/* Main Dashboard Area */}
-          <div className={`flex flex-1 overflow-hidden p-3 lg:p-4 space-x-3 lg:space-x-4 ${isDark ? 'bg-slate-900/50' : 'bg-[#F2F4F8]'}`}>
+          <div className={`flex flex-1 overflow-hidden p-3 lg:p-4 space-x-3 lg:space-x-4 ${isDark ? 'bg-[#0f1117]/50' : 'bg-[#F2F4F8]'}`}>
             
             {/* Left Sidebar Columns */}
             <motion.aside variants={itemVariants} className="flex w-40 lg:w-56 flex-col space-y-3 shrink-0">
               {/* Actions Box */}
-              <div className={`border rounded-lg shadow-sm overflow-hidden flex flex-col ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-300'}`}>
+              <div className={`border rounded-lg shadow-sm overflow-hidden flex flex-col ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-300'}`}>
                 <div className={`p-2 lg:p-3 border-b flex justify-between items-center ${isDark ? 'border-slate-700' : 'border-slate-100'}`}>
                   <span className={`text-[10px] lg:text-[12px] font-bold flex items-center ${isDark ? 'text-white' : 'text-slate-800'}`}>Actions <span className="text-slate-400 ml-1 text-[8px]">ⓘ</span></span>
                   <span className="bg-[#4E5B65] text-white text-[8px] lg:text-[9px] px-1.5 py-0.5 rounded-full">0</span>
                 </div>
-                <div className={`p-3 lg:p-4 flex items-center justify-center text-[9px] lg:text-[10px] min-h-[60px] text-center ${isDark ? 'text-slate-400 bg-slate-800/50' : 'text-slate-500 bg-[#FAFAFA]'}`}>
+                <div className={`p-3 lg:p-4 flex items-center justify-center text-[9px] lg:text-[10px] min-h-[60px] text-center ${isDark ? 'text-slate-400 bg-[#1a1d27]/50' : 'text-slate-500 bg-[#FAFAFA]'}`}>
                   Check in later for more content
                 </div>
               </div>
 
               {/* Communications Box */}
-              <div className={`border rounded-lg shadow-sm overflow-hidden flex flex-col opacity-80 ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-200'}`}>
+              <div className={`border rounded-lg shadow-sm overflow-hidden flex flex-col opacity-80 ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'}`}>
                 <div className={`p-2 lg:p-3 border-b flex justify-between items-center ${isDark ? 'border-slate-700' : 'border-slate-100'}`}>
                   <span className={`text-[10px] lg:text-[12px] font-bold flex items-center ${isDark ? 'text-white' : 'text-slate-800'}`}>Communications <span className="text-slate-400 ml-1 text-[8px]">ⓘ</span></span>
                 </div>
@@ -312,8 +312,8 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
             </motion.aside>
 
             {/* Right Main Grid */}
-            <motion.main variants={itemVariants} className={`flex-1 border rounded-lg shadow-sm flex flex-col overflow-hidden ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-300'}`}>
-              <div className={`h-10 lg:h-12 border-b flex items-center justify-between px-3 lg:px-4 shrink-0 ${isDark ? 'border-slate-700 bg-slate-800/80' : 'border-slate-200 bg-[#FBFBFB]'}`}>
+            <motion.main variants={itemVariants} className={`flex-1 border rounded-lg shadow-sm flex flex-col overflow-hidden ${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-300'}`}>
+              <div className={`h-10 lg:h-12 border-b flex items-center justify-between px-3 lg:px-4 shrink-0 ${isDark ? 'border-slate-700 bg-[#1a1d27]/80' : 'border-slate-200 bg-[#FBFBFB]'}`}>
                 <span className={`text-[12px] lg:text-[14px] font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}>Global Snapshot</span>
                 <div className="flex space-x-2 text-slate-500">
                    <span className={`text-[10px] lg:text-xs border px-1.5 py-0.5 rounded ${isDark ? 'border-slate-600 bg-slate-700' : 'border-slate-300 bg-white'}`}>▤</span>
@@ -405,7 +405,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
                     </span>
                     <span className="text-[8px] lg:text-[9px] text-slate-500">Cases requiring attention</span>
                   </div>
-                  <div className={`p-2 lg:p-3 flex-1 flex flex-col ${isDark ? 'bg-slate-800/30' : 'bg-[#FBFBFB]'}`}>
+                  <div className={`p-2 lg:p-3 flex-1 flex flex-col ${isDark ? 'bg-[#1a1d27]/30' : 'bg-[#FBFBFB]'}`}>
                     <div className="flex justify-between items-start mb-1">
                       <span className="text-[9px] lg:text-[10px] text-[#008296] font-medium cursor-pointer hover:underline">Payments</span>
                       <span className="text-[8px] text-slate-400 font-bold">˅</span>
@@ -419,7 +419,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
 
                 {/* Col 4: Buy Box + IPI */}
                 <div className={`col-span-1 flex flex-col divide-y ${isDark ? 'divide-slate-700' : 'divide-slate-200'}`}>
-                  <div className={`p-2 lg:p-3 flex-1 lg:flex-none lg:h-24 shrink-0 flex flex-col min-h-[90px] ${isDark ? 'bg-slate-800/30' : 'bg-[#FBFBFB]'}`}>
+                  <div className={`p-2 lg:p-3 flex-1 lg:flex-none lg:h-24 shrink-0 flex flex-col min-h-[90px] ${isDark ? 'bg-[#1a1d27]/30' : 'bg-[#FBFBFB]'}`}>
                     <div className="flex justify-between items-start mb-1">
                       <span className="text-[9px] lg:text-[10px] text-[#008296] font-medium cursor-pointer hover:underline">Featured Offer %</span>
                       <span className="text-[8px] text-slate-400 font-bold">˅</span>
@@ -456,7 +456,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
                     </div>
                     <span className="text-[8px] lg:text-[9px] text-slate-500">Past Year (0)</span>
                   </div>
-                  <div className={`p-2 lg:p-3 flex-1 flex flex-col ${isDark ? 'bg-slate-800/30' : 'bg-[#FBFBFB]'}`}>
+                  <div className={`p-2 lg:p-3 flex-1 flex flex-col ${isDark ? 'bg-[#1a1d27]/30' : 'bg-[#FBFBFB]'}`}>
                     <div className="flex justify-between items-start mb-1">
                       <span className={`text-[9px] lg:text-[10px] font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>Global Promotions Sales</span>
                       <span className="text-[8px] text-slate-400 font-bold">˅</span>
@@ -479,8 +479,8 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
 
   // DEFAULT (LAYOUT 1): Service Ecosystem
   return (
-    <article className={`w-full h-full ${isDark ? 'bg-slate-900 text-slate-200' : 'bg-slate-50 text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
-      <div className={`absolute inset-0 ${isDark ? 'bg-slate-900' : 'bg-white'}`} />
+    <article className={`w-full h-full ${isDark ? 'bg-[#0f1117] text-slate-200' : 'bg-white text-slate-800'} flex flex-col overflow-hidden relative font-sans`}>
+      <div className={`absolute inset-0 ${isDark ? 'bg-[#0f1117]' : 'bg-white'}`} />
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: gridDotColor, backgroundSize: '24px 24px' }}></div>
       
       <motion.div variants={containerVariants} initial="show" animate="show" className="w-full h-full flex flex-col z-10">
@@ -523,7 +523,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
               ].map((item, i) => (
                 <div key={i} className="flex items-center justify-between group">
                   <div className="flex items-center space-x-2 lg:space-x-3">
-                    <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-lg ${isDark ? 'bg-slate-800' : 'bg-slate-50'} flex items-center justify-center font-bold text-base lg:text-lg ${isDark ? 'text-white' : 'text-slate-800'}`}>{item.icon}</div>
+                    <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-lg ${isDark ? 'bg-[#1a1d27]' : 'bg-slate-50'} flex items-center justify-center font-bold text-base lg:text-lg ${isDark ? 'text-white' : 'text-slate-800'}`}>{item.icon}</div>
                     <div className="flex flex-col">
                       <span className={`text-[10px] lg:text-[12px] font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.name}</span>
                       <span className={`text-[9px] lg:text-[10px] font-bold text-slate-400`}>Status: <span className={item.status === 'WORKING' ? 'text-yellow-500' : ''}>{item.status}</span></span>
@@ -556,7 +556,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
               ].map((item, i) => (
                 <div key={i} className="flex items-center justify-between group">
                   <div className="flex items-center space-x-2 lg:space-x-3">
-                    <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-lg ${isDark ? 'bg-slate-800' : 'bg-slate-50'} flex items-center justify-center font-bold text-base lg:text-lg ${isDark ? 'text-white' : 'text-slate-800'}`}>{item.icon}</div>
+                    <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-lg ${isDark ? 'bg-[#1a1d27]' : 'bg-slate-50'} flex items-center justify-center font-bold text-base lg:text-lg ${isDark ? 'text-white' : 'text-slate-800'}`}>{item.icon}</div>
                     <div className="flex flex-col">
                       <span className={`text-[10px] lg:text-[12px] font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.name}</span>
                       <span className={`text-[9px] lg:text-[10px] font-bold text-slate-400`}>Status: <span className={item.status === 'WORKING' ? 'text-yellow-500' : ''}>{item.status}</span></span>

@@ -50,7 +50,7 @@ export default function InteractiveTelemetryConsole() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Dynamic Typography Section Header */}
-        <div className="max-w-3xl mb-[-2.5rem]">
+        <div className="max-w-3xl mb-12 lg:mb-16">
           <div 
             className="inline-flex items-center space-x-2 text-yellow-600 dark:text-yellow-400 font-extrabold tracking-[0.25em] text-xs uppercase mb-2"
           >
@@ -123,47 +123,47 @@ export default function InteractiveTelemetryConsole() {
             </div>
 
           {/* Dynamic Calculated Outflow Metrics (Bottom on Mobile, Bottom-Left on Desktop) */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 pt-6 lg:pt-0 lg:border-t-0 border-t border-zinc-200 dark:border-zinc-900/60 order-3">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 lg:gap-6 pt-6 lg:pt-0 lg:border-t-0 border-t border-zinc-200 dark:border-zinc-900/60 order-3">
               
               {/* Output 1: Converted Leads */}
-              <div className="space-y-1 md:border-l md:border-zinc-250 dark:md:border-zinc-900 md:pl-4 first:border-0 first:pl-0">
+              <div className="space-y-1 sm:border-l sm:border-zinc-200 dark:sm:border-zinc-900 sm:pl-3 lg:pl-4 first:border-0 first:pl-0">
                 <span className="text-[10px] font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
-                  <span>Captured Leads</span>
+                  <span className="truncate">Captured Leads</span>
                 </span>
-                <div className="text-3xl xl:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight tabular-nums">
+                <div className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight tabular-nums truncate">
                   {leads.toLocaleString()}
                 </div>
-                <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight">
+                <div className="text-[9px] lg:text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight truncate">
                   Qualified Opportunities
                 </div>
               </div>
 
               {/* Output 2: Estimated Pipeline Revenue */}
-              <div className="space-y-1 md:border-l md:border-zinc-250 dark:md:border-zinc-900 md:pl-4">
+              <div className="space-y-1 sm:border-l sm:border-zinc-200 dark:sm:border-zinc-900 sm:pl-3 lg:pl-4">
                 <span className="text-[10px] font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span>Pipeline Value</span>
+                  <span className="truncate">Pipeline Value</span>
                 </span>
-                <div className="text-3xl xl:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight tabular-nums flex items-center">
-                  <DollarSign className="w-5 h-5 xl:w-6 xl:h-6 text-zinc-400 shrink-0" strokeWidth={3} />
+                <div className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight tabular-nums flex items-center truncate">
+                  <DollarSign className="w-4 h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 text-zinc-400 shrink-0" strokeWidth={3} />
                   <span>{estimatedRevenue.toLocaleString()}</span>
                 </div>
-                <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight">
-                  Estimated Gross Contract Value
+                <div className="text-[9px] lg:text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight truncate">
+                  Est. Gross Value
                 </div>
               </div>
 
               {/* Output 3: Performance Multiplier */}
-              <div className="space-y-1 md:border-l md:border-zinc-250 dark:md:border-zinc-900 md:pl-4">
+              <div className="space-y-1 sm:border-l sm:border-zinc-200 dark:sm:border-zinc-900 sm:pl-3 lg:pl-4">
                 <span className="text-[10px] font-bold tracking-widest text-zinc-400 dark:text-zinc-500 uppercase flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                  <span>Scale Velocity</span>
+                  <span className="truncate">Scale Velocity</span>
                 </span>
-                <div className="text-3xl xl:text-4xl font-extrabold text-yellow-500 dark:text-yellow-400 tracking-tight tabular-nums">
+                <div className="text-2xl lg:text-3xl xl:text-4xl font-extrabold text-yellow-500 dark:text-yellow-400 tracking-tight tabular-nums truncate">
                   {multiplier}x
                 </div>
-                <div className="text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight">
+                <div className="text-[9px] lg:text-[10px] text-zinc-400 dark:text-zinc-500 font-semibold uppercase leading-tight truncate">
                   Growth Velocity Ratio
                 </div>
               </div>
