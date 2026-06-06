@@ -140,7 +140,7 @@ export default function WebDevServicePageRedesigned() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 md:pb-24 lg:pt-44 lg:pb-32 overflow-visible min-h-[100vh] sm:min-h-[800px] lg:min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-0 md:pb-24 lg:pt-44 lg:pb-32 overflow-visible min-h-0 lg:min-h-[90vh] flex items-center">
         <div className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]">
           <div className="absolute inset-0 z-0 opacity-40">
              <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
