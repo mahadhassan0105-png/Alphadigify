@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence, animate } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/public/Footer";
 import { Button } from "@/components/ui/button";
@@ -12,31 +12,13 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-/* ─── Animated Counter ─── */
-function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: number; prefix?: string; suffix?: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const [hasAnimated, setHasAnimated] = useState(false);
-  
-  useEffect(() => {
-    if (!hasAnimated) {
-      setHasAnimated(true);
-      const c = animate(from, to, {
-        duration: 2.5, ease: "easeOut",
-        onUpdate(v) { if (ref.current) ref.current.textContent = `${prefix}${Math.round(v)}${suffix}`; },
-      });
-      return () => c.stop();
-    }
-  }, [from, to, prefix, suffix, hasAnimated]);
-  return <span ref={ref}>{prefix}{from}{suffix}</span>;
-}
 
 /* ─── 3D Layered Browser Mockup ─── */
 function BrowserMockup() {
   return (
     <div className="relative w-full h-full flex items-center justify-center perspective-[1200px] mt-10 lg:mt-0">
       <motion.div
-        animate={{ rotateX: [8, 12, 8], rotateY: [-10, -14, -10], y: [-8, 8, -8] }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        initial={{ rotateX: 10, rotateY: -12 }}
         style={{ transformStyle: "preserve-3d" }}
         className="relative w-full max-w-[480px]"
       >
@@ -122,12 +104,6 @@ function BrowserMockup() {
 
 
 /* ─── Static Data ─── */
-const STATS = [
-  { from: 0, to: 150, suffix: "+", label: "Sites Launched" },
-  { from: 0, to: 99, suffix: "%", label: "Client Satisfaction" },
-  { from: 0, to: 40, prefix: "<", suffix: "ms", label: "Avg Load Time" },
-  { from: 0, to: 100, suffix: "/100", label: "PageSpeed Score" },
-];
 
 const CAPABILITIES = [
   { icon: Layout, title: "Responsive UI/UX", desc: "Pixel-perfect interfaces that perform flawlessly from ultra-wide monitors to the smallest mobile screens." },
@@ -164,8 +140,8 @@ export default function WebDevServicePageRedesigned() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 z-0 bg-black overflow-hidden [clip-path:ellipse(120%_95%_at_50%_0%)]">
+      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden lg:overflow-visible min-h-[90vh] flex items-center">
+        <div className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]">
           <div className="absolute inset-0 z-0 opacity-40">
              <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
           </div>
@@ -197,23 +173,7 @@ export default function WebDevServicePageRedesigned() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          2. STATS BAR
-      ═══════════════════════════════════════ */}
-      <section className="py-10 border-y border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {STATS.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center justify-center text-center">
-                <h4 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-2">
-                  <Counter from={stat.from} to={stat.to} prefix={stat.prefix} suffix={stat.suffix} />
-                </h4>
-                <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{stat.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* ═══════════════════════════════════════
           3. CAPABILITIES GRID
