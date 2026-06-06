@@ -22,7 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/contact`, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${baseUrl}/case-studies`, changeFrequency: 'monthly' as const, priority: 0.8 },
     { url: `${baseUrl}/portfolio`, changeFrequency: 'monthly' as const, priority: 0.8 },
-    { url: `${baseUrl}/services`, changeFrequency: 'monthly' as const, priority: 0.8 },
   ];
 
   const servicePages = services.map(slug => ({
