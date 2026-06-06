@@ -237,13 +237,7 @@ export default function Navbar() {
                 )
               })}
               
-              {/* Appearance / Theme Toggle row */}
-              <div className={`flex items-center justify-between py-4 border-b ${isDark ? 'border-white/10' : 'border-slate-200'} transition-colors`}>
-                <span className={`text-[13px] font-bold tracking-[0.1em] ${isDark ? 'text-white' : 'text-[#1a1a24]'}`}>
-                  APPEARANCE
-                </span>
-                <ThemeToggle />
-              </div>
+
             </div>
           </motion.div>
         )}

@@ -171,7 +171,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
                   { label: "Clicks", from: 0, to: 646, prefix: "", suffix: "", decimals: 0 },
                   { label: "Branded searches", from: 0, to: 84, prefix: "", suffix: "", decimals: 0 },
                   { label: "Detail page views", from: 0, to: 420, prefix: "", suffix: "", decimals: 0 },
-                  { label: "Purchases", from: 0, to: 14, prefix: "", suffix: "", decimals: 0 },
+                  { label: "Purchases", from: 0, to: 143, prefix: "", suffix: "", decimals: 0 },
                   { label: "Sales", from: 0, to: 4528.50, prefix: "$", suffix: "", decimals: 2 }
                 ].map((stat, i) => (
                   <div key={i} className="flex flex-col px-2">

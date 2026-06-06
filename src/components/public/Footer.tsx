@@ -16,7 +16,7 @@ interface CompanySettings {
 
 const defaultSettings: CompanySettings = {
   email: "strategy@alphadigify.com",
-  phone: null,
+  phone: "+1 800 123 4567",
   location: "Islamabad, Pakistan & Global Remote",
   facebook: null,
   twitter: null,
@@ -102,7 +102,7 @@ export default function Footer() {
               {settings.phone && (
                 <li className="flex items-center text-sm text-slate-400">
                   <Phone className="w-5 h-5 mr-3 text-slate-500 shrink-0" />
-                  <span>{settings.phone}</span>
+                  <a href={`tel:${settings.phone.replace(/[^0-9+]/g, '')}`} className="hover:text-yellow-500 transition-colors">{settings.phone}</a>
                 </li>
               )}
               <li className="flex items-center text-sm text-slate-400">
