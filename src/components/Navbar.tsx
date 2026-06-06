@@ -141,7 +141,7 @@ export default function Navbar() {
         {/* Right Icons */}
         <div className="flex items-center space-x-5">
           {/* Theme Toggle */}
-          <div className="hidden sm:block">
+          <div className="block">
             <ThemeToggle />
           </div>
 

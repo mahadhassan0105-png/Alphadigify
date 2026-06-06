@@ -340,11 +340,11 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
                     <div className={`flex-1 w-full min-h-[40px] relative mt-auto border-b border-l px-1 pb-1 ${isDark ? 'border-slate-700' : 'border-slate-200'}`}>
                       <svg viewBox="0 0 100 40" className="w-full h-full overflow-visible">
                         <motion.path 
-                          d="M 5,35 L 20,35 L 35,25 L 50,5 L 65,30 L 80,20 L 95,35" 
+                          d="M 5,35 L 20,30 L 35,32 L 50,20 L 65,25 L 80,15 L 95,5" 
                           fill="none" className="stroke-[#008296]" strokeWidth="1.5" 
                           initial={{ pathLength: isActive ? 0 : 1 }} animate={{ pathLength: 1 }} transition={{ duration: 1, delay: 0.5 }}
                         />
-                        <motion.circle cx="50" cy="5" r="2" fill="white" stroke="#008296" strokeWidth="1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} />
+                        <motion.circle cx="95" cy="5" r="2" fill="white" stroke="#008296" strokeWidth="1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} />
                       </svg>
                       <div className="absolute bottom-[-14px] w-full flex justify-between text-[6px] lg:text-[7px] text-slate-400 font-medium">
                         <span>Apr 16</span><span>19</span><span>22</span>
