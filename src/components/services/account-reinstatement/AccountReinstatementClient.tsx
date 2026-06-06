@@ -53,8 +53,7 @@ export default function AccountReinstatementClient() {
       <section className="relative pt-36 pb-24 lg:pt-44 lg:pb-36 overflow-hidden min-h-[110vh] sm:min-h-[900px] flex items-center">
         {/* Background Image & Overlay */}
         <div 
-          className="absolute inset-0 z-0 overflow-hidden"
-          style={{ clipPath: 'ellipse(120% 95% at 50% 0%)' }}
+          className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           <Image
             src="/amazon-reinstatement-hero.png"

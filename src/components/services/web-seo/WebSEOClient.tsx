@@ -114,8 +114,7 @@ export default function WebSEOClient() {
       <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background image with ellipse clip */}
         <div
-          className="absolute inset-0 z-0 overflow-hidden"
-          style={{ clipPath: "ellipse(120% 95% at 50% 0%)" }}
+          className="absolute inset-0 z-0 overflow-hidden [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           <Image
             src="/SEO.png"

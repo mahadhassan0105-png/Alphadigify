@@ -97,8 +97,7 @@ export default function VideoAdsServicePage() {
       <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background Image Setup */}
         <div 
-          className="absolute inset-0 z-0"
-          style={{ clipPath: 'ellipse(120% 95% at 50% 0%)' }}
+          className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           <div className="absolute inset-0 bg-black/40 z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-[#0B0C10] z-20" />

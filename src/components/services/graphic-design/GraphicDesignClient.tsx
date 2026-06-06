@@ -120,8 +120,7 @@ export default function GraphicDesignClient() {
       >
         {/* Background */}
         <div 
-          className="absolute inset-0 z-0 bg-black overflow-hidden"
-          style={{ clipPath: "ellipse(120% 95% at 50% 0%)" }}
+          className="absolute inset-0 z-0 bg-black overflow-hidden [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           <div className="absolute inset-0 bg-black/55 z-10" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-[#0B0C10] z-20" />
