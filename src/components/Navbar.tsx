@@ -33,7 +33,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesHover, setServicesHover] = useState(false);
   const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [scrolled, setScrolled] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
@@ -41,32 +40,61 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 60);
     };
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const logoText = "text-white";
-  const linkInactive = "text-white/80 hover:text-yellow-400";
+  // When scrolled: dark mode → black bg + white text | light mode → white bg + black text
+  // When at top: always transparent + white text (hero is always dark/image)
+  const navBg = scrolled
+    ? isDark
+      ? "bg-black/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.4)]"
+      : "bg-white/95 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.08)]"
+    : "bg-transparent";
+
+  const logoText = scrolled
+    ? isDark ? "text-white" : "text-slate-900"
+    : "text-white";
+
+  const linkInactive = scrolled
+    ? isDark
+      ? "text-slate-300 hover:text-yellow-400"
+      : "text-slate-700 hover:text-yellow-500"
+    : "text-white/80 hover:text-yellow-400";
+
   const linkActive = "text-yellow-400";
-  const iconColor = "text-white/80 hover:text-yellow-400";
-  const hamburgerColor = "text-white hover:text-yellow-400";
+
+  const iconColor = scrolled
+    ? isDark ? "text-slate-300 hover:text-yellow-400" : "text-slate-700 hover:text-yellow-500"
+    : "text-white/80 hover:text-yellow-400";
+
+  const hamburgerColor = scrolled
+    ? isDark ? "text-white hover:text-yellow-400" : "text-slate-800 hover:text-yellow-500"
+    : "text-white hover:text-yellow-400";
+
+  const hamburgerBorder = scrolled
+    ? isDark ? "border-white/20 bg-white/5" : "border-slate-300 bg-slate-100"
+    : "border-white/20 bg-white/5";
 
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
-      className="fixed top-0 left-0 w-full z-50 bg-transparent"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navBg}`}
     >
-      {/* Gradient backdrop for white text legibility over any background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+      {/* Gradient backdrop — only visible when NOT scrolled */}
+      {!scrolled && (
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-12 flex items-center justify-between h-14 sm:h-16 lg:h-[72px] relative z-10">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <span className={`${logoText} text-xl font-bold tracking-wide group-hover:text-yellow-400 transition-colors`}>
+          <span className={`${logoText} text-xl font-bold tracking-wide group-hover:text-yellow-400 transition-colors duration-300`}>
             Alphadigify
           </span>
         </Link>
@@ -153,7 +181,7 @@ export default function Navbar() {
           {/* Modern Mobile Menu Trigger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden flex items-center justify-center p-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md ${hamburgerColor} transition-all active:scale-95`}
+            className={`lg:hidden flex items-center justify-center p-2 rounded-full border backdrop-blur-md ${hamburgerBorder} ${hamburgerColor} transition-all duration-300 active:scale-95`}
             aria-label="Toggle mobile menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Grip className="w-5 h-5" />}
@@ -161,7 +189,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Accordion Mobile Menu inspired by Brünn reference */}
+      {/* Accordion Mobile Menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -236,8 +264,6 @@ export default function Navbar() {
                   </Link>
                 )
               })}
-              
-
             </div>
           </motion.div>
         )}
