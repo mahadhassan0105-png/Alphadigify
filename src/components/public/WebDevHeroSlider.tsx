@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code} from "lucide-react";
+import { ArrowRight, Code } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 /* ───── 3D Layered Web Mockup ───── */
@@ -99,12 +100,19 @@ export default function WebDevHeroSlider() {
   }, []);
 
   return (
-    <section className="relative w-full min-h-screen sm:min-h-[800px] flex items-center overflow-hidden bg-white dark:bg-[#030712] pt-20">
-      {/* Background Decor */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
-        {/* Subtle grid background */}
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#030712] via-transparent to-white dark:to-[#030712]" />
+    <section className="relative w-full min-h-screen sm:min-h-[800px] flex items-center overflow-hidden pt-20">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/web-dev-hero.jpg"
+          alt="Web Development Background"
+          fill
+          priority
+          className="object-cover object-center"
+          quality={90}
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
       </div>
 
       {/* Content */}
@@ -117,10 +125,10 @@ export default function WebDevHeroSlider() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 backdrop-blur-sm mb-6 sm:mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm mb-6 sm:mb-8"
             >
-              <Code className="w-4 h-4 text-yellow-500 dark:text-yellow-400" />
-              <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 uppercase tracking-widest">
+              <Code className="w-4 h-4 text-yellow-400" />
+              <span className="text-xs sm:text-sm font-bold text-white/90 uppercase tracking-widest">
                 Full-Stack Web Engineering
               </span>
             </motion.div>
@@ -129,7 +137,7 @@ export default function WebDevHeroSlider() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-[1.1] max-w-2xl"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] max-w-2xl drop-shadow-lg"
             >
               Build the <br className="hidden sm:block" />
               <span className="text-yellow-500 dark:text-yellow-400">
@@ -141,7 +149,7 @@ export default function WebDevHeroSlider() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="mt-6 text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl font-medium leading-relaxed"
+              className="mt-6 text-base sm:text-lg md:text-xl text-white/85 max-w-xl font-medium leading-relaxed drop-shadow-md"
             >
               High-performance, scalable, and beautifully crafted websites designed to convert visitors into loyal customers and accelerate your digital growth.
             </motion.p>
@@ -156,7 +164,7 @@ export default function WebDevHeroSlider() {
                 View Our Portfolio
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="/contact" className="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-100 dark:bg-white/5 text-slate-900 dark:text-white font-bold hover:bg-slate-200 dark:hover:bg-white/10 transition-colors border border-slate-200 dark:border-white/10 flex items-center justify-center backdrop-blur-sm">
+              <Link href="/contact" className="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 text-white font-bold hover:bg-white/20 transition-colors border border-white/20 flex items-center justify-center backdrop-blur-sm">
                 Start a Project
               </Link>
             </motion.div>
