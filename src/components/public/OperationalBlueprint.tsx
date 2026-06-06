@@ -66,7 +66,7 @@ export default function InteractiveTelemetryConsole() {
           </h2>
           
           <p 
-            className="text-lg text-slate-650 dark:text-zinc-450 leading-relaxed"
+            className="text-lg text-slate-600 dark:text-zinc-400 leading-relaxed"
           >
             Adjust the sliders below in real-time to simulate how custom optimization pipelines scale conversion volume, lead capture, and dynamic contract revenue.
           </p>
