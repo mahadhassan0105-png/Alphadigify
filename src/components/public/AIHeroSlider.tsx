@@ -18,16 +18,16 @@ function WorkflowNode({
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5, delay }}
-      className={`relative flex flex-col items-center gap-2 group w-20 z-10`}
+      className={`relative flex flex-col items-center gap-1.5 sm:gap-2 group w-16 sm:w-20 z-10`}
     >
-      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border-2 bg-white dark:bg-slate-900 shadow-lg transition-all duration-300 ${isActive ? 'border-yellow-400 shadow-yellow-400/20 shadow-xl scale-110' : 'border-slate-200 dark:border-slate-700'}`}>
-        <Icon className={`w-6 h-6 ${colorClass} ${isActive ? 'animate-pulse' : ''}`} />
+      <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl flex items-center justify-center border-2 bg-white dark:bg-slate-900 shadow-lg transition-all duration-300 ${isActive ? 'border-yellow-400 shadow-yellow-400/20 shadow-xl scale-110' : 'border-slate-200 dark:border-slate-700'}`}>
+        <Icon className={`w-4 h-4 sm:w-6 sm:h-6 ${colorClass} ${isActive ? 'animate-pulse' : ''}`} />
         
         {/* Connection points */}
         <div className="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
         <div className="absolute -right-1 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-slate-300 dark:bg-slate-600" />
       </div>
-      <span className="text-[9px] font-bold text-slate-600 dark:text-slate-400 text-center uppercase tracking-wider bg-white/80 dark:bg-slate-900/80 px-1 rounded backdrop-blur-sm truncate w-[120%]">{label}</span>
+      <span className="text-[8px] sm:text-[9px] font-bold text-slate-600 dark:text-slate-400 text-center uppercase tracking-wider bg-white/80 dark:bg-slate-900/80 px-1 rounded backdrop-blur-sm truncate w-[140%] sm:w-[120%]">{label}</span>
     </motion.div>
   );
 }
@@ -68,7 +68,7 @@ export default function AIHeroSlider() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1, delay: 0.2 }}
-      className="relative perspective-1000 w-full max-w-lg mx-auto lg:max-w-none h-[420px]"
+      className="relative perspective-1000 w-full max-w-md mx-auto lg:max-w-none h-[420px] mt-12 lg:mt-0"
     >
       <div className="relative w-full h-full rounded-3xl bg-slate-50 dark:bg-[#0A0D14] border border-slate-200 dark:border-white/10 shadow-2xl overflow-hidden flex flex-col">
         
@@ -85,17 +85,11 @@ export default function AIHeroSlider() {
           <div className="w-10" />
         </div>
 
-        {/* Slides Container */}
         <div 
-          className="flex-1 relative overflow-x-auto overflow-y-hidden bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          className="flex-1 relative bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"
         >
-          {/* Style hack for webkit scrollbar hiding inline */}
-          <style>{`
-            div::-webkit-scrollbar { display: none; }
-          `}</style>
           
-          <div className="relative min-w-[600px] h-full w-full">
+          <div className="relative h-full w-full">
             <AnimatePresence mode="wait">
             
             {/* SLIDE 0: Customer Support Ticket Triage (Based on User's Image) */}
