@@ -217,24 +217,24 @@ export default function GoogleAdsClient() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
-            className="w-full hidden lg:block mt-10 lg:mt-0"
+            className="w-full block mt-10 lg:mt-0"
           >
             <div className="bg-white dark:bg-[#1e2030] rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden">
               {/* Dashboard Header */}
-              <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#252836]">
-                <div className="flex items-center gap-2 min-w-0">
-                  <GoogleDots size={10} />
-                  <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 truncate">Google Ads — Campaign Dashboard</span>
+              <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#252836] gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                  <GoogleDots size={8} />
+                  <span className="text-[11px] sm:text-sm font-bold text-slate-700 dark:text-slate-300 leading-tight">Google Ads<span className="hidden sm:inline"> — Campaign Dashboard</span></span>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500 animate-pulse inline-block" />
-                  <span className="text-xs font-semibold text-green-600 dark:text-green-400">Live</span>
+                <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+                  <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse inline-block" />
+                  <span className="text-[10px] sm:text-xs font-semibold text-green-600 dark:text-green-400">Live</span>
                 </div>
               </div>
 
-              <div className="p-4 sm:p-6">
-                {/* Top KPI Row */}
-                <div className="grid grid-cols-4 gap-1.5 sm:gap-3 mb-4 sm:mb-6">
+              <div className="p-3 sm:p-6">
+                {/* Top KPI Row — 2-col on mobile, 4-col on sm+ */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-4 sm:mb-6">
                   {[
                     { label: "ROAS",        value: "6.8x",   color: G_GREEN },
                     { label: "CTR",         value: "8.7%",   color: G_BLUE },
@@ -246,10 +246,10 @@ export default function GoogleAdsClient() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6 + i * 0.1 }}
-                      className="text-center bg-slate-50 dark:bg-[#2a2d3e] rounded-xl px-2 py-3 border border-slate-100 dark:border-slate-700"
+                      className="text-center bg-slate-50 dark:bg-[#2a2d3e] rounded-xl px-1 sm:px-2 py-2 sm:py-3 border border-slate-100 dark:border-slate-700"
                     >
-                      <p className="text-base font-black" style={{ color: kpi.color }}>{kpi.value}</p>
-                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">{kpi.label}</p>
+                      <p className="text-sm sm:text-base font-black" style={{ color: kpi.color }}>{kpi.value}</p>
+                      <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">{kpi.label}</p>
                     </motion.div>
                   ))}
                 </div>
