@@ -197,9 +197,9 @@ export default function InteractiveTelemetryConsole() {
                 {[...Array(9)].map((_, i) => (
                   <line
                     key={`telemetry-grid-v-${i}`}
-                    x1="40 + i * 40"
+                    x1={40 + i * 40}
                     y1="40"
-                    x2="40 + i * 40"
+                    x2={40 + i * 40}
                     y2="260"
                     stroke="rgba(228, 228, 231, 0.15)"
                     strokeWidth="1"

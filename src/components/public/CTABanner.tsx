@@ -33,7 +33,7 @@ export default function CTABanner() {
                   Book a Discovery Call <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/services">
+              <Link href="/contact">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto border-slate-300 dark:border-slate-700 text-slate-200 hover:bg-slate-100 dark:bg-slate-800 hover:text-slate-900 dark:text-white h-14 px-8 font-semibold">
                   View Our Pricing
                 </Button>
