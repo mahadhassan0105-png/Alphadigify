@@ -246,13 +246,13 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
             <div className="flex items-center space-x-2 lg:space-x-4">
               <span className="text-lg lg:text-xl font-light opacity-80">≡</span>
               <span className="font-bold text-sm lg:text-base tracking-tight">amazon seller central</span>
-              <div className="hidden lg:flex items-center bg-white text-slate-900 text-[10px] px-2 py-0.5 rounded-sm ml-2">
+              <div className="flex items-center bg-white text-slate-900 text-[10px] px-2 py-0.5 rounded-sm ml-2">
                 <span className="font-bold border-r border-slate-300 pr-2 mr-2">CS MART LLC</span>
                 <span>United States</span>
               </div>
             </div>
             
-            <div className="hidden md:flex flex-1 max-w-md mx-4">
+            <div className="flex flex-1 max-w-md mx-4">
               <div className="w-full bg-[#0B3948] h-7 rounded flex items-center px-2">
                 <span className="text-[10px] text-slate-400 italic flex-1">Search</span>
                 <span className="text-slate-300 text-[10px]">🔍</span>
@@ -260,7 +260,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
             </div>
 
             <div className="flex items-center space-x-3 lg:space-x-4 text-[9px] lg:text-[11px]">
-              <div className="hidden lg:flex items-center space-x-1">
+              <div className="flex items-center space-x-1">
                 <div className="w-6 h-3 bg-white rounded-full relative flex items-center px-0.5"><div className="w-2 h-2 bg-slate-400 rounded-full"></div></div>
                 <span>New Seller Central</span>
               </div>
@@ -288,7 +288,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
           <div className={`flex flex-1 overflow-hidden p-3 lg:p-4 space-x-3 lg:space-x-4 ${isDark ? 'bg-slate-900/50' : 'bg-[#F2F4F8]'}`}>
             
             {/* Left Sidebar Columns */}
-            <motion.aside variants={itemVariants} className="hidden md:flex w-40 lg:w-56 flex-col space-y-3 shrink-0">
+            <motion.aside variants={itemVariants} className="flex w-40 lg:w-56 flex-col space-y-3 shrink-0">
               {/* Actions Box */}
               <div className={`border rounded-lg shadow-sm overflow-hidden flex flex-col ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-slate-300'}`}>
                 <div className={`p-2 lg:p-3 border-b flex justify-between items-center ${isDark ? 'border-slate-700' : 'border-slate-100'}`}>
@@ -322,7 +322,7 @@ export default function AmazonAnimatedDashboard({ theme, isActive, layoutId = 1 
               </div>
 
               {/* Grid Content */}
-              <div className={`flex-1 grid grid-cols-2 md:grid-cols-5 divide-x divide-y overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${isDark ? 'divide-slate-700' : 'divide-slate-200'}`}>
+              <div className={`flex-1 grid grid-cols-5 divide-x divide-y overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${isDark ? 'divide-slate-700' : 'divide-slate-200'}`}>
                 
                 {/* Col 1: Sales + Ad Sales */}
                 <div className={`col-span-1 flex flex-col divide-y ${isDark ? 'divide-slate-700' : 'divide-slate-200'}`}>
