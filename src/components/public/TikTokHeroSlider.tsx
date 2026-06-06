@@ -58,7 +58,7 @@ export default function TikTokHeroSlider() {
           </p>
         </header>
 
-        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12">
+        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12 mt-20 sm:mt-0">
           <TikTokMockupShowcase currentIndex={currentIndex} direction={direction} />
         </div>
       </div>
