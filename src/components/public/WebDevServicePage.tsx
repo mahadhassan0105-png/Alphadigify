@@ -74,7 +74,7 @@ export default function WebDevServicePageRedesigned() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         <div className="absolute inset-0 z-0 bg-black overflow-hidden [clip-path:ellipse(120%_95%_at_50%_0%)]">
           <div className="absolute inset-0 z-0 opacity-40">
              <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
@@ -100,7 +100,7 @@ export default function WebDevServicePageRedesigned() {
               </div>
             </div>
             {/* Right Visual */}
-            <div className="w-full lg:w-1/2 mt-12 lg:mt-0 relative hidden md:block">
+            <div className="w-full lg:w-1/2 mt-12 lg:mt-0 relative block">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}

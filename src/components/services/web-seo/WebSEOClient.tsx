@@ -111,7 +111,7 @@ export default function WebSEOClient() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background image with ellipse clip */}
         <div
           className="absolute inset-0 z-0 bg-black overflow-hidden [clip-path:ellipse(120%_95%_at_50%_0%)]"
@@ -172,7 +172,7 @@ export default function WebSEOClient() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.3, type: "spring" }}
-            className="w-full hidden md:block"
+            className="w-full block mt-10 md:mt-0"
           >
             <div className="bg-white dark:bg-[#1e2030] rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden">
               {/* Header bar */}

@@ -155,7 +155,7 @@ export default function GoogleAdsClient() {
       {/* ═══════════════════════════════════════════════════════════════
           1. HERO — "Command Center"
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background — Google Ads yellow + logo image, with same ellipse curve as homepage */}
         <div
           className="absolute inset-0 z-0 overflow-hidden [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
@@ -217,7 +217,7 @@ export default function GoogleAdsClient() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
-            className="w-full hidden md:block"
+            className="w-full block mt-10 md:mt-0"
           >
             <div className="bg-white dark:bg-[#1e2030] rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden">
               {/* Dashboard Header */}

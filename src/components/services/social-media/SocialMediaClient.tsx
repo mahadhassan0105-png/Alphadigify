@@ -60,7 +60,7 @@ export default function SocialMediaClient() {
       <Navbar />
 
       {/* 1. HERO SECTION (Dynamic & Viral) */}
-      <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-32 pb-0 md:pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background Image Setup */}
         <div 
           className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
@@ -117,7 +117,7 @@ export default function SocialMediaClient() {
           </motion.div>
 
           {/* Floating UI Cards (The "Viral" Feel) */}
-          <div className="relative h-[500px] lg:h-[600px] w-full hidden md:block perspective-1000">
+          <div className="relative h-[500px] lg:h-[600px] w-full block mt-10 md:mt-0 perspective-1000">
             {/* TikTok Style Card */}
             <motion.div 
               initial={{ opacity: 0, y: 50, rotate: -10 }}

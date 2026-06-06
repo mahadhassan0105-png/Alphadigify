@@ -50,7 +50,7 @@ export default function AccountReinstatementClient() {
       {/* ═══════════════════════════════════════════════════════════════
           1. HERO — URGENCY & REASSURANCE
       ═══════════════════════════════════════════════════════════════ */}
-      <section className="relative pt-36 pb-24 lg:pt-44 lg:pb-36 overflow-hidden min-h-[110vh] sm:min-h-[900px] flex items-center">
+      <section className="relative pt-36 pb-0 md:pb-24 lg:pt-44 lg:pb-36 overflow-hidden min-h-[110vh] sm:min-h-[900px] flex items-center">
         {/* Background Image & Overlay */}
         <div 
           className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
@@ -131,7 +131,7 @@ export default function AccountReinstatementClient() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="relative perspective-1000 w-full max-w-md mx-auto lg:max-w-none"
+              className="relative perspective-1000 w-full max-w-md mx-auto lg:max-w-none mt-12 lg:mt-0"
             >
               <div className="relative rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden p-6 min-h-[420px] flex flex-col">
                 

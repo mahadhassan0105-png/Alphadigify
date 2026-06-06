@@ -116,7 +116,7 @@ export default function GraphicDesignClient() {
           1. HERO SECTION
       ═══════════════════════════════════ */}
       <section
-        className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 min-h-[90vh] flex items-center z-10"
+        className="relative pt-32 pb-0 md:pb-24 lg:pt-48 lg:pb-32 min-h-[90vh] flex items-center z-10"
       >
         {/* Background */}
         <div 
