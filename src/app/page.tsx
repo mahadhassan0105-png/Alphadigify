@@ -14,8 +14,7 @@ export default function Home() {
       <Navbar />
       <HeroSlider />
       
-      {/* Visual spacer blending into operations */}
-      <div className="h-[5vh] dark:bg-[#0c0c16] bg-white w-full relative z-0"></div>
+
 
       <div className="relative z-10">
         <StatsCounter />
