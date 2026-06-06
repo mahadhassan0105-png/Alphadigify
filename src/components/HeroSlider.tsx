@@ -32,14 +32,6 @@ export default function HeroSlider() {
 
   return (
     <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] [overflow-x:clip]">
-      {/* Preload images to prevent network delay on first cycle */}
-      <div className="hidden">
-        {bgImages.map((src, i) => (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img key={i} src={src} alt="preload" />
-        ))}
-      </div>
-
       {/* Animated Slideshow Background Image — rounded bottom */}
       <div className="absolute inset-0 z-0 overflow-hidden" style={{ clipPath: 'ellipse(120% 95% at 50% 0%)', backgroundColor: '#000' }}>
         <AnimatePresence initial={false}>

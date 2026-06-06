@@ -334,7 +334,7 @@ export default function WebDevServicePageRedesigned() {
         {/* Background */}
         <div className="absolute inset-0 z-0 bg-black [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]">
           <div className="absolute inset-0 z-0 opacity-40">
-            <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
+            <Image src="/Web.jpg" alt="Web Development" fill className="object-cover object-center" priority />
           </div>
           {/* Gradient overlays */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-transparent to-black/40" />
