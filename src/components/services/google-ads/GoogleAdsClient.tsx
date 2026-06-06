@@ -65,7 +65,7 @@ function TypingSearchBar() {
   }, [displayed, deleting, termIdx]);
 
   return (
-    <div className="w-full bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-700 shadow-lg flex items-center px-3 sm:px-4 py-2.5 sm:py-3 gap-2 sm:gap-3">
+    <div className="w-full bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-700 shadow-lg flex items-center px-3 sm:px-4 py-2.5 sm:py-3 gap-2 sm:gap-3 min-w-0">
       <GoogleDots size={8} />
       <span className="flex-1 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-medium truncate min-w-0">
         {displayed}<span className="animate-pulse">|</span>
@@ -174,7 +174,7 @@ export default function GoogleAdsClient() {
         <div className="absolute top-[15%] right-[5%]  w-72 h-72 rounded-full blur-[100px] pointer-events-none" style={{ background: "rgba(66,133,244,0.08)" }} />
         <div className="absolute bottom-[10%] left-[5%] w-64 h-64 rounded-full blur-[100px] pointer-events-none" style={{ background: "rgba(52,168,83,0.07)" }} />
 
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -217,22 +217,22 @@ export default function GoogleAdsClient() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
-            className="w-full block mt-10 md:mt-0"
+            className="w-full hidden lg:block mt-10 lg:mt-0"
           >
-            <div className="bg-white dark:bg-[#1e2030] rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden w-full">
+            <div className="bg-white dark:bg-[#1e2030] rounded-3xl border border-slate-200 dark:border-slate-700 shadow-2xl overflow-hidden">
               {/* Dashboard Header */}
-              <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#252836]">
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#252836]">
                 <div className="flex items-center gap-2 min-w-0">
                   <GoogleDots size={10} />
                   <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 truncate">Google Ads — Campaign Dashboard</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse inline-block" />
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-500 animate-pulse inline-block" />
                   <span className="text-xs font-semibold text-green-600 dark:text-green-400">Live</span>
                 </div>
               </div>
 
-              <div className="p-3 sm:p-6">
+              <div className="p-4 sm:p-6">
                 {/* Top KPI Row */}
                 <div className="grid grid-cols-4 gap-1.5 sm:gap-3 mb-4 sm:mb-6">
                   {[
@@ -246,10 +246,10 @@ export default function GoogleAdsClient() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6 + i * 0.1 }}
-                      className="text-center bg-slate-50 dark:bg-[#2a2d3e] rounded-lg sm:rounded-xl px-1 sm:px-2 py-2 sm:py-3 border border-slate-100 dark:border-slate-700"
+                      className="text-center bg-slate-50 dark:bg-[#2a2d3e] rounded-xl px-2 py-3 border border-slate-100 dark:border-slate-700"
                     >
-                      <p className="text-xs sm:text-base font-black leading-tight" style={{ color: kpi.color }}>{kpi.value}</p>
-                      <p className="text-[9px] sm:text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5 leading-tight">{kpi.label}</p>
+                      <p className="text-base font-black" style={{ color: kpi.color }}>{kpi.value}</p>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium mt-0.5">{kpi.label}</p>
                     </motion.div>
                   ))}
                 </div>
