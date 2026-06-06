@@ -31,7 +31,7 @@ export default function AmazonHeroSlider() {
   const currentBg = bgImages[currentIndex % bgImages.length];
 
   return (
-    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] pb-8 sm:pb-0">
+    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] [overflow-x:clip]">
       {/* Preload images to prevent network delay on first cycle */}
       <div className="hidden">
         {bgImages.map((src, i) => (
@@ -102,7 +102,7 @@ export default function AmazonHeroSlider() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.1] drop-shadow-lg">
             Dominate Amazon. <br className="hidden sm:block" /><span className="text-yellow-400">Scale Relentlessly.</span>
           </h1>
-          <p className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 max-w-3xl mx-auto font-medium leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-md">
             End-to-end Seller Central management from listing optimization and PPC scaling to inventory forecasting and global marketplace expansion.
           </p>
         </header>
