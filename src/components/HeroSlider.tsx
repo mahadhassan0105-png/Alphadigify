@@ -31,7 +31,7 @@ export default function HeroSlider() {
   const currentBg = bgImages[currentIndex % bgImages.length];
 
   return (
-    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] pb-8 sm:pb-0 overflow-x-hidden">
+    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] pb-48 sm:pb-0 [overflow-x:clip]">
       {/* Preload images to prevent network delay on first cycle */}
       <div className="hidden">
         {bgImages.map((src, i) => (
@@ -82,7 +82,7 @@ export default function HeroSlider() {
         </header>
 
         {/* Slider — hangs half below the hero */}
-        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12 overflow-hidden">
+        <div className="w-full flex justify-center px-4 sm:px-6 lg:px-12">
           <MockupShowcase currentIndex={currentIndex} direction={direction} />
         </div>
       </div>
