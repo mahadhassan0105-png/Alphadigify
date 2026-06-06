@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // bcrypt hashed
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  service     String
+  message     String   @db.Text
+  budget      String?
+  status      String   @default("New")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Client {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  phone     String?
+  company   String?
+  service   String
+  status    String    @default("Active")
+  notes     String?   @db.Text
+  createdAt DateTime  @default(now())
+  projects  Project[]
+  invoices  Invoice[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  clientId    String
+  client      Client   @relation(fields: [clientId], references: [id])
+  service     String
+  title       String
+  status      String   @default("Discovery")
+  startDate   DateTime @default(now())
+  deadline    DateTime?
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  invoices    Invoice[]
+}
+
+model Invoice {
+  id          String   @id @default(cuid())
+  clientId    String
+  client      Client   @relation(fields: [clientId], references: [id])
+  projectId   String?
+  project     Project? @relation(fields: [projectId], references: [id])
+  amount      Float
+  currency    String   @default("USD")
+  status      String   @default("Unpaid")
+  dueDate     DateTime
+  paidAt      DateTime?
+  notes       String?  @db.Text
+  createdAt   DateTime @default(now())
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  email     String
+  avatar    String?
+  createdAt DateTime @default(now())
+}
+
+model PortfolioItem {
+  id        String   @id @default(cuid())
+  title     String
+  category  String
+  type      String   @default("image") // "image" or "video"
+  url       String   @db.Text
+  images    String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CaseStudy {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  client       String
+  title        String
+  category     String   // E-Commerce, B2B SaaS, Local Business, Healthcare, etc.
+  service      String   // e.g., "TikTok Ads & UGC"
+  timeline     String   // e.g., "3 Months (Oct - Dec)"
+  industry     String   // e.g., "E-Commerce / Fashion"
+  heroImage    String   @db.Text
+  challenge    String   @db.Text
+  solution     String   @db.Text
+  metrics      Json     // Array of objects: { label: string, value: string, iconName: string }
+  results      String[] // Bullet points of achievements
+  featured     Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  quote     String   @db.Text
+  name      String
+  role      String
+  initials  String
+  avatarBg  String   // e.g. "linear-gradient(135deg, #00D4FF, #0099CC)"
+  service   String   // e.g. "Amazon", "SEO"
+  dotColor  String   // e.g. "#FF9900"
+  stars     Int      @default(5)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ChatSession {
+  id        String        @id @default(cuid())
+  ipAddress String?
+  messages  ChatMessage[]
+  leadId    String?       // Optionally links to a captured Lead
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model ChatMessage {
+  id        String      @id @default(cuid())
+  sessionId String
+  session   ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role      String      // "user" or "assistant"
+  content   String      @db.Text
+  createdAt DateTime    @default(now())
+}
+
+model CompanySettings {
+  id        String   @id @default("global") // Enforce a single global settings row
+  email     String   @default("strategy@alphadigify.com")
+  phone     String?
+  location  String   @default("Islamabad, Pakistan & Global Remote")
+  facebook  String?
+  twitter   String?
+  instagram String?
+  linkedin  String?
+  updatedAt DateTime @updatedAt
+}

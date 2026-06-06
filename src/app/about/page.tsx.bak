@@ -1,0 +1,46 @@
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/public/Footer";
+import { Users, Award, ShieldCheck } from "lucide-react";
+
+export default function AboutPage() {
+  return (
+    <main className="min-h-screen bg-slate-950 text-white flex flex-col">
+      <Navbar />
+      
+      <section className="pt-32 pb-20 bg-slate-900 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">Built different.</h1>
+          <p className="text-xl text-slate-400 max-w-3xl mx-auto leading-relaxed">
+            Alphadigify originated from a frustration with traditional agency models. Too many account managers, too few actual operators. We built a firm exclusively staffed by senior talent.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-12 flex-1">
+        <div className="bg-slate-950 border border-slate-800 p-8 rounded-3xl text-center">
+          <div className="w-16 h-16 bg-yellow-400/10 text-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Users className="w-8 h-8" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">Elite operators</h3>
+          <p className="text-slate-400 leading-relaxed">We only hire top 1% talent that has actively built, scaled, and exited businesses. No juniors practicing on your dime.</p>
+        </div>
+        <div className="bg-slate-950 border border-slate-800 p-8 rounded-3xl text-center">
+          <div className="w-16 h-16 bg-yellow-400/10 text-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Award className="w-8 h-8" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">Bias for Action</h3>
+          <p className="text-slate-400 leading-relaxed">Strategies mean nothing without execution. We deploy code, launch campaigns, and iterate faster than competitors.</p>
+        </div>
+        <div className="bg-slate-950 border border-slate-800 p-8 rounded-3xl text-center">
+          <div className="w-16 h-16 bg-yellow-400/10 text-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <ShieldCheck className="w-8 h-8" />
+          </div>
+          <h3 className="text-2xl font-bold mb-4">Transparent Align</h3>
+          <p className="text-slate-400 leading-relaxed">You see the exact data we see. Total transparency on ROAS, CAC, and LTV. We view ourselves as your dedicated partners.</p>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  );
+}
