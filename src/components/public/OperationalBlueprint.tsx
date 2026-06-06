@@ -73,13 +73,10 @@ export default function InteractiveTelemetryConsole() {
         </div>
 
         {/* Split Screen Console Grid - ZERO cards, purely boundaryless typography and graphics */}
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           
-          {/* Left Column: Draggable Simulation Inputs & Metric Outputs */}
-          <div className="flex-1 w-full space-y-8">
-            
-            {/* Custom Range Sliders Group (Futuristic Console Look) */}
-            <div className="space-y-6">
+          {/* Sliders Group (Top on Mobile, Top-Left on Desktop) */}
+          <div className="w-full space-y-6 order-1">
               
               {/* Slider 1: Traffic Volume */}
               <div className="space-y-3">
@@ -125,8 +122,8 @@ export default function InteractiveTelemetryConsole() {
 
             </div>
 
-            {/* Dynamic Calculated Outflow Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 pt-6 border-t border-zinc-200 dark:border-zinc-900/60">
+          {/* Dynamic Calculated Outflow Metrics (Bottom on Mobile, Bottom-Left on Desktop) */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 pt-6 lg:pt-0 lg:border-t-0 border-t border-zinc-200 dark:border-zinc-900/60 order-3">
               
               {/* Output 1: Converted Leads */}
               <div className="space-y-1 md:border-l md:border-zinc-250 dark:md:border-zinc-900 md:pl-4 first:border-0 first:pl-0">
@@ -173,10 +170,8 @@ export default function InteractiveTelemetryConsole() {
 
             </div>
 
-          </div>
-
-          {/* Right Column: Dynamic SVG Telemetry Wave & Animated Console Elements */}
-          <div className="flex-1 w-full relative flex items-center justify-center">
+          {/* Right Column: Dynamic SVG Telemetry Wave & Animated Console Elements (Middle on Mobile, Right on Desktop) */}
+          <div className="w-full relative flex items-center justify-center order-2 lg:row-span-2">
             {/* Glowing background halo without any boundary card */}
             <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/[0.04] to-transparent rounded-full blur-[90px] z-0 pointer-events-none" />
 
