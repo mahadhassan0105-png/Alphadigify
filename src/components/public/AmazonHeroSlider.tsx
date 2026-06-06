@@ -74,26 +74,26 @@ export default function AmazonHeroSlider() {
         {/* Tagline */}
         <header className="text-center mb-6 sm:mb-8 lg:mb-12 px-4 sm:px-6">
           {/* Amazon Partner Badges */}
-          <div className="flex items-center justify-center gap-6 mb-8">
+          <div className="flex items-center justify-center gap-3 sm:gap-6 mb-6 sm:mb-8">
             {/* Amazon SPN Badge */}
             <div className="flex flex-col items-start">
-              <div className="flex items-center text-2xl sm:text-3xl font-bold tracking-tighter text-white">
+              <div className="flex items-center text-xl sm:text-3xl font-bold tracking-tighter text-white">
                 amazon<span className="text-yellow-400 font-normal ml-0.5">spn</span>
               </div>
               <div className="w-full h-[2px] bg-yellow-400 rounded-full mt-0.5 mb-1 relative overflow-hidden">
                 <div className="absolute left-1/2 -translate-x-1/2 w-1/2 h-full bg-black/40"></div>
               </div>
-              <span className="text-xs tracking-wide text-blue-200 font-medium">solution provider network</span>
+              <span className="text-[10px] sm:text-xs tracking-wide text-blue-200 font-medium">solution provider network</span>
             </div>
 
-            <div className="w-[1px] h-10 bg-white/30"></div>
+            <div className="w-[1px] h-8 sm:h-10 bg-white/30"></div>
 
             {/* Amazon Ads Badge */}
             <div className="flex flex-col justify-center items-start">
-              <div className="flex items-center text-xl sm:text-2xl font-bold tracking-tighter text-white">
+              <div className="flex items-center text-lg sm:text-2xl font-bold tracking-tighter text-white">
                 amazon<span className="font-normal ml-1">ads</span>
               </div>
-              <div className="text-sm font-bold tracking-wide mt-1">
+              <div className="text-[10px] sm:text-sm font-bold tracking-wide mt-1">
                 <span className="text-[#00A8E1]">Verified</span> <span className="text-blue-200">partner</span>
               </div>
             </div>

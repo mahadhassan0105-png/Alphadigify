@@ -78,26 +78,26 @@ export default function AccountReinstatementClient() {
               className="max-w-2xl lg:max-w-3xl"
             >
               {/* Partner Logos */}
-              <div className="flex items-center gap-6 mb-10">
+              <div className="flex items-center gap-3 sm:gap-6 mb-8 sm:mb-10">
                 {/* Amazon SPN Logo */}
                 <div className="flex flex-col">
-                  <div className="flex items-center text-3xl font-bold tracking-tighter text-white">
+                  <div className="flex items-center text-xl sm:text-3xl font-bold tracking-tighter text-white">
                     amazon<span className="text-yellow-400 font-normal ml-0.5">spn</span>
                   </div>
                   <div className="w-full h-[2px] bg-yellow-400 rounded-full mt-0.5 mb-1 relative overflow-hidden">
                     <div className="absolute left-1/2 -translate-x-1/2 w-1/2 h-full bg-[#0d1b3e]"></div>
                   </div>
-                  <span className="text-xs tracking-wide text-blue-200 font-medium">solution provider network</span>
+                  <span className="text-[10px] sm:text-xs tracking-wide text-blue-200 font-medium">solution provider network</span>
                 </div>
 
-                <div className="w-[1px] h-12 bg-white/30"></div>
+                <div className="w-[1px] h-8 sm:h-12 bg-white/30"></div>
 
                 {/* Amazon Ads Logo */}
                 <div className="flex flex-col justify-center">
-                  <div className="flex items-center text-2xl font-bold tracking-tighter text-white">
+                  <div className="flex items-center text-lg sm:text-2xl font-bold tracking-tighter text-white">
                     amazon<span className="font-normal ml-1">ads</span>
                   </div>
-                  <div className="text-sm font-bold tracking-wide mt-1">
+                  <div className="text-[10px] sm:text-sm font-bold tracking-wide mt-1">
                     <span className="text-[#00A8E1]">Verified</span> <span className="text-blue-200">partner</span>
                   </div>
                 </div>
