@@ -31,7 +31,7 @@ export default function HeroSlider() {
   const currentBg = bgImages[currentIndex % bgImages.length];
 
   return (
-    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] pb-48 sm:pb-0 [overflow-x:clip]">
+    <section className="relative w-full h-auto min-h-0 sm:min-h-[700px] lg:h-[100vh] lg:min-h-[950px] [overflow-x:clip]">
       {/* Preload images to prevent network delay on first cycle */}
       <div className="hidden">
         {bgImages.map((src, i) => (
