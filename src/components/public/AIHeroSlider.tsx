@@ -86,8 +86,17 @@ export default function AIHeroSlider() {
         </div>
 
         {/* Slides Container */}
-        <div className="flex-1 relative bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]">
-          <AnimatePresence mode="wait">
+        <div 
+          className="flex-1 relative overflow-x-auto overflow-y-hidden bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px]"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {/* Style hack for webkit scrollbar hiding inline */}
+          <style>{`
+            div::-webkit-scrollbar { display: none; }
+          `}</style>
+          
+          <div className="relative min-w-[600px] h-full w-full">
+            <AnimatePresence mode="wait">
             
             {/* SLIDE 0: Customer Support Ticket Triage (Based on User's Image) */}
             {currentSlide === 0 && (
@@ -214,7 +223,8 @@ export default function AIHeroSlider() {
               </motion.div>
             )}
 
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
         </div>
 
         {/* Progress Bar & Status */}
