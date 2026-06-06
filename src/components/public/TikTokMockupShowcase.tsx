@@ -30,7 +30,7 @@ export default function TikTokMockupShowcase({ currentIndex }: Props) {
   const rightIndex = getIndex(currentIndex + 1);
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-[350px] sm:max-w-sm md:max-w-xl lg:max-w-3xl xl:max-w-[900px] aspect-[16/10] flex items-center justify-center -mt-4 -translate-y-12 sm:translate-y-0 sm:mt-[10vh] lg:mt-0 pointer-events-none perspective-[2000px]">
+    <div ref={containerRef} className="relative w-full max-w-[350px] sm:max-w-sm md:max-w-xl lg:max-w-3xl xl:max-w-[900px] aspect-[16/10] flex items-center justify-center mt-2 translate-y-8 sm:translate-y-0 sm:mt-[10vh] lg:mt-0 pointer-events-none perspective-[2000px]">
       {tiktokSlides.map((slide, i) => {
         let zIndex = 0, scale = 0.8, x = "0%", opacity = 0, rotateY = 0, display = "none";
         if (i === centerIndex) { zIndex = 30; scale = 1; opacity = 1; display = "block"; }
