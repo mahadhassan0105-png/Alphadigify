@@ -74,9 +74,11 @@ export default function WebDevServicePageRedesigned() {
       {/* ═══════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center bg-[#0B0C10]">
-        <div className="absolute inset-0 z-0 opacity-40">
-           <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
+      <section className="relative pt-32 pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+        <div className="absolute inset-0 z-0 bg-black overflow-hidden [clip-path:ellipse(120%_95%_at_50%_0%)]">
+          <div className="absolute inset-0 z-0 opacity-40">
+             <Image src="/Web.jfif" alt="Web Development" fill className="object-cover object-center" priority />
+          </div>
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
