@@ -181,8 +181,8 @@ export default function DigitalSolutionsCircle() {
       `}</style>
 
       <svg
-        viewBox="0 0 560 560"
-        className={`w-full max-w-[340px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[540px] drop-shadow-sm ${visible ? "dsc-visible" : ""}`}
+        viewBox="-80 -40 720 640"
+        className={`w-full max-w-[420px] sm:max-w-[540px] md:max-w-[640px] lg:max-w-[700px] drop-shadow-sm overflow-visible ${visible ? "dsc-visible" : ""}`}
         aria-label="End-to-End Digital Solutions circular diagram"
         role="img"
       >
