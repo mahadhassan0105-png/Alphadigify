@@ -152,7 +152,7 @@ export default function AIServicePageRedesigned() {
             </motion.div>
 
             {/* Right: Abstract Neural Visualizer -> n8n Workflow Slider */}
-            <div className="relative h-[400px] sm:h-[450px] w-full hidden md:block z-20">
+            <div className="relative h-[400px] sm:h-[450px] w-full mt-10 md:mt-0 z-20">
               <AIHeroSlider />
             </div>
 
