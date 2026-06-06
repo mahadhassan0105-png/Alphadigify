@@ -118,7 +118,7 @@ export default function SeoServicePage() {
       {/* STATS */}
       <section className="py-12 sm:py-16 relative z-10 border-b border-slate-200 dark:border-white/10 bg-white dark:bg-[#030712]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+          <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {stats.map((s, i) => (
               <div key={i} className="text-center">
                 <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-500 dark:text-yellow-400 mb-2">

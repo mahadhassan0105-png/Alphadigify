@@ -172,7 +172,7 @@ export default function PortfolioPage() {
             </p>
 
             {/* Hero Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
               {[
                 { label: "Assets Delivered", value: 850, suffix: "+" },
                 { label: "Client ROI Avg", value: 320, suffix: "%" },

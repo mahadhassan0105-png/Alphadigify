@@ -87,7 +87,7 @@ export default function ServicesGrid() {
         </div>
 
         <div 
-          className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-12 gap-y-12 md:gap-y-20 pt-8"
+          className="grid grid-cols-1 min-[400px]:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-12 gap-y-12 md:gap-y-20 pt-8"
         >
           {services.map((svc, index) => {
             const numText = String(index + 1).padStart(2, '0');

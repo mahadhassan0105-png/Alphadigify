@@ -99,7 +99,7 @@ export default function CaseStudiesPage() {
               We don't sell vanity metrics. We engineer scalable systems that drive revenue, dominate search, and crush customer acquisition costs.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
               {[
                 { label: "Total Revenue Generated", value: 50, prefix: "$", suffix: "M+" },
                 { label: "Avg Traffic Growth", value: 314, suffix: "%" },

@@ -54,7 +54,7 @@ export default function TikTokServicePage() {
       {/* 2. Key Statistics Section */}
       <section className="py-16 lg:py-24 bg-white dark:bg-[#030712] relative mt-12 lg:mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center">
+          <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 text-center">
             {[
               { label: "GMV Generated", value: 45, prefix: "$", suffix: "M+" },
               { label: "Creator Network", value: 10, suffix: "K+" },
@@ -178,7 +178,7 @@ export default function TikTokServicePage() {
             <p className="text-lg text-slate-600 dark:text-slate-400">We don't just set up your TikTok Shop—we turn it into a viral sales engine through creator partnerships, live streaming, and optimized content.</p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
             {[
               { title: "Affiliate Networking", desc: "We connect your brand with our vast network of top-performing TikTok creators to drive authentic, high-converting product showcases.", icon: Users },
               { title: "Live Stream Sales", desc: "End-to-end live commerce strategy, including scriptwriting, set design, hosting, and real-time sales optimization.", icon: Video },

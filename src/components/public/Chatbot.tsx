@@ -568,7 +568,7 @@ export default function Chatbot() {
       {isOpen && (
         <div 
           ref={chatContainerRef}
-          className="relative flex flex-col w-[350px] sm:w-[420px] h-[550px] sm:h-[600px] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-800/80 rounded-3xl shadow-2xl overflow-hidden animate-chat-popup z-50 flex-shrink-0 transition-colors duration-300"
+          className="relative flex flex-col w-[calc(100vw-2rem)] min-[350px]:w-[350px] sm:w-[420px] h-[550px] sm:h-[600px] bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border border-slate-200/60 dark:border-slate-800/80 rounded-3xl shadow-2xl overflow-hidden animate-chat-popup z-50 flex-shrink-0 transition-colors duration-300"
         >
           
           {/* Header Banner - Yellow & White / High Contrast */}
