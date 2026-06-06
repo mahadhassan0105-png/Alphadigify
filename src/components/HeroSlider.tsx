@@ -76,7 +76,7 @@ export default function HeroSlider() {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white tracking-tight leading-[1.1] drop-shadow-lg">
             Build Smarter. <span className="text-yellow-400">Scale Faster.</span>
           </h1>
-          <p className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-2xl text-white/70 max-w-3xl mx-auto font-medium leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-base sm:text-lg md:text-xl lg:text-2xl text-white/95 max-w-3xl mx-auto font-medium leading-relaxed drop-shadow-md">
             Powerful SaaS dashboards that transform your data into actionable insights, helping teams make better decisions every day.
           </p>
         </header>
