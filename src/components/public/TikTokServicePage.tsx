@@ -178,7 +178,7 @@ export default function TikTokServicePage() {
             <p className="text-lg text-slate-600 dark:text-slate-400">We don't just set up your TikTok Shop—we turn it into a viral sales engine through creator partnerships, live streaming, and optimized content.</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
             {[
               { title: "Affiliate Networking", desc: "We connect your brand with our vast network of top-performing TikTok creators to drive authentic, high-converting product showcases.", icon: Users },
               { title: "Live Stream Sales", desc: "End-to-end live commerce strategy, including scriptwriting, set design, hosting, and real-time sales optimization.", icon: Video },
@@ -188,7 +188,7 @@ export default function TikTokServicePage() {
               { title: "Data & Analytics", desc: "Deep performance tracking of creator ROI, live stream metrics, and shop conversions to continuously improve strategy.", icon: BarChart3 }
             ].map((feature, i) => (
               <div key={i}
-                className="group flex flex-col bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-5 sm:p-6 hover:shadow-lg hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 transition-all duration-300">
+                className="group flex flex-col bg-white dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 rounded-xl p-3 sm:p-6 hover:shadow-lg hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 transition-all duration-300">
                 {/* Icon */}
                 <div className="mb-3 sm:mb-4 shrink-0">
                   <feature.icon className="w-8 h-8 sm:w-10 sm:h-10 text-[#FE2C55]" strokeWidth={1.5} />
