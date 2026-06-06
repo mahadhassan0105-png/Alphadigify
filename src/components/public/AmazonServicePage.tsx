@@ -4,12 +4,13 @@ import { motion, useInView, animate, AnimatePresence } from "framer-motion";
 import { useEffect, useRef } from "react";
 import {
   TrendingUp, BarChart3, Search, Package,
-  Target, ArrowRight, CheckCircle2, ChevronDown,
+  Target, ArrowRight, ChevronDown,
   PenTool, Settings, MousePointerClick, LayoutDashboard, ClipboardCheck, Truck, Edit3
 } from "lucide-react";
 import { useState } from "react";
 import AmazonHeroSlider from "./AmazonHeroSlider";
 import ServiceDetailSections from "./ServiceDetailSections";
+import DigitalSolutionsCircle from "./DigitalSolutionsCircle";
 
 /* ───── Animated Counter ───── */
 function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: number; prefix?: string; suffix?: string }) {
@@ -114,108 +115,7 @@ export default function AmazonServicePage() {
 
             {/* Right: Animated Cycle */}
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative flex items-center justify-center">
-              <div className="relative w-full max-w-[280px] xs:max-w-[320px] sm:max-w-[400px] md:max-w-[460px] lg:max-w-[500px] aspect-square mx-auto">
-                
-                {/* SVG Arrows (circular arcs connecting the nodes) */}
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 500" fill="none">
-                  <defs>
-                    <marker id="ah-red" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8z" fill="#E53E3E"/></marker>
-                    <marker id="ah-green" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8z" fill="#38A169"/></marker>
-                    <marker id="ah-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8z" fill="#3182CE"/></marker>
-                    <marker id="ah-yellow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8z" fill="#D69E2E"/></marker>
-                    <marker id="ah-purple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0 0L10 4L0 8z" fill="#805AD5"/></marker>
-                  </defs>
-
-                  {/* Animated circular dashed orbit */}
-                  <circle cx="250" cy="250" r="180" className="stroke-slate-200 dark:stroke-slate-700" strokeWidth="1.5" strokeDasharray="6 6" fill="none">
-                    <animateTransform attributeName="transform" type="rotate" from="0 250 250" to="360 250 250" dur="60s" repeatCount="indefinite" />
-                  </circle>
-
-                  {/* Arc arrows with draw animation */}
-                  {/* Purple → Red (Red Arrow) */}
-                  <motion.path d="M 281 73 A 180 180 0 0 1 409 165" stroke="#E53E3E" strokeWidth="2.5" strokeLinecap="round" fill="none"
-                    initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.2 }} />
-                  <motion.path d="M -10,-5 L 0,0 L -10,5 z" fill="#E53E3E" transform="translate(409,165) rotate(62)"
-                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.2 }} />
-
-                  {/* Red → Green (Green Arrow) */}
-                  <motion.path d="M 428 225 A 180 180 0 0 1 379 375" stroke="#38A169" strokeWidth="2.5" strokeLinecap="round" fill="none"
-                    initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.5 }} />
-                  <motion.path d="M -10,-5 L 0,0 L -10,5 z" fill="#38A169" transform="translate(379,375) rotate(134)"
-                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.5 }} />
-
-                  {/* Green → Blue (Blue Arrow) */}
-                  <motion.path d="M 329 412 A 180 180 0 0 1 171 412" stroke="#3182CE" strokeWidth="2.5" strokeLinecap="round" fill="none"
-                    initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 0.8 }} />
-                  <motion.path d="M -10,-5 L 0,0 L -10,5 z" fill="#3182CE" transform="translate(171,412) rotate(206)"
-                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.8 }} />
-
-                  {/* Blue → Yellow (Yellow Arrow) */}
-                  <motion.path d="M 121 375 A 180 180 0 0 1 72 225" stroke="#D69E2E" strokeWidth="2.5" strokeLinecap="round" fill="none"
-                    initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.1 }} />
-                  <motion.path d="M -10,-5 L 0,0 L -10,5 z" fill="#D69E2E" transform="translate(72,225) rotate(278)"
-                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 2.1 }} />
-
-                  {/* Yellow → Purple (Purple Arrow) */}
-                  <motion.path d="M 91 166 A 180 180 0 0 1 219 73" stroke="#805AD5" strokeWidth="2.5" strokeLinecap="round" fill="none"
-                    initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1, delay: 1.4 }} />
-                  <motion.path d="M -10,-5 L 0,0 L -10,5 z" fill="#805AD5" transform="translate(219,73) rotate(350)"
-                    initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 2.4 }} />
-                </svg>
-
-                {/* Center Text */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none z-10">
-                  <span className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight">
-                    End-to-End<br />Digital<br />Solutions
-                  </span>
-                </div>
-
-                {/* Node: Click Through Rate (Top) */}
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-                  className="absolute top-[14%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                  <span className="absolute bottom-[115%] text-xs sm:text-sm font-bold text-[#805AD5] dark:text-purple-400 whitespace-nowrap text-center">Click Through Rate</span>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#805AD5] flex items-center justify-center shadow-lg shadow-purple-500/20">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
-                  </div>
-                </motion.div>
-
-                {/* Node: Platform Management (Top-Right) */}
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }}
-                  className="absolute top-[38.8%] left-[84.2%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                  <span className="absolute bottom-[115%] text-xs sm:text-sm font-bold text-[#E53E3E] dark:text-red-400 whitespace-nowrap text-center">Platform<br className="sm:hidden" /> Management</span>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#E53E3E] flex items-center justify-center shadow-lg shadow-red-500/20">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
-                  </div>
-                </motion.div>
-
-                {/* Node: Brand Content & Optimization (Bottom-Right) */}
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }}
-                  className="absolute top-[79.2%] left-[71.2%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                  <span className="absolute top-[115%] text-xs sm:text-sm font-bold text-[#38A169] dark:text-green-400 whitespace-nowrap text-center">Brand Content<br />& Optimization</span>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#38A169] flex items-center justify-center shadow-lg shadow-green-500/20">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
-                  </div>
-                </motion.div>
-
-                {/* Node: Search Engine Optimization (Bottom-Left) */}
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.7 }}
-                  className="absolute top-[79.2%] left-[28.8%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                  <span className="absolute top-[115%] text-xs sm:text-sm font-bold text-[#3182CE] dark:text-blue-400 whitespace-nowrap text-center">Search Engine<br />Optimization</span>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#3182CE] flex items-center justify-center shadow-lg shadow-blue-500/20">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
-                  </div>
-                </motion.div>
-
-                {/* Node: Paid Advertising (Top-Left) */}
-                <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.9 }}
-                  className="absolute top-[38.8%] left-[15.8%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                  <span className="absolute bottom-[115%] text-xs sm:text-sm font-bold text-[#D69E2E] dark:text-yellow-400 whitespace-nowrap text-center">Paid<br className="sm:hidden" /> Advertising</span>
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#D69E2E] flex items-center justify-center shadow-lg shadow-yellow-500/20">
-                    <CheckCircle2 className="w-5 h-5 text-white" />
-                  </div>
-                </motion.div>
-
-              </div>
+              <DigitalSolutionsCircle />
             </motion.div>
 
           </div>
