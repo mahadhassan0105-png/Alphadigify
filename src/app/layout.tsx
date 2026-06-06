@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="light" suppressHydrationWarning>
       <body className={`${montserrat.variable} ${greatVibes.variable} font-sans antialiased overflow-x-hidden min-h-screen dark:bg-gradient-to-br dark:from-[#0c0c16] dark:via-[#10101c] dark:to-[#090911] bg-gradient-to-br from-slate-100 via-gray-50 to-white transition-colors duration-500`}>
         <ThemeProvider>
           {children}
