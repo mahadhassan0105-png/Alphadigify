@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ShoppingCart, Video, Share2, Search, Target, MonitorDown, PenTool, Film, ShieldCheck, Bot } from "lucide-react";
 
 const services = [
@@ -43,7 +44,7 @@ const services = [
     title: "Graphics Designing",
     icon: PenTool,
     desc: "Memorable brand identities, comprehensive style guides, and conversion-focused creative assets.",
-    slug: "graphics-designing"
+    slug: "graphic-design"
   },
   {
     title: "Video Ads Creation",
@@ -91,9 +92,10 @@ export default function ServicesGrid() {
           {services.map((svc, index) => {
             const numText = String(index + 1).padStart(2, '0');
             return (
-              <div 
+              <Link 
+                href={`/services/${svc.slug}`}
                 key={svc.slug} 
-                className="relative flex flex-col items-center text-center group"
+                className="relative flex flex-col items-center text-center group cursor-pointer"
               >
                 {/* Visual Header containing Ghost Number & Icon */}
                 <div className="relative w-full flex justify-center items-center mb-4 sm:mb-8 h-16 sm:h-24">
@@ -101,14 +103,14 @@ export default function ServicesGrid() {
                   <div className="absolute inset-0 flex justify-center items-center pointer-events-none select-none -mt-2 sm:-mt-4">
                     {/* Light Mode Number */}
                     <div 
-                      className="text-[80px] sm:text-[120px] font-black tracking-tighter leading-none text-white dark:hidden"
+                      className="text-[80px] sm:text-[120px] font-black tracking-tighter leading-none text-white dark:hidden transition-transform duration-300 group-hover:scale-105"
                       style={{ textShadow: '-1px -1px 0 #1e293b, 1px -1px 0 #1e293b, -1px 1px 0 #1e293b, 1px 1px 0 #1e293b' }}
                     >
                       {numText}
                     </div>
                     {/* Dark Mode Number */}
                     <div 
-                      className="text-[80px] sm:text-[120px] font-black tracking-tighter leading-none text-[#050810] hidden dark:block"
+                      className="text-[80px] sm:text-[120px] font-black tracking-tighter leading-none text-[#050810] hidden dark:block transition-transform duration-300 group-hover:scale-105"
                       style={{ textShadow: '-1px -1px 0 rgba(255, 255, 255, 0.25), 1px -1px 0 rgba(255, 255, 255, 0.25), -1px 1px 0 rgba(255, 255, 255, 0.25), 1px 1px 0 rgba(255, 255, 255, 0.25)' }}
                     >
                       {numText}
@@ -116,13 +118,13 @@ export default function ServicesGrid() {
                   </div>
                   
                   {/* Centered Icon Container */}
-                  <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-300">
+                  <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.4)] transition-all duration-300">
                     <svc.icon className="w-6 h-6 sm:w-8 sm:h-8 text-black" strokeWidth={1.5} />
                   </div>
                 </div>
                 
                 {/* Typography */}
-                <h3 className="text-sm sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-4 transition-colors">
+                <h3 className="text-sm sm:text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2 sm:mb-4 transition-colors group-hover:text-yellow-500 dark:group-hover:text-yellow-400">
                   {svc.title}
                 </h3>
                 
@@ -130,7 +132,7 @@ export default function ServicesGrid() {
                   {svc.desc}
                 </p>
                 
-              </div>
+              </Link>
             );
           })}
         </div>
