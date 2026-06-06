@@ -24,7 +24,6 @@ const NODES = [
     label: ["Click Through", "Rate"],
     color: "#7C3AED",
     glowColor: "rgba(124,58,237,0.35)",
-    icon: "📈",
     labelOffsetY: -52,
     textAnchor: "middle" as const,
   },
@@ -33,7 +32,6 @@ const NODES = [
     label: ["Platform", "Management"],
     color: "#DC2626",
     glowColor: "rgba(220,38,38,0.35)",
-    icon: "⚙️",
     labelOffsetX: 52,
     textAnchor: "start" as const,
   },
@@ -42,7 +40,6 @@ const NODES = [
     label: ["Brand Content", "& Optimization"],
     color: "#16A34A",
     glowColor: "rgba(22,163,74,0.35)",
-    icon: "✨",
     labelOffsetY: 52,
     textAnchor: "middle" as const,
   },
@@ -51,7 +48,6 @@ const NODES = [
     label: ["Search Engine", "Optimization"],
     color: "#0369A1",
     glowColor: "rgba(3,105,161,0.35)",
-    icon: "🔍",
     labelOffsetY: 52,
     textAnchor: "middle" as const,
   },
@@ -60,10 +56,41 @@ const NODES = [
     label: ["Paid", "Advertising"],
     color: "#D97706",
     glowColor: "rgba(217,119,6,0.35)",
-    icon: "💰",
     labelOffsetX: -52,
     textAnchor: "end" as const,
   },
+];
+
+// Lucide-style SVG icon paths for each node (viewBox 0 0 24 24, stroke-based)
+const NODE_ICONS = [
+  // TrendingUp — Click Through Rate
+  <g key="icon-0" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+    <polyline points="16 7 22 7 22 13" />
+  </g>,
+  // Monitor — Platform Management
+  <g key="icon-1" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2" />
+    <line x1="8" y1="21" x2="16" y2="21" />
+    <line x1="12" y1="17" x2="12" y2="21" />
+  </g>,
+  // PenTool — Brand Content & Optimization
+  <g key="icon-2" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 19l7-7 3 3-7 7-3-3z" />
+    <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+    <path d="M2 2l7.586 7.586" />
+    <circle cx="11" cy="11" r="2" />
+  </g>,
+  // Search — SEO
+  <g key="icon-3" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" />
+    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+  </g>,
+  // DollarSign — Paid Advertising
+  <g key="icon-4" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="1" x2="12" y2="23" />
+    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+  </g>,
 ];
 
 const ARC_LENGTH = Math.round((2 * Math.PI * R * 72) / 360) + 10;
@@ -209,28 +236,12 @@ export default function DigitalSolutionsCircle() {
               {/* Main circle */}
               <circle cx={p.x} cy={p.y} r={20} fill={node.color} />
 
-              {/* Icon (emoji rendered as foreign object for full color) */}
-              <foreignObject
-                x={p.x - 12}
-                y={p.y - 12}
-                width={24}
-                height={24}
-                style={{ overflow: "visible", pointerEvents: "none" }}
-              >
-                <div
-                  style={{
-                    width: 24,
-                    height: 24,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 13,
-                    lineHeight: 1,
-                  }}
-                >
-                  {node.icon}
-                </div>
-              </foreignObject>
+              {/* Icon: inline SVG paths, centered on node */}
+              <g transform={`translate(${p.x - 12}, ${p.y - 12})`}>
+                <svg viewBox="0 0 24 24" width={24} height={24}>
+                  {NODE_ICONS[i]}
+                </svg>
+              </g>
 
               {/* Label lines */}
               {node.label.map((line, li) => (
