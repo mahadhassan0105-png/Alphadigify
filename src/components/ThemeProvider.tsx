@@ -24,9 +24,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
-    const stored = localStorage.getItem("theme") as Theme | null;
+    const stored = localStorage.getItem("app_theme") as Theme | null;
     if (stored) {
       setTheme(stored);
+    } else {
+      setTheme("light");
+      localStorage.setItem("app_theme", "light");
     }
   }, []);
 
@@ -40,7 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       root.classList.remove("dark");
       root.classList.add("light");
     }
-    localStorage.setItem("theme", theme);
+    localStorage.setItem("app_theme", theme);
   }, [theme, mounted]);
 
   const toggleTheme = () => {
