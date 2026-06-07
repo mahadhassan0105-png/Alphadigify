@@ -44,9 +44,9 @@ export default function BrandsMarquee() {
             {row1Brands.map((brand, i) => (
               <div 
                 key={i} 
-                className="flex-shrink-0 w-32 sm:w-44 md:w-56 h-16 sm:h-20 md:h-24 bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-xl md:rounded-2xl flex items-center justify-center shadow-md dark:shadow-lg"
+                className="flex-shrink-0 w-36 sm:w-44 md:w-56 h-16 sm:h-20 md:h-24 bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-xl md:rounded-2xl flex items-center justify-center shadow-md dark:shadow-lg px-2"
               >
-                <div className="text-slate-400 dark:text-white/60 font-black text-base sm:text-xl md:text-2xl uppercase tracking-wider font-sans">
+                <div className="text-slate-400 dark:text-white/60 font-black text-[13px] sm:text-xl md:text-2xl uppercase tracking-wider font-sans text-center leading-tight w-full break-words">
                   {brand}
                 </div>
               </div>
@@ -68,9 +68,9 @@ export default function BrandsMarquee() {
             {row2Brands.map((brand, i) => (
               <div 
                 key={i} 
-                className="flex-shrink-0 w-40 sm:w-48 md:w-64 h-16 sm:h-20 md:h-24 bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-xl md:rounded-2xl flex items-center justify-center shadow-md dark:shadow-lg"
+                className="flex-shrink-0 w-40 sm:w-48 md:w-64 h-16 sm:h-20 md:h-24 bg-white dark:bg-[#141414] border border-slate-200 dark:border-white/5 rounded-xl md:rounded-2xl flex items-center justify-center shadow-md dark:shadow-lg px-2"
               >
-                <div className="text-slate-400 dark:text-white/60 font-black text-base sm:text-xl md:text-2xl tracking-widest font-sans">
+                <div className="text-slate-400 dark:text-white/60 font-black text-[13px] sm:text-xl md:text-2xl tracking-widest font-sans text-center leading-tight w-full break-words">
                   {brand}
                 </div>
               </div>
