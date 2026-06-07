@@ -365,9 +365,11 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
         <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-lg max-w-2xl mx-auto mb-8">
           Stop guessing with your marketing budget. Partner with the agency that engineers predictable growth and transparent ROI.
         </p>
-        <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold px-6 sm:px-10 h-12 sm:h-14 text-sm sm:text-base w-full sm:w-auto overflow-hidden shadow-[0_0_30px_rgba(250,204,21,0.3)] hover:shadow-[0_0_40px_rgba(250,204,21,0.5)] transition-all whitespace-nowrap">
-          Request a Free Strategy Audit <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-        </Button>
+        <Link href="/contact">
+          <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold px-6 sm:px-10 h-12 sm:h-14 text-sm sm:text-base w-full sm:w-auto overflow-hidden transition-all whitespace-nowrap">
+            Request a Free Strategy Audit <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+          </Button>
+        </Link>
       </section>
 
     </div>
