@@ -135,8 +135,8 @@ export default function CaseStudiesPage() {
             <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-yellow-500/10 via-transparent to-transparent pointer-events-none" />
 
             {/* Content Side */}
-            <div className="lg:w-[55%] p-8 sm:p-10 lg:p-12 xl:p-16 flex flex-col justify-center relative z-20">
-              <div className="flex items-center gap-3 mb-6">
+            <div className="lg:w-[55%] p-5 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center relative z-20">
+              <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
                 <span className="px-4 py-1.5 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-widest shadow-lg shadow-yellow-400/20">
                   Featured Case Study
                 </span>
@@ -146,7 +146,7 @@ export default function CaseStudiesPage() {
                 </span>
               </div>
 
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-5 text-slate-900 dark:text-white leading-[1.1] tracking-tight group-hover:text-yellow-500 transition-colors duration-500">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-5 text-slate-900 dark:text-white leading-[1.1] tracking-tight group-hover:text-yellow-500 transition-colors duration-500">
                 {featuredStudy.title}
               </h2>
               
@@ -158,10 +158,10 @@ export default function CaseStudiesPage() {
               <div className="flex flex-wrap gap-3 mb-10">
                 {featuredStudy.metrics && Array.isArray(featuredStudy.metrics) && 
                   featuredStudy.metrics.slice(0, 3).map((metric: any, idx: number) => (
-                    <div key={idx} className="flex-1 min-w-[110px] bg-slate-50 dark:bg-slate-900/80 backdrop-blur-sm p-4 rounded-2xl border border-slate-200/60 dark:border-slate-800 hover:border-yellow-400/50 transition-colors group/metric">
-                      <Zap className="w-4 h-4 text-yellow-500 mb-1.5 opacity-50 group-hover/metric:opacity-100 transition-opacity" />
-                      <p className="text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-0.5 group-hover/metric:text-yellow-400 transition-colors">{metric.value}</p>
-                      <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest">{metric.label}</p>
+                    <div key={idx} className="flex-1 min-w-[100px] sm:min-w-[110px] bg-slate-50 dark:bg-slate-900/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/60 dark:border-slate-800 hover:border-yellow-400/50 transition-colors group/metric">
+                      <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 mb-1.5 opacity-50 group-hover/metric:opacity-100 transition-opacity" />
+                      <p className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-0.5 group-hover/metric:text-yellow-400 transition-colors">{metric.value}</p>
+                      <p className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase tracking-widest">{metric.label}</p>
                     </div>
                 ))}
               </div>
@@ -241,10 +241,10 @@ export default function CaseStudiesPage() {
                   transition={{ duration: 0.4 }}
                 >
                   <Link href={`/case-studies/${study.slug}`} className="block h-full group">
-                    <div className="bg-white dark:bg-slate-900 rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-yellow-400/50 transition-all duration-500 shadow-sm hover:shadow-2xl flex flex-col h-full relative">
+                    <div className="bg-white dark:bg-slate-900 rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-yellow-400/50 transition-all duration-500 shadow-sm hover:shadow-2xl flex flex-col h-full relative">
                       
                       {/* Image & Metric Overlay */}
-                      <div className="w-full h-72 relative overflow-hidden bg-slate-200 dark:bg-slate-800">
+                      <div className="w-full h-56 sm:h-64 md:h-72 relative overflow-hidden bg-slate-200 dark:bg-slate-800">
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity" />
                         <img 
                           src={study.heroImage} 
@@ -272,18 +272,18 @@ export default function CaseStudiesPage() {
                       </div>
 
                       {/* Content */}
-                      <div className="p-8 md:p-10 flex-1 flex flex-col">
-                        <div className="flex items-center gap-2 mb-4">
-                          <span className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+                      <div className="p-5 sm:p-8 md:p-10 flex-1 flex flex-col">
+                        <div className="flex flex-wrap items-center gap-2 mb-3 sm:mb-4">
+                          <span className="bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest px-2 sm:px-2.5 py-1 rounded-full">
                             {study.category}
                           </span>
                           <span className="text-slate-400 dark:text-slate-500 text-xs font-bold">•</span>
-                          <span className="text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+                          <span className="text-slate-500 dark:text-slate-400 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest">
                             {study.service}
                           </span>
                         </div>
                         
-                        <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-yellow-500 transition-colors tracking-tight">
+                        <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-2 sm:mb-4 group-hover:text-yellow-500 transition-colors tracking-tight leading-tight">
                           {study.client}
                         </h3>
                         <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed flex-1 line-clamp-3 font-medium">

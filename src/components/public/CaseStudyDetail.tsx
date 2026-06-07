@@ -71,7 +71,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
 
   if (loading) {
     return (
-      <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 transition-colors duration-500 animate-pulse">
+      <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 transition-colors duration-500 animate-pulse overflow-x-hidden">
         {/* Navigation Skeleton */}
         <div className="max-w-4xl mx-auto px-6 mb-8">
           <div className="h-5 bg-slate-200 dark:bg-slate-800 rounded w-1/4" />
@@ -115,7 +115,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
 
   if (error || !study) {
     return (
-      <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 flex flex-col items-center justify-center transition-colors duration-500">
+      <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 flex flex-col items-center justify-center transition-colors duration-500 overflow-x-hidden">
         <div className="max-w-md text-center p-8 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
           <AlertCircle className="w-16 h-16 text-red-500 mx-auto mb-6" />
           <h2 className="text-2xl font-bold mb-4">Case Study Error</h2>
@@ -131,7 +131,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
   }
 
   return (
-    <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 transition-colors duration-500">
+    <div className="w-full bg-slate-50 dark:bg-[#0c0c16] text-slate-900 dark:text-slate-100 min-h-screen pt-24 pb-16 transition-colors duration-500 overflow-x-hidden">
       
       {/* Navigation */}
       <div className="max-w-4xl mx-auto px-6 mb-8">
