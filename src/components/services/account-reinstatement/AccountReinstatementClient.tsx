@@ -578,7 +578,7 @@ export default function AccountReinstatementClient() {
             ].map((card, i) => (
               <div
                 key={i}
-                className="relative flex flex-col items-center text-center p-6 rounded-2xl border-[1.5px] border-yellow-400/50 bg-white dark:bg-[#111827] hover:border-yellow-400 transition-all duration-300"
+                className="relative flex flex-col items-center text-center p-6 rounded-2xl border-2 border-yellow-400/50 bg-white dark:bg-[#111827] hover:border-yellow-400 transition-all duration-300 shadow-sm"
               >
                 <card.icon className="w-8 h-8 text-yellow-500 dark:text-yellow-400 mb-4" />
                 <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2 tracking-wider">
