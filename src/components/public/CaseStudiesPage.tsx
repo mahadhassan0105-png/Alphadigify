@@ -91,7 +91,7 @@ export default function CaseStudiesPage() {
             <div className="inline-flex items-center gap-2 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-8">
               <BarChart3 className="w-3.5 h-3.5" /> Data-Driven Scale
             </div>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] mb-8 text-slate-900 dark:text-white uppercase">
+            <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.05] mb-8 text-slate-900 dark:text-white uppercase break-words">
               Case Studies in <br className="hidden md:block" />
               <span className="text-yellow-500">Exponential Growth.</span>
             </h1>
