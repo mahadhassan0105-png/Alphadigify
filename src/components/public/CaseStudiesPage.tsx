@@ -99,17 +99,17 @@ export default function CaseStudiesPage() {
               We don't sell vanity metrics. We engineer scalable systems that drive revenue, dominate search, and crush customer acquisition costs.
             </p>
 
-            <div className="grid grid-cols-1 min-[400px]:grid-cols-2 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 max-w-3xl mx-auto">
               {[
                 { label: "Total Revenue Generated", value: 50, prefix: "$", suffix: "M+" },
                 { label: "Avg Traffic Growth", value: 314, suffix: "%" },
                 { label: "Client Retention", value: 96, suffix: "%" },
               ].map((stat, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm">
-                  <div className="text-3xl lg:text-4xl font-black text-yellow-500 dark:text-yellow-400 mb-1">
+                <div key={i} className="p-2 sm:p-5 rounded-xl sm:rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 shadow-sm backdrop-blur-sm flex flex-col justify-center items-center text-center">
+                  <div className="text-base sm:text-3xl lg:text-4xl font-black text-yellow-500 dark:text-yellow-400 mb-1 leading-none">
                     <Counter from={0} to={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </div>
-                  <div className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{stat.label}</div>
+                  <div className="text-[7px] sm:text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>

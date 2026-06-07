@@ -153,7 +153,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
             </span>
             <span className="text-slate-500 text-sm font-medium">{study.client}</span>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8 text-slate-900 dark:text-white leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight mb-6 sm:mb-8 text-slate-900 dark:text-white leading-tight">
             {study.title}
           </h1>
         </motion.div>
@@ -163,12 +163,12 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid md:grid-cols-3 gap-6 pt-8 border-t border-slate-200 dark:border-slate-800"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-6 pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-800"
         >
           {study.metrics && Array.isArray(study.metrics) && study.metrics.map((metric: any, i: number) => {
             const Icon = getIcon(metric.iconName || "TrendingUp");
             return (
-              <div key={i} className={`flex flex-col ${i !== study.metrics.length - 1 ? 'md:border-r border-slate-200 dark:border-slate-800' : ''} px-4`}>
+              <div key={i} className={`flex flex-col ${i !== study.metrics.length - 1 ? 'sm:border-r border-slate-200 dark:border-slate-800 pb-4 sm:pb-0 border-b sm:border-b-0' : ''} px-0 sm:px-4`}>
                 <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 mb-2">
                   <Icon className="w-5 h-5 text-yellow-500 dark:text-yellow-400" />
                   <span className="text-sm font-semibold uppercase tracking-wider">{metric.label}</span>
@@ -187,7 +187,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="max-w-5xl mx-auto px-6 mb-20"
       >
-        <div className="w-full aspect-[21/9] rounded-3xl overflow-hidden relative shadow-2xl border border-slate-200 dark:border-slate-800">
+        <div className="w-full aspect-video sm:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden relative shadow-2xl border border-slate-200 dark:border-slate-800">
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10" />
           <img src={study.heroImage} alt={study.title} className="w-full h-full object-cover" />
         </div>
@@ -244,15 +244,15 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
         <div className="md:col-span-8 space-y-12">
           
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <h2 className="text-3xl font-black tracking-tight mb-6 text-slate-900 dark:text-white flex items-center gap-4">
-              <span className="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">1</span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-3 sm:gap-4">
+              <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-base sm:text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">1</span>
               The Challenge
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line mb-8 font-medium">
               {study.challenge}
             </p>
-            <div className="w-full h-64 border-l-2 border-slate-200 dark:border-slate-800 pl-6">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6 flex items-center gap-2">
+            <div className="w-full h-64 border-l-2 border-slate-200 dark:border-slate-800 pl-4 sm:pl-6">
+              <h4 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 mb-6 flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 text-yellow-500" /> The Gap Analysis
               </h4>
               <ResponsiveContainer width="100%" height="100%">
@@ -268,15 +268,15 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <h2 className="text-3xl font-black tracking-tight mb-6 text-slate-900 dark:text-white flex items-center gap-4">
-              <span className="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">2</span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-3 sm:gap-4">
+              <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-base sm:text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">2</span>
               Strategy & Execution
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed whitespace-pre-line mb-8 font-medium">
               {study.solution}
             </p>
-            <div className="w-full h-64 border-l-2 border-slate-200 dark:border-slate-800 pl-6">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-6 flex items-center gap-2">
+            <div className="w-full h-64 border-l-2 border-slate-200 dark:border-slate-800 pl-4 sm:pl-6">
+              <h4 className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-slate-500 mb-6 flex items-center gap-2">
                 <Icons.Activity className="w-4 h-4 text-yellow-500" /> Implementation Velocity
               </h4>
               <ResponsiveContainer width="100%" height="100%">
@@ -292,8 +292,8 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
           </motion.div>
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-3xl font-black tracking-tight mb-6 text-slate-900 dark:text-white flex items-center gap-4">
-              <span className="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">3</span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-4 sm:mb-6 text-slate-900 dark:text-white flex items-center gap-3 sm:gap-4">
+              <span className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-yellow-50 dark:bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-base sm:text-lg font-black border border-yellow-200 dark:border-yellow-500/20 shadow-sm">3</span>
               The Results
             </h2>
             <ul className="space-y-4 mb-10">
@@ -360,13 +360,13 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       </section>
 
       {/* Final CTA */}
-      <section className="w-full max-w-4xl mx-auto px-6 py-24 mt-12 text-center border-t border-slate-200 dark:border-slate-800">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Want these exact results for your brand?</h2>
-        <p className="text-slate-600 dark:text-slate-400 text-lg max-w-2xl mx-auto mb-8">
+      <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 py-16 sm:py-24 mt-12 text-center border-t border-slate-200 dark:border-slate-800">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 sm:mb-6">Want these exact results for your brand?</h2>
+        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-lg max-w-2xl mx-auto mb-8">
           Stop guessing with your marketing budget. Partner with the agency that engineers predictable growth and transparent ROI.
         </p>
-        <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold px-10 h-14 text-lg shadow-[0_0_30px_rgba(250,204,21,0.3)] hover:shadow-[0_0_40px_rgba(250,204,21,0.5)] transition-all">
-          Request a Free Strategy Audit <ArrowRight className="ml-2 w-5 h-5" />
+        <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 font-bold px-6 sm:px-10 h-12 sm:h-14 text-sm sm:text-base w-full sm:w-auto overflow-hidden shadow-[0_0_30px_rgba(250,204,21,0.3)] hover:shadow-[0_0_40px_rgba(250,204,21,0.5)] transition-all whitespace-nowrap">
+          Request a Free Strategy Audit <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
         </Button>
       </section>
 
