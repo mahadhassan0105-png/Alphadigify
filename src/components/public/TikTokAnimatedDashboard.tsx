@@ -114,25 +114,25 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                  {/* Left big card */}
                  <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-100'} rounded-lg p-5 shadow-sm flex-1 border flex flex-col justify-center min-h-[140px]`}>
                    <div className="flex justify-between items-center mb-6">
-                     <div className="text-xs text-slate-800 font-medium cursor-pointer flex items-center">Last 7 days <span className="ml-1 text-[8px]">˅</span></div>
-                     <div className="text-[10px] text-slate-500 flex items-center">Updated on May 3, 00:00 (GMT-08:00) <span className="ml-2 text-slate-400">📝</span></div>
+                     <div className={`text-xs font-medium cursor-pointer flex items-center ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>Last 7 days <span className="ml-1 text-[8px]">˅</span></div>
+                     <div className={`text-[10px] flex items-center ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Updated on May 3, 00:00 (GMT-08:00) <span className="ml-2 text-slate-400">📝</span></div>
                    </div>
                    <div className="grid grid-cols-4 gap-4">
                      <div className="flex flex-col">
-                       <span className="text-[10px] text-slate-500 mb-1">GMV {'>'}</span>
-                       <span className="text-base lg:text-lg font-bold text-slate-800">$<Counter from={0} to={145250.50} decimals={2} isActive={isActive} /></span>
+                       <span className={`text-[10px] mb-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>GMV {'>'}</span>
+                       <span className={`text-base lg:text-lg font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}>$<Counter from={0} to={145250.50} decimals={2} isActive={isActive} /></span>
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[10px] text-slate-500 mb-1">Customers {'>'}</span>
-                       <span className="text-base lg:text-lg font-bold text-slate-800"><Counter from={0} to={3420} isActive={isActive} /></span>
+                       <span className={`text-[10px] mb-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Customers {'>'}</span>
+                       <span className={`text-base lg:text-lg font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}><Counter from={0} to={3420} isActive={isActive} /></span>
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[10px] text-slate-500 mb-1">SKU orders {'>'}</span>
-                       <span className="text-base lg:text-lg font-bold text-slate-800"><Counter from={0} to={4850} isActive={isActive} /></span>
+                       <span className={`text-[10px] mb-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>SKU orders {'>'}</span>
+                       <span className={`text-base lg:text-lg font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}><Counter from={0} to={4850} isActive={isActive} /></span>
                      </div>
                      <div className="flex flex-col">
-                       <span className="text-[10px] text-slate-500 mb-1">Visitors {'>'}</span>
-                       <span className="text-base lg:text-lg font-bold text-slate-800"><Counter from={0} to={85200} isActive={isActive} /></span>
+                       <span className={`text-[10px] mb-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Visitors {'>'}</span>
+                       <span className={`text-base lg:text-lg font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}><Counter from={0} to={85200} isActive={isActive} /></span>
                      </div>
                    </div>
                  </motion.div>
@@ -140,18 +140,18 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                  {/* Right small card */}
                  <motion.div variants={itemVariants} className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-gradient-to-br from-white to-[#EAFDFB] border-slate-100'} rounded-lg p-5 shadow-sm w-full lg:w-64 border flex flex-col`}>
                    <div className="flex justify-between items-center mb-4">
-                     <div className="text-xs font-bold flex items-center text-slate-800"><span className="mr-2 text-[10px]">📈</span> Shop performance</div>
+                     <div className={`text-xs font-bold flex items-center ${isDark ? 'text-slate-200' : 'text-slate-800'}`}><span className="mr-2 text-[10px]">📈</span> Shop performance</div>
                      <div className="text-slate-400 text-[10px]">{'<'} {'>'}</div>
                    </div>
-                   <h3 className="text-[13px] font-bold text-slate-800 mb-1 flex items-center space-x-2"><span>Excellent</span> <span className="text-green-500 text-base">●</span></h3>
-                   <p className="text-[9px] text-slate-500 leading-relaxed max-w-[80%]">Your shop is outperforming 94% of similar stores.</p>
+                   <h3 className={`text-[13px] font-bold mb-1 flex items-center space-x-2 ${isDark ? 'text-white' : 'text-slate-800'}`}><span>Excellent</span> <span className="text-green-500 text-base">●</span></h3>
+                   <p className={`text-[9px] leading-relaxed max-w-[80%] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Your shop is outperforming 94% of similar stores.</p>
                  </motion.div>
                </div>
 
                {/* To-do list section */}
                <motion.div variants={itemVariants} className="flex flex-col">
-                 <h3 className="text-sm font-bold text-slate-800 mb-0.5">To-do list</h3>
-                 <p className="text-[10px] text-slate-500 mb-3">These are the key daily tasks for your shop.</p>
+                 <h3 className={`text-sm font-bold mb-0.5 ${isDark ? 'text-white' : 'text-slate-800'}`}>To-do list</h3>
+                 <p className={`text-[10px] mb-3 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>These are the key daily tasks for your shop.</p>
                  
                  <div className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-100'} rounded-lg p-5 shadow-sm border grid grid-cols-2 lg:grid-cols-5 gap-4`}>
                     {[
@@ -162,11 +162,11 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                       { label: "Address negative reviews", count: 1, sub: "Action needed" }
                     ].map((item, i) => (
                       <div key={i} className="flex flex-col">
-                        <span className="text-[9px] text-slate-600 mb-2 truncate">{item.label} {'>'}</span>
-                        <span className={`text-lg lg:text-xl font-bold mb-1 ${item.count > 0 ? 'text-[#FE2C55]' : 'text-slate-800'}`}>
+                        <span className={`text-[9px] mb-2 truncate ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item.label} {'>'}</span>
+                        <span className={`text-lg lg:text-xl font-bold mb-1 ${item.count > 0 ? 'text-[#FE2C55]' : (isDark ? 'text-white' : 'text-slate-800')}`}>
                            <Counter from={0} to={item.count} isActive={isActive} />
                         </span>
-                        <span className={`text-[8px] ${item.count > 0 ? 'text-red-400 font-medium' : 'text-slate-400'}`}>{item.sub}</span>
+                        <span className={`text-[8px] ${item.count > 0 ? 'text-red-400 font-medium' : (isDark ? 'text-slate-500' : 'text-slate-400')}`}>{item.sub}</span>
                       </div>
                     ))}
                  </div>
@@ -259,7 +259,7 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
             <main className="flex-1 p-4 lg:p-6 flex flex-col gap-4 relative z-10 overflow-y-auto [&::-webkit-scrollbar]:hidden">
                
                <motion.div variants={itemVariants} className="flex justify-between items-center w-full">
-                 <h1 className="text-xl lg:text-2xl font-bold text-slate-800">Ads dashboard</h1>
+                 <h1 className={`text-xl lg:text-2xl font-bold ${isDark ? 'text-white' : 'text-slate-800'}`}>Ads dashboard</h1>
                  <button className="bg-[#00A3A0] text-white text-xs lg:text-sm font-semibold px-4 py-2 rounded shadow-sm hover:bg-[#008F8C]">
                    Create GMV Max ads
                  </button>
@@ -303,11 +303,11 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
 
                     <div className={`${isDark ? 'bg-[#1a1d27] border-slate-700' : 'bg-white border-slate-200'} rounded-lg shadow-sm border p-4 lg:p-6 flex-1 flex flex-col min-w-0`}>
                       
-                      <div className="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
-                        <span className="font-bold text-sm text-slate-800">HandMoto</span>
-                        <div className="flex items-center space-x-3 text-[10px] lg:text-xs text-slate-500">
+                      <div className={`flex justify-between items-center border-b pb-3 mb-4 ${isDark ? 'border-slate-700' : 'border-slate-100'}`}>
+                        <span className={`font-bold text-sm ${isDark ? 'text-white' : 'text-slate-800'}`}>HandMoto</span>
+                        <div className={`flex items-center space-x-3 text-[10px] lg:text-xs ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
                           <span>(UTC-09:00) America/Anchorage</span>
-                          <div className="border border-slate-200 rounded px-2 py-1 flex items-center space-x-2">
+                          <div className={`border rounded px-2 py-1 flex items-center space-x-2 ${isDark ? 'border-slate-700' : 'border-slate-200'}`}>
                             <span>2026-04-27 - 2026-05-04</span>
                             <span>📅</span>
                           </div>
@@ -315,8 +315,8 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                       </div>
 
                       <div className="flex flex-col mb-4">
-                        <h2 className="font-bold text-sm text-slate-800 mb-1">Overview</h2>
-                        <p className="text-[10px] text-slate-500">Reporting includes GMV Max ads created on TikTok Ads Manager and TikTok Seller Center.</p>
+                        <h2 className={`font-bold text-sm mb-1 ${isDark ? 'text-white' : 'text-slate-800'}`}>Overview</h2>
+                        <p className={`text-[10px] ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Reporting includes GMV Max ads created on TikTok Ads Manager and TikTok Seller Center.</p>
                       </div>
 
                       {/* Stat Cards */}
@@ -328,16 +328,16 @@ export default function TikTokAnimatedDashboard({ theme, isActive, layoutId = 1 
                           { title: "Gross re...", val: 65400, suffix: " USD", decimals: 2, comp: "vs last 7 days +32.5%", active: false },
                           { title: "ROI (Cur...", val: 5.23, suffix: "", decimals: 2, comp: "vs last 7 days +0.85", active: false },
                         ].map((stat, i) => (
-                          <div key={i} className={`flex-shrink-0 w-32 lg:w-40 rounded border p-3 flex flex-col relative ${stat.active ? 'bg-[#EAFDFB] border-[#00A3A0]/40' : 'border-slate-200'}`}>
+                          <div key={i} className={`flex-shrink-0 w-32 lg:w-40 rounded border p-3 flex flex-col relative ${stat.active ? 'bg-[#EAFDFB] border-[#00A3A0]/40' : (isDark ? 'bg-[#1a1d27] border-slate-700' : 'border-slate-200')}`}>
                             <div className="flex justify-between items-start mb-2">
-                              <span className="text-[10px] lg:text-xs text-slate-600 font-medium truncate pr-4">{stat.title} <span className="text-slate-400">?</span></span>
+                              <span className={`text-[10px] lg:text-xs font-medium truncate pr-4 ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>{stat.title} <span className="text-slate-400">?</span></span>
                               {stat.active ? (
                                 <span className="text-[#00A3A0] text-[10px] absolute right-3 top-3">✔</span>
                               ) : (
                                 <div className="w-3 h-3 border border-slate-300 rounded-sm absolute right-3 top-3" />
                               )}
                             </div>
-                            <span className="text-sm lg:text-lg font-bold text-slate-800 mb-2 truncate">
+                            <span className={`text-sm lg:text-lg font-bold mb-2 truncate ${isDark ? 'text-white' : 'text-slate-800'}`}>
                                <Counter from={0} to={stat.val} suffix={stat.suffix} decimals={stat.decimals} isActive={isActive} />
                             </span>
                             <span className="text-[9px] text-green-500 truncate font-semibold">{stat.comp}</span>
