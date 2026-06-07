@@ -65,7 +65,7 @@ export default function AmazonHeroSlider() {
       </div>
       {/* Dark gradient overlay — same clip */}
       <div 
-        className="absolute inset-0 z-[1] dark:bg-gradient-to-b dark:from-[#1a1a2e]/80 dark:via-[#10101c]/60 dark:to-[#0c0c16]/90 bg-gradient-to-b from-black/10 via-transparent to-black/20"
+        className="absolute inset-0 z-[1] bg-gradient-to-b from-[#1a1a2e]/80 via-[#10101c]/60 to-[#0c0c16]/90"
         style={{ clipPath: 'ellipse(120% 95% at 50% 0%)' }}
       />
 
