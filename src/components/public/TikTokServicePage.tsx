@@ -178,7 +178,7 @@ export default function TikTokServicePage() {
             <p className="text-lg text-slate-600 dark:text-slate-400">We don't just set up your TikTok Shop—we turn it into a viral sales engine through creator partnerships, live streaming, and optimized content.</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
             {[
               { title: "Affiliate Networking", desc: "We connect your brand with our vast network of top-performing TikTok creators to drive authentic, high-converting product showcases.", icon: Users },
               { title: "Live Stream Sales", desc: "End-to-end live commerce strategy, including scriptwriting, set design, hosting, and real-time sales optimization.", icon: Video },
