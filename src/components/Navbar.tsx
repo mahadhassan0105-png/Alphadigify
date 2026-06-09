@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Grip, X, ArrowRight, ArrowDown } from "lucide-react";
+import { Search, Grip, X, ArrowRight, ArrowDown, Sparkles } from "lucide-react";
+import confetti from "canvas-confetti";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
@@ -78,6 +79,57 @@ export default function Navbar() {
   const hamburgerBorder = scrolled
     ? isDark ? "border-white/20 bg-white/5" : "border-slate-300 bg-slate-100"
     : "border-white/20 bg-white/5";
+
+  const handleConfetti = () => {
+    const duration = 5000; // takes time
+    const animationEnd = Date.now() + duration;
+    
+    // Pick a random origin type: 0 = top, 1 = sides, 2 = bottom
+    const originType = Math.floor(Math.random() * 3);
+
+    const frame = () => {
+      const timeLeft = animationEnd - Date.now();
+      if (timeLeft <= 0) return;
+
+      // Increase density of confetti
+      const particleCount = 100 * (timeLeft / duration);
+
+      if (originType === 0) {
+        // Come out from top
+        confetti({
+          particleCount,
+          startVelocity: 30,
+          spread: 360,
+          origin: { x: Math.random(), y: Math.random() * 0.2 - 0.2 }
+        });
+      } else if (originType === 1) {
+        // Come out from left and right side
+        confetti({
+          particleCount,
+          angle: 60,
+          spread: 80,
+          origin: { x: 0, y: 0.8 }
+        });
+        confetti({
+          particleCount,
+          angle: 120,
+          spread: 80,
+          origin: { x: 1, y: 0.8 }
+        });
+      } else {
+        // Come out from bottom
+        confetti({
+          particleCount,
+          startVelocity: 60,
+          spread: 120,
+          origin: { x: Math.random(), y: 1 }
+        });
+      }
+      requestAnimationFrame(frame);
+    };
+
+    frame();
+  };
 
   return (
     <motion.nav
@@ -168,6 +220,16 @@ export default function Navbar() {
 
         {/* Right Icons */}
         <div className="flex items-center space-x-5">
+          {/* Confetti Button */}
+          <button 
+            onClick={handleConfetti}
+            className={`${iconColor} transition-all duration-300 hover:scale-110 active:scale-95`}
+            title="Celebrate!"
+            aria-label="Celebrate"
+          >
+            <Sparkles className="w-[18px] h-[18px] stroke-[1.5]" />
+          </button>
+
           {/* Theme Toggle */}
           <div className="block">
             <ThemeToggle />
