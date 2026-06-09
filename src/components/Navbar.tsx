@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Grip, X, ArrowRight, ArrowDown, Sparkles } from "lucide-react";
+import { Search, Grip, X, ArrowRight, ArrowDown, PartyPopper } from "lucide-react";
 import confetti from "canvas-confetti";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
@@ -234,7 +234,7 @@ export default function Navbar() {
             title="Celebrate!"
             aria-label="Celebrate"
           >
-            <Sparkles className="w-[18px] h-[18px] stroke-[1.5]" />
+            <PartyPopper className="w-[18px] h-[18px] stroke-[1.5]" />
           </button>
 
           {/* Theme Toggle */}
