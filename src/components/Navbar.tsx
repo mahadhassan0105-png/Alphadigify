@@ -95,8 +95,8 @@ export default function Navbar() {
         return;
       }
 
-      // Sensible particle count so it doesn't lag the browser
-      const particleCount = 30 * (timeLeft / duration);
+      // Increase density of confetti while maintaining performance
+      const particleCount = 80 * (timeLeft / duration);
 
       if (originType === 0) {
         // Come out from top
