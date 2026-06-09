@@ -35,6 +35,7 @@ export default function Navbar() {
   const [servicesHover, setServicesHover] = useState(false);
   const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const pathname = usePathname();
@@ -81,6 +82,9 @@ export default function Navbar() {
     : "border-white/20 bg-white/5";
 
   const handleConfetti = () => {
+    if (isAnimating) return;
+    setIsAnimating(true);
+
     const duration = 5000;
     const animationEnd = Date.now() + duration;
     
@@ -92,6 +96,7 @@ export default function Navbar() {
       
       if (timeLeft <= 0) {
         clearInterval(interval);
+        setIsAnimating(false);
         return;
       }
 
@@ -230,7 +235,8 @@ export default function Navbar() {
           {/* Confetti Button */}
           <button 
             onClick={handleConfetti}
-            className={`${iconColor} transition-all duration-300 hover:scale-110 active:scale-95`}
+            disabled={isAnimating}
+            className={`${iconColor} transition-all duration-300 ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110 active:scale-95'}`}
             title="Celebrate!"
             aria-label="Celebrate"
           >
