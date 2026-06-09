@@ -108,12 +108,13 @@ export default function Navbar() {
           zIndex: 100
         });
       } else if (originType === 1) {
-        // Come out from left and right side
+        // Come out from left and right side and merge in the middle
         confetti({
           particleCount: particleCount * 1.5,
           angle: 60,
           spread: 55,
           origin: { x: 0, y: 0.8 },
+          startVelocity: 70,
           zIndex: 100
         });
         confetti({
@@ -121,6 +122,7 @@ export default function Navbar() {
           angle: 120,
           spread: 55,
           origin: { x: 1, y: 0.8 },
+          startVelocity: 70,
           zIndex: 100
         });
       } else {
