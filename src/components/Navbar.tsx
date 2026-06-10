@@ -2,8 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Grip, X, ArrowRight, ArrowDown, PartyPopper } from "lucide-react";
-import confetti from "canvas-confetti";
+import { Search, Grip, X, ArrowRight, ArrowDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
 import Link from "next/link";
@@ -35,7 +34,6 @@ export default function Navbar() {
   const [servicesHover, setServicesHover] = useState(false);
   const [mobileServicesExpanded, setMobileServicesExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const { theme } = useTheme();
   const isDark = theme === "dark";
   const pathname = usePathname();
@@ -80,68 +78,6 @@ export default function Navbar() {
   const hamburgerBorder = scrolled
     ? isDark ? "border-white/20 bg-white/5" : "border-slate-300 bg-slate-100"
     : "border-white/20 bg-white/5";
-
-  const handleConfetti = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-
-    const duration = 5000;
-    const animationEnd = Date.now() + duration;
-    
-    // Pick a random origin type: 0 = top, 1 = sides, 2 = bottom
-    const originType = Math.floor(Math.random() * 3);
-
-    const interval = setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-      
-      if (timeLeft <= 0) {
-        clearInterval(interval);
-        setIsAnimating(false);
-        return;
-      }
-
-      // Increase density of confetti while maintaining performance
-      const particleCount = 80 * (timeLeft / duration);
-
-      if (originType === 0) {
-        // Come out from top
-        confetti({
-          particleCount,
-          startVelocity: 25,
-          spread: 360,
-          origin: { x: Math.random(), y: Math.random() * 0.2 - 0.2 },
-          zIndex: 100
-        });
-      } else if (originType === 1) {
-        // Come out from left and right side and merge in the middle
-        confetti({
-          particleCount: particleCount * 1.5,
-          angle: 60,
-          spread: 55,
-          origin: { x: 0, y: 0.8 },
-          startVelocity: 70,
-          zIndex: 100
-        });
-        confetti({
-          particleCount: particleCount * 1.5,
-          angle: 120,
-          spread: 55,
-          origin: { x: 1, y: 0.8 },
-          startVelocity: 70,
-          zIndex: 100
-        });
-      } else {
-        // Come out from bottom
-        confetti({
-          particleCount: particleCount * 2,
-          startVelocity: 50,
-          spread: 90,
-          origin: { x: Math.random(), y: 1 },
-          zIndex: 100
-        });
-      }
-    }, 200); // Run every 200ms instead of 60fps (16ms)
-  };
 
   return (
     <motion.nav
@@ -232,17 +168,6 @@ export default function Navbar() {
 
         {/* Right Icons */}
         <div className="flex items-center space-x-5">
-          {/* Confetti Button */}
-          <button 
-            onClick={handleConfetti}
-            disabled={isAnimating}
-            className={`${iconColor} transition-all duration-300 ${isAnimating ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110 active:scale-95'}`}
-            title="Celebrate!"
-            aria-label="Celebrate"
-          >
-            <PartyPopper className="w-[18px] h-[18px] stroke-[1.5]" />
-          </button>
-
           {/* Theme Toggle */}
           <div className="block">
             <ThemeToggle />
