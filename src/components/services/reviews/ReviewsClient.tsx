@@ -9,14 +9,12 @@ import { Button } from "@/components/ui/button";
 import {
   Star,
   ArrowRight,
-  ShieldCheck,
   ChevronDown,
   Sparkles,
   TrendingUp,
   AlertCircle,
   Zap,
   Eye,
-  Search,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,7 +23,6 @@ import Image from "next/image";
 const AMAZON_COLOR = "#FF9900";
 const WALMART_COLOR = "#0071DC";
 const EBAY_COLOR   = "#E53238";
-const TIKTOK_COLOR = "#010101";
 const GOOGLE_COLOR = "#4285F4";
 
 /* ─── Animated Star Rating ─── */
