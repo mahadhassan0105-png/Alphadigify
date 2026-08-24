@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingCart, Video, Share2, Search, Target, MonitorDown, PenTool, Film, ShieldCheck, Bot } from "lucide-react";
+import { ShoppingCart, Video, Share2, Search, Target, MonitorDown, PenTool, Film, ShieldCheck, Bot, Star } from "lucide-react";
 
 const services = [
   {
@@ -63,6 +63,12 @@ const services = [
     icon: Bot,
     desc: "Intelligent chatbots, specialized AI agents, and frictionless workflow automations to aggressively slash overhead.",
     slug: "ai-solutions-automation"
+  },
+  {
+    title: "Reviews Management",
+    icon: Star,
+    desc: "Engineer a relentless flow of authentic 5-star reviews across Amazon, Walmart, eBay, TikTok Shop, and Google — and protect your rating like a fortress.",
+    slug: "reviews-management"
   }
 ];
 

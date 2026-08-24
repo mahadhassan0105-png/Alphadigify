@@ -13,7 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'graphic-design',
     'video-ads-creation',
     'account-reinstatement',
-    'ai-solutions-automation'
+    'ai-solutions-automation',
+    'reviews-management',
   ];
 
   const mainPages = [

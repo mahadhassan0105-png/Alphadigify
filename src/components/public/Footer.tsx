@@ -79,6 +79,7 @@ export default function Footer() {
               <li><Link href="/services/website-development" className="text-slate-400 hover:text-yellow-500 text-sm transition-colors">Website Development</Link></li>
               <li><Link href="/services/web-seo-optimization" className="text-slate-400 hover:text-yellow-500 text-sm transition-colors">Web SEO Optimization</Link></li>
               <li><Link href="/services/account-reinstatement" className="text-slate-400 hover:text-yellow-500 text-sm transition-colors">Account Reinstatement</Link></li>
+              <li><Link href="/services/reviews-management" className="text-slate-400 hover:text-yellow-500 text-sm transition-colors">Reviews Management</Link></li>
             </ul>
           </div>
 

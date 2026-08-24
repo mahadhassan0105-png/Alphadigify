@@ -27,6 +27,7 @@ const servicesMenu = [
   { label: "Video Ads Creation", href: "/services/video-ads-creation" },
   { label: "Account Reinstatement", href: "/services/account-reinstatement" },
   { label: "AI Solutions & Auto Service", href: "/services/ai-solutions-automation" },
+  { label: "Reviews Management", href: "/services/reviews-management" },
 ];
 
 export default function Navbar() {

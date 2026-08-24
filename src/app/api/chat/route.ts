@@ -21,6 +21,7 @@ Our Core Service Suites:
 8. Video Ads Creation & UGC: High-conversion hooks, premium script-writing, and native video ad production. Link: [/services/video-ads-creation]
 9. Graphic Design: Premium digital branding, landing page graphics, social creatives, and corporate identities. Link: [/services/graphic-design]
 10. Account Reinstatement: Recover suspended Amazon Seller accounts and resolving listing issues. Link: [/services/account-reinstatement]
+11. Reviews Management: Engineering authentic 5-star review velocity across Amazon, Walmart, eBay, TikTok Shop, and Google — with reputation monitoring and negative review defense. Link: [/services/reviews-management]
 
 Additional Resources:
 - Interactive Portfolios: [/portfolio]
