@@ -273,10 +273,10 @@ export default function ReviewsClient() {
       {/* ═══════════════════════════════════════════════
           1. HERO
       ═══════════════════════════════════════════════ */}
-      <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
+      <section className="relative pt-28 pb-0 md:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-0 lg:min-h-[90vh] flex items-center">
         {/* Background ellipse */}
         <div
-          className="absolute inset-0 z-0 overflow-hidden [clip-path:ellipse(260%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
+          className="absolute inset-0 z-0 overflow-hidden [clip-path:ellipse(200%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           {/* Hero background image */}
           <Image
@@ -343,12 +343,12 @@ export default function ReviewsClient() {
             </div>
           </motion.div>
 
-          {/* Right: Animated Review Dashboard Mockup (Visible on both mobile & desktop) */}
+          {/* Right: Animated Review Dashboard Mockup (Flushes to the bottom of hero curve on mobile) */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring" }}
-            className="w-full mt-4 lg:mt-0 max-w-md mx-auto lg:max-w-none"
+            className="w-full mt-8 sm:mt-10 lg:mt-0 max-w-md mx-auto lg:max-w-none"
           >
             <div className="bg-white dark:bg-[#1a1b26] rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-700/60 shadow-2xl overflow-hidden">
               {/* Dashboard header */}
@@ -500,41 +500,76 @@ export default function ReviewsClient() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          3. PLATFORM PILLARS (Google Ads Section Design)
+          3. PLATFORM PILLARS (Previous Card Design)
       ═══════════════════════════════════════════════ */}
       <section id="platforms" className="py-14 sm:py-20 lg:py-24 bg-white dark:bg-[#0B0C10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-16 lg:mb-24">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6">
-              One Agency. Every Platform. Every Review.
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 sm:mb-16 lg:mb-20"
+          >
+            <div className="inline-flex items-center gap-2 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4 sm:mb-5">
+              <Star className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" /> Multi-Platform Dominance
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6 leading-tight text-slate-900 dark:text-white">
+              One Agency. <span className="text-yellow-500">Every Platform.</span> Every Review.
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
-              We don&apos;t just manage reviews on one marketplace. We deploy an integrated review architecture that builds unshakeable buyer trust across all major platforms.
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2 leading-relaxed">
+              We don&apos;t just manage reviews on one marketplace. We engineer your entire review ecosystem — across all major platforms — simultaneously.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {PLATFORMS.map((platform, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="flex flex-col items-start p-4 sm:p-4 group h-full border border-slate-100 dark:border-slate-800/60 rounded-2xl sm:rounded-none sm:border-0 sm:border-transparent bg-slate-50/50 dark:bg-slate-900/20 sm:bg-transparent sm:dark:bg-transparent"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="group relative bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex flex-col justify-between"
+                style={{ borderTopColor: platform.color, borderTopWidth: 3 }}
               >
-                <div 
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-md" 
-                >
-                  {platform.logo}
-                </div>
+                {/* Top accent bar */}
+                <div className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl" style={{ background: platform.color }} />
+                
+                {/* Glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none"
+                  style={{ background: `radial-gradient(circle at top left, ${platform.color}15 0%, transparent 60%)` }}
+                />
 
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 sm:mb-4 text-slate-900 dark:text-white tracking-tight">{platform.name}</h3>
-                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6 sm:mb-10">
-                  {platform.desc}
-                </p>
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
+                    <div
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-md"
+                      style={{ background: platform.bg }}
+                    >
+                      {platform.logo}
+                    </div>
+                    <AnimatedStars rating={5} size={14} />
+                  </div>
 
-                <div className="mt-auto pt-4 sm:pt-6 border-t-2 w-12 transition-all duration-300 group-hover:w-full" style={{ borderColor: platform.color }}>
-                  <p className="text-3xl sm:text-4xl font-black tracking-tight" style={{ color: platform.color }}>{platform.stat}</p>
-                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">{platform.statLabel}</p>
+                  <h3 className="text-xl sm:text-2xl font-black mb-3" style={{ color: platform.color }}>
+                    {platform.name}
+                  </h3>
+                  
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6 flex-grow">
+                    {platform.desc}
+                  </p>
+
+                  <div className="pt-4 sm:pt-5 border-t border-slate-100 dark:border-slate-800 mt-auto">
+                    <p className="text-2xl sm:text-3xl font-black" style={{ color: platform.color }}>
+                      {platform.stat}
+                    </p>
+                    <p className="text-xs text-slate-400 dark:text-slate-500 font-semibold mt-1 uppercase tracking-wider">
+                      {platform.statLabel}
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
