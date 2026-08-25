@@ -420,68 +420,68 @@ export default function ReviewsClient() {
       {/* ═══════════════════════════════════════════════
           2. THE PROBLEM (The Cold Hard Truth)
       ═══════════════════════════════════════════════ */}
-      <section className="pt-12 pb-6 md:pt-16 md:pb-8 relative bg-white dark:bg-[#0B0C10]">
+      <section className="pt-10 pb-6 md:pt-16 md:pb-8 relative bg-white dark:bg-[#0B0C10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-16 relative overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-16 relative overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
               <div>
-                <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight text-slate-900 dark:text-white">
+                <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6 leading-tight text-slate-900 dark:text-white">
                   Your customers make decisions based on what others say.
                 </h2>
-                <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 sm:mb-8 leading-relaxed">
                   93% of shoppers read reviews before clicking "Buy Now." A single 1-star review or low star rating quietly destroys your conversion rate, drives up your advertising costs, and sends eager buyers straight into your competitors' carts.
                 </p>
-                <div className="flex items-center gap-4 text-sm font-bold text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-500/10 px-5 py-3 rounded-xl border border-yellow-300 dark:border-yellow-500/30 inline-flex">
-                  <TrendingDown className="w-5 h-5" />
-                  Don't leave your reputation to chance. Let the specialists engineer it.
+                <div className="flex items-start sm:items-center gap-3 text-xs sm:text-sm font-bold text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-500/10 px-4 py-3 sm:px-5 rounded-xl border border-yellow-300 dark:border-yellow-500/30 inline-flex">
+                  <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 mt-0.5 sm:mt-0" />
+                  <span>Don&apos;t leave your reputation to chance. Let the specialists engineer it.</span>
                 </div>
               </div>
               
-              <div className="flex justify-center lg:justify-end mt-10 lg:mt-0 w-full">
-                <div className="relative w-full max-w-[420px] aspect-square grid grid-cols-2 gap-4">
+              <div className="flex justify-center lg:justify-end mt-6 lg:mt-0 w-full">
+                <div className="relative w-full max-w-[340px] sm:max-w-[420px] aspect-square grid grid-cols-2 gap-3 sm:gap-4">
                   {/* Center Star Icon Overlap */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white dark:bg-slate-900 shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] border-[6px] border-yellow-50 dark:border-[#111827] flex items-center justify-center z-20">
-                    <Star className="w-9 h-9 text-yellow-400 fill-yellow-400" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-white dark:bg-slate-900 shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] border-[4px] sm:border-[6px] border-yellow-50 dark:border-[#111827] flex items-center justify-center z-20">
+                    <Star className="w-6 h-6 sm:w-9 sm:h-9 text-yellow-400 fill-yellow-400" />
                   </div>
 
                   {/* Top Left */}
-                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] p-3 sm:p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-cyan-400"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-cyan-50 dark:bg-cyan-900/30 text-cyan-500 border border-cyan-100 dark:border-cyan-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-cyan-100 dark:group-hover:bg-cyan-900/50 transition-all">
-                      <Eye className="w-7 h-7" />
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-cyan-50 dark:bg-cyan-900/30 text-cyan-500 border border-cyan-100 dark:border-cyan-800 flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-all">
+                      <Eye className="w-5 h-5 sm:w-7 sm:h-7" />
                     </div>
-                    <span className="text-2xl font-black text-slate-900 dark:text-white">93%</span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Read Reviews<br/>Before Buying</span>
+                    <span className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white">93%</span>
+                    <span className="text-[10px] sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-0.5 sm:mt-1">Read Reviews<br/>Before Buying</span>
                   </div>
 
                   {/* Top Right */}
-                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] p-3 sm:p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-pink-400"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-pink-50 dark:bg-pink-900/30 text-pink-500 border border-pink-100 dark:border-pink-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-pink-100 dark:group-hover:bg-pink-900/50 transition-all">
-                      <AlertCircle className="w-7 h-7" />
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-pink-50 dark:bg-pink-900/30 text-pink-500 border border-pink-100 dark:border-pink-800 flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-all">
+                      <AlertCircle className="w-5 h-5 sm:w-7 sm:h-7" />
                     </div>
-                    <span className="text-2xl font-black text-slate-900 dark:text-white">4.0★+</span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Required to<br/>Convert Traffic</span>
+                    <span className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white">4.0★+</span>
+                    <span className="text-[10px] sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-0.5 sm:mt-1">Required to<br/>Convert Traffic</span>
                   </div>
 
                   {/* Bottom Left */}
-                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] p-3 sm:p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 border border-yellow-100 dark:border-yellow-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-yellow-100 dark:group-hover:bg-yellow-900/50 transition-all">
-                      <TrendingUp className="w-7 h-7" />
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 border border-yellow-100 dark:border-yellow-800 flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-all">
+                      <TrendingUp className="w-5 h-5 sm:w-7 sm:h-7" />
                     </div>
-                    <span className="text-2xl font-black text-slate-900 dark:text-white">+9%</span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Revenue Per<br/>1-Star Lift</span>
+                    <span className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white">+9%</span>
+                    <span className="text-[10px] sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-0.5 sm:mt-1">Revenue Per<br/>1-Star Lift</span>
                   </div>
 
                   {/* Bottom Right */}
-                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-2xl sm:rounded-[2rem] p-3 sm:p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-full h-1 bg-green-400"></div>
-                    <div className="w-14 h-14 rounded-2xl bg-green-50 dark:bg-green-900/30 text-green-500 border border-green-100 dark:border-green-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-green-100 dark:group-hover:bg-green-900/50 transition-all">
-                      <Sparkles className="w-7 h-7" />
+                    <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-green-50 dark:bg-green-900/30 text-green-500 border border-green-100 dark:border-green-800 flex items-center justify-center mb-2 sm:mb-4 group-hover:scale-110 transition-all">
+                      <Sparkles className="w-5 h-5 sm:w-7 sm:h-7" />
                     </div>
-                    <span className="text-2xl font-black text-slate-900 dark:text-white">100%</span>
-                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">White-Hat &amp;<br/>Safe Strategy</span>
+                    <span className="text-lg sm:text-2xl font-black text-slate-900 dark:text-white">100%</span>
+                    <span className="text-[10px] sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-0.5 sm:mt-1">White-Hat &amp;<br/>Safe Strategy</span>
                   </div>
                 </div>
               </div>
@@ -493,36 +493,36 @@ export default function ReviewsClient() {
       {/* ═══════════════════════════════════════════════
           3. PLATFORM PILLARS (Google Ads Section Design)
       ═══════════════════════════════════════════════ */}
-      <section id="platforms" className="py-24 bg-white dark:bg-[#0B0C10]">
+      <section id="platforms" className="py-14 sm:py-20 lg:py-24 bg-white dark:bg-[#0B0C10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 lg:mb-24">
-            <h2 className="text-3xl md:text-5xl font-black mb-6">
+          <div className="text-center mb-10 sm:mb-16 lg:mb-24">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6">
               One Agency. Every Platform. Every Review.
             </h2>
-            <p className="text-lg text-slate-650 dark:text-zinc-450 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
               We don&apos;t just manage reviews on one marketplace. We deploy an integrated review architecture that builds unshakeable buyer trust across all major platforms.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {PLATFORMS.map((platform, i) => (
               <div
                 key={i}
-                className="flex flex-col items-start p-2 sm:p-4 group h-full"
+                className="flex flex-col items-start p-4 sm:p-4 group h-full border border-slate-100 dark:border-slate-800/60 rounded-2xl sm:rounded-none sm:border-0 sm:border-transparent bg-slate-50/50 dark:bg-slate-900/20 sm:bg-transparent sm:dark:bg-transparent"
               >
                 <div 
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm" 
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm" 
                 >
                   {platform.logo}
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-black mb-4 text-slate-900 dark:text-white tracking-tight">{platform.name}</h3>
-                <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black mb-3 sm:mb-4 text-slate-900 dark:text-white tracking-tight">{platform.name}</h3>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-6 sm:mb-10">
                   {platform.desc}
                 </p>
 
-                <div className="mt-auto pt-6 border-t-2 w-12 transition-all duration-300 group-hover:w-full" style={{ borderColor: platform.color }}>
-                  <p className="text-4xl font-black tracking-tight" style={{ color: platform.color }}>{platform.stat}</p>
+                <div className="mt-auto pt-4 sm:pt-6 border-t-2 w-12 transition-all duration-300 group-hover:w-full" style={{ borderColor: platform.color }}>
+                  <p className="text-3xl sm:text-4xl font-black tracking-tight" style={{ color: platform.color }}>{platform.stat}</p>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">{platform.statLabel}</p>
                 </div>
               </div>
@@ -534,37 +534,37 @@ export default function ReviewsClient() {
       {/* ═══════════════════════════════════════════════
           4. THE REVIEW ENGINE (Our Process Design)
       ═══════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 bg-white dark:bg-[#0B0C10]">
+      <section className="py-14 sm:py-16 md:py-24 bg-white dark:bg-[#0B0C10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 md:mb-20">
-            <div className="inline-flex items-center gap-2 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-5 sm:mb-6">
               <Sparkles className="w-3.5 h-3.5" /> How It Works
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
               The <span className="text-yellow-500">Review Engine</span>
             </h2>
-            <p className="mt-4 text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed px-2">
               A relentless, 4-phase system engineered to build unassailable review authority across every platform you sell on.
             </p>
           </div>
 
           <div className="relative">
-            {/* Connector line */}
+            {/* Connector line – desktop only */}
             <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px] bg-slate-100 dark:bg-slate-800" />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 md:gap-4">
               {PROCESS_STEPS.map((step, i) => (
                 <div key={i} className="flex flex-col items-center text-center relative group">
                   <motion.div
                     whileHover={{ scale: 1.1 }}
-                    className="w-20 h-20 rounded-full bg-white dark:bg-slate-900 border-[2px] border-slate-200 dark:border-slate-700 group-hover:border-yellow-400 flex items-center justify-center text-2xl font-black text-slate-300 dark:text-slate-700 group-hover:text-yellow-500 transition-all duration-300 mb-6 relative z-10 shadow-sm"
+                    className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white dark:bg-slate-900 border-[2px] border-slate-200 dark:border-slate-700 group-hover:border-yellow-400 flex items-center justify-center text-xl sm:text-2xl font-black text-slate-300 dark:text-slate-700 group-hover:text-yellow-500 transition-all duration-300 mb-4 sm:mb-6 relative z-10 shadow-sm"
                   >
                     {step.step}
                   </motion.div>
-                  <h3 className="text-xl font-black text-slate-900 dark:text-white mb-3 group-hover:text-yellow-500 transition-colors duration-300">
+                  <h3 className="text-base sm:text-xl font-black text-slate-900 dark:text-white mb-2 sm:mb-3 group-hover:text-yellow-500 transition-colors duration-300">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px]">
+                  <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-[160px] sm:max-w-[200px]">
                     {step.desc}
                   </p>
                 </div>
