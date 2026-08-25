@@ -12,6 +12,7 @@ import {
   ChevronDown,
   Sparkles,
   TrendingUp,
+  TrendingDown,
   AlertCircle,
   Zap,
   Eye,
@@ -20,10 +21,95 @@ import Link from "next/link";
 import Image from "next/image";
 
 /* ─── Platform brand colors ─── */
-const AMAZON_COLOR = "#FF9900";
+const AMAZON_COLOR  = "#FF9900";
 const WALMART_COLOR = "#0071DC";
-const EBAY_COLOR   = "#E53238";
-const GOOGLE_COLOR = "#4285F4";
+const EBAY_COLOR    = "#E53238";
+const TIKTOK_COLOR  = "#010101";
+const GOOGLE_COLOR  = "#4285F4";
+const COSTCO_COLOR  = "#E31837";
+
+/* ─── Inline SVG Brand Logos ─── */
+
+function AmazonLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="#FF9900" rx="28"/>
+      <path d="M145.3 163c-15.5 10.8-37.9 16.5-57.2 16.5-27.1 0-51.4-10-69.8-26.7-1.4-1.3-.2-3.1 1.6-2.1 19.9 11.6 44.5 18.5 69.9 18.5 17.1 0 35.9-3.5 53.2-10.9 2.6-1.1 4.8 1.7 2.3 4.7z" fill="#232F3E"/>
+      <path d="M151.6 155.6c-2-2.5-13-1.2-18-0.6-1.5.2-1.7-1.1-.4-2 8.8-6.2 23.3-4.4 25-.4 1.7 4.1-0.5 18-8.7 25.5-1.3 1.1-2.5.5-1.9-0.9 1.9-4.6 6.1-15.1 4-21.6z" fill="#232F3E"/>
+      <path d="M135.2 70.5V63c0-1 .8-1.7 1.7-1.7h30.4c1 0 1.8.7 1.8 1.7v6.4c0 1-.8 2.2-2.3 4.2l-15.8 22.5c5.9-.1 12.1.7 17.4 3.7 1.2.6 1.5 1.6 1.6 2.6v7.9c0 1-1.1 2.2-2.3 1.6-9.5-5-22.1-5.5-32.6.1-1.1.6-2.2-.6-2.2-1.6v-7.5c0-1.1 0-3 1.1-4.7l18.3-26.2h-15.9c-1 0-1.8-.7-1.8-1.7z" fill="white"/>
+      <path d="M51.2 113h-9.3c-.9-.1-1.6-.7-1.7-1.6V63.1c0-1 .8-1.8 1.9-1.8h8.7c.9 0 1.6.7 1.7 1.6v6.4h.2c2.3-6.2 6.5-9 12.3-9 5.9 0 9.5 2.8 12.2 9 2.3-6.2 7.5-9 13.1-9 4 0 8.4 1.6 11 5.4 3 4.2 2.4 10.3 2.4 15.7l0 29.6c0 1-.8 1.8-1.9 1.8h-9.3c-1 0-1.8-.9-1.8-1.8V86.3c0-2.1.2-7.4-.3-9.4-.8-3.4-2.9-4.3-5.8-4.3-2.4 0-4.8 1.6-5.8 4.1-1 2.6-.9 6.8-.9 9.6v24.8c0 1-.8 1.8-1.9 1.8h-9.3c-1 0-1.8-.9-1.8-1.8L66 86.3c0-5.2.9-12.9-6.1-12.9-7.1 0-6.8 7.4-6.8 12.9v24.8c0 1-.8 1.8-1.9 1.8z" fill="white"/>
+      <path d="M196.4 63c15.9 0 24.5 13.7 24.5 31 0 16.8-9.5 30.2-24.5 30.2-15.6 0-24.1-13.7-24.1-30.7C172.3 76.5 181 63 196.4 63zm.1 11.2c-7.9 0-8.4 10.7-8.4 17.4 0 6.7-.1 21.1 8.3 21.1 8.3 0 8.7-11.5 8.7-18.5 0-4.6-.2-10.1-1.6-14.5-1.2-3.8-3.7-5.5-7-5.5z" fill="white"/>
+      <path d="M232.5 113h-9.3c-1 0-1.8-.9-1.8-1.8l0-48c.1-.9.9-1.6 1.9-1.6h8.7c.9 0 1.6.6 1.8 1.4v7.3h.2c2.6-6.6 6.3-9.7 12.8-9.7 4.2 0 8.3 1.5 10.9 5.7 2.4 3.9 2.4 10.5 2.4 15.2v29.8c-.1.9-.9 1.6-1.9 1.6h-9.4c-.9-.1-1.7-.8-1.8-1.6V85.7c0-5.1.6-12.6-6.2-12.6-2.4 0-4.6 1.6-5.7 4.1-1.4 3.1-1.5 6.2-1.5 9.5v24.4c0 1-.9 1.8-1.9 1.8z" fill="white"/>
+    </svg>
+  );
+}
+
+function WalmartLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="#0071DC" rx="28"/>
+      <g fill="white">
+        {/* Spark / Sunburst icon */}
+        <ellipse cx="128" cy="68" rx="10" ry="22"/>
+        <ellipse cx="128" cy="188" rx="10" ry="22"/>
+        <ellipse cx="68" cy="128" rx="22" ry="10"/>
+        <ellipse cx="188" cy="128" rx="22" ry="10"/>
+        <ellipse cx="87" cy="87" rx="10" ry="22" transform="rotate(-45 87 87)"/>
+        <ellipse cx="169" cy="169" rx="10" ry="22" transform="rotate(-45 169 169)"/>
+        <ellipse cx="169" cy="87" rx="10" ry="22" transform="rotate(45 169 87)"/>
+        <ellipse cx="87" cy="169" rx="10" ry="22" transform="rotate(45 87 169)"/>
+        <circle cx="128" cy="128" r="18"/>
+      </g>
+    </svg>
+  );
+}
+
+function EbayLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="white" rx="28"/>
+      {/* eBay wordmark colors: e=red, b=blue, a=yellow, y=green */}
+      <text x="10" y="168" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="130">
+        <tspan fill="#E53238">e</tspan>
+        <tspan fill="#0064D2">b</tspan>
+        <tspan fill="#F5AF02">a</tspan>
+        <tspan fill="#86B817">y</tspan>
+      </text>
+    </svg>
+  );
+}
+
+function TikTokLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="#010101" rx="28"/>
+      <path d="M196 82.4c-18.8-1.2-33.5-16.7-33.5-35.8V40h-28.8v120.3c0 12.2-9.9 22.1-22.1 22.1s-22.1-9.9-22.1-22.1 9.9-22.1 22.1-22.1c2.1 0 4.2.3 6.1.8V109c-2-.2-4-.4-6.1-.4-27.9 0-50.6 22.7-50.6 50.6S83.7 210 111.6 210s50.6-22.7 50.6-50.6V116c10.4 7.4 23.1 11.8 36.8 11.8V99c-1 0-2 0-3-.1v-16.5z" fill="white"/>
+      <path d="M196 82.4c-18.8-1.2-33.5-16.7-33.5-35.8" fill="none" stroke="#69C9D0" strokeWidth="3"/>
+    </svg>
+  );
+}
+
+function GoogleLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="white" rx="28"/>
+      <path d="M230.4 131.6c0-6.4-.6-12.6-1.6-18.5H128v35h57.6c-2.5 13.3-10 24.5-21.2 32v26.6h34.4c20.1-18.5 31.6-45.9 31.6-75.1z" fill="#4285F4"/>
+      <path d="M128 234c28.9 0 53.1-9.6 70.8-25.9l-34.4-26.6c-9.6 6.4-21.8 10.2-36.4 10.2-28 0-51.7-18.9-60.2-44.3H32.2V174c17.6 35 53.7 60 95.8 60z" fill="#34A853"/>
+      <path d="M67.8 147.4c-2.2-6.4-3.4-13.3-3.4-20.4s1.2-14 3.4-20.4V80H32.2C25.1 93.9 21 109.5 21 127s4.1 33.1 11.2 47l35.6-26.6z" fill="#FBBC04"/>
+      <path d="M128 62.3c15.8 0 29.9 5.4 41.1 16.1l30.7-30.7C181.1 30.6 156.9 21 128 21c-42.1 0-78.2 24.9-95.8 60l35.6 26.6c8.5-25.4 32.2-45.3 60.2-45.3z" fill="#EA4335"/>
+    </svg>
+  );
+}
+
+function CostcoLogo({ size = 48 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+      <rect width="256" height="256" fill="#E31837" rx="28"/>
+      <text x="128" y="148" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="52" fill="white" letterSpacing="-1">COSTCO</text>
+      <text x="128" y="186" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="20" fill="white" letterSpacing="6">WHOLESALE</text>
+    </svg>
+  );
+}
 
 /* ─── Animated Star Rating ─── */
 function AnimatedStars({ rating = 5, size = 20 }: { rating?: number; size?: number }) {
@@ -55,7 +141,7 @@ const PLATFORMS = [
     darkBg: "rgba(255,153,0,0.08)",
     stat: "500+",
     statLabel: "Verified Reviews / Month",
-    icon: <ShoppingBagIcon color={AMAZON_COLOR} />,
+    logo: <AmazonLogo size={52} />,
     desc: "We drive a systematic flow of authentic product reviews, suppress policy-violating negatives, and engineer your product listing to convert at industry-best rates.",
   },
   {
@@ -65,7 +151,7 @@ const PLATFORMS = [
     darkBg: "rgba(0,113,220,0.08)",
     stat: "4.7★",
     statLabel: "Avg. Seller Rating",
-    icon: <ShoppingBagIcon color={WALMART_COLOR} />,
+    logo: <WalmartLogo size={52} />,
     desc: "Build seller credibility on Walmart Marketplace with a sustained cadence of verified buyer reviews that push your products to the top of search results.",
   },
   {
@@ -75,17 +161,17 @@ const PLATFORMS = [
     darkBg: "rgba(229,50,56,0.08)",
     stat: "98%",
     statLabel: "Positive Feedback Score",
-    icon: <ShoppingBagIcon color={EBAY_COLOR} />,
+    logo: <EbayLogo size={52} />,
     desc: "Protect and elevate your eBay feedback score. We manage buyer communications, resolve disputes, and generate consistent 5-star feedback to lock in Top Rated Seller status.",
   },
   {
     name: "TikTok Shop",
-    color: "#69C9D0",
+    color: TIKTOK_COLOR,
     bg: "#E8FAFB",
     darkBg: "rgba(105,201,208,0.08)",
     stat: "3x",
     statLabel: "Review Velocity Increase",
-    icon: <TikTokIcon />,
+    logo: <TikTokLogo size={52} />,
     desc: "Creator-generated authentic reviews and post-purchase UGC campaigns that build social proof at scale — turning buyers into organic brand advocates on TikTok Shop.",
   },
   {
@@ -95,8 +181,18 @@ const PLATFORMS = [
     darkBg: "rgba(66,133,244,0.08)",
     stat: "4.9★",
     statLabel: "Google Business Rating",
-    icon: <GoogleDotsIcon />,
+    logo: <GoogleLogo size={52} />,
     desc: "Dominate local and brand search with a relentless stream of Google Business reviews. Higher ratings = lower CPC on Google Ads and higher trust conversion rates.",
+  },
+  {
+    name: "Costco",
+    color: COSTCO_COLOR,
+    bg: "#FFEBEF",
+    darkBg: "rgba(227,24,55,0.08)",
+    stat: "4.8★",
+    statLabel: "Member Satisfaction Score",
+    logo: <CostcoLogo size={52} />,
+    desc: "Establish premium member credibility on Costco.com. We drive verified member ratings and high-volume positive feedback to capture wholesale buying trust.",
   },
 ];
 
@@ -138,7 +234,7 @@ const FAQS = [
   },
   {
     q: "Do you manage reviews across multiple platforms simultaneously?",
-    a: "Yes — that's our specialty. We run unified review management campaigns across all 5 platforms (Amazon, Walmart, eBay, TikTok Shop, Google) with platform-specific strategies for each, all managed from a single point of contact.",
+    a: "Yes — that's our specialty. We run unified review management campaigns across all major platforms (Amazon, Walmart, eBay, TikTok Shop, Google, Costco) with platform-specific strategies for each, all managed from a single point of contact.",
   },
   {
     q: "What happens to my review profile if I stop the service?",
@@ -146,27 +242,6 @@ const FAQS = [
   },
 ];
 
-/* ─── Icon helpers ─── */
-function ShoppingBagIcon({ color }: { color: string }) {
-  return <svg viewBox="0 0 24 24" fill="none" strokeWidth={1.8} stroke={color} className="w-6 h-6 sm:w-7 sm:h-7"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>;
-}
-function TikTokIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 sm:w-7 sm:h-7">
-      <path d="M19.321 5.562a5.124 5.124 0 01-.443-.258 6.228 6.228 0 01-1.137-1.002 6.26 6.26 0 01-1.5-3.302h.004v14.53a2.85 2.85 0 01-2.847 2.847 2.85 2.85 0 01-2.847-2.847 2.85 2.85 0 012.847-2.847c.275 0 .54.039.79.112V9.675a6.27 6.27 0 00-.79-.05 6.28 6.28 0 00-6.28 6.28 6.28 6.28 0 006.28 6.28 6.28 6.28 0 006.28-6.28V8.662a9.768 9.768 0 005.716 1.823V7.057a6.273 6.273 0 01-2.073-1.495z" fill="#69C9D0"/>
-    </svg>
-  );
-}
-function GoogleDotsIcon() {
-  return (
-    <span className="inline-flex gap-[3px] items-center">
-      <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#4285F4", display: "inline-block" }} />
-      <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#EA4335", display: "inline-block" }} />
-      <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#FBBC05", display: "inline-block" }} />
-      <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#34A853", display: "inline-block" }} />
-    </span>
-  );
-}
 
 /* ─── Main Component ─── */
 export default function ReviewsClient() {
@@ -192,8 +267,7 @@ export default function ReviewsClient() {
       <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-44 lg:pb-32 overflow-hidden min-h-[90vh] flex items-center">
         {/* Background ellipse */}
         <div
-          className="absolute inset-0 z-0 overflow-hidden"
-          style={{ clipPath: "ellipse(140% 95% at 50% 0%)" }}
+          className="absolute inset-0 z-0 overflow-hidden [clip-path:ellipse(260%_100%_at_50%_0%)] md:[clip-path:ellipse(120%_95%_at_50%_0%)]"
         >
           {/* Hero background image */}
           <Image
@@ -344,178 +418,159 @@ export default function ReviewsClient() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          2. WHY REVIEWS MATTER (Stats)
+          2. THE PROBLEM (The Cold Hard Truth)
       ═══════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-white dark:bg-[#0B0C10]">
+      <section className="pt-12 pb-6 md:pt-16 md:pb-8 relative bg-white dark:bg-[#0B0C10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-14"
-          >
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-red-50 dark:bg-red-500/10 text-red-600 dark:text-red-400 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold mb-4 sm:mb-5">
-              <AlertCircle className="w-3.5 h-3.5" /> The Cold Hard Truth
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-3 sm:mb-5 leading-tight">
-              Your customers make decisions<br />
-              <span className="text-yellow-500">based on what others say.</span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
-              Reviews aren't just social proof — they're the single highest-leverage lever in your entire sales funnel.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {[
-              { stat: "93%", label: "of buyers read reviews before purchasing", icon: <Eye className="w-6 h-6 sm:w-7 sm:h-7" />, color: "text-yellow-500", bg: "bg-yellow-50 dark:bg-yellow-500/10" },
-              { stat: "4.0★+", label: "minimum rating required to convert modern shoppers", icon: <Star className="w-6 h-6 sm:w-7 sm:h-7" />, color: "text-yellow-500", bg: "bg-yellow-50 dark:bg-yellow-500/10" },
-              { stat: "+9%", label: "revenue increase from every 1-star rating improvement", icon: <TrendingUp className="w-6 h-6 sm:w-7 sm:h-7" />, color: "text-yellow-500", bg: "bg-yellow-50 dark:bg-yellow-500/10" },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className={`text-center p-6 sm:p-8 bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm ${i === 2 ? 'sm:col-span-2 md:col-span-1' : ''}`}
-              >
-                <div className={`w-12 h-12 sm:w-14 sm:h-14 ${item.bg} ${item.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-5`}>
-                  {item.icon}
+          <div className="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-16 relative overflow-hidden">
+            <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+              <div>
+                <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight text-slate-900 dark:text-white">
+                  Your customers make decisions based on what others say.
+                </h2>
+                <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+                  93% of shoppers read reviews before clicking "Buy Now." A single 1-star review or low star rating quietly destroys your conversion rate, drives up your advertising costs, and sends eager buyers straight into your competitors' carts.
+                </p>
+                <div className="flex items-center gap-4 text-sm font-bold text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-500/10 px-5 py-3 rounded-xl border border-yellow-300 dark:border-yellow-500/30 inline-flex">
+                  <TrendingDown className="w-5 h-5" />
+                  Don't leave your reputation to chance. Let the specialists engineer it.
                 </div>
-                <p className="text-3xl sm:text-4xl font-black text-yellow-500 mb-2 sm:mb-3">{item.stat}</p>
-                <p className="text-slate-600 dark:text-slate-400 font-medium text-xs sm:text-sm leading-relaxed">{item.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
+              
+              <div className="flex justify-center lg:justify-end mt-10 lg:mt-0 w-full">
+                <div className="relative w-full max-w-[420px] aspect-square grid grid-cols-2 gap-4">
+                  {/* Center Star Icon Overlap */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-white dark:bg-slate-900 shadow-[0_0_40px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_rgba(255,255,255,0.05)] border-[6px] border-yellow-50 dark:border-[#111827] flex items-center justify-center z-20">
+                    <Star className="w-9 h-9 text-yellow-400 fill-yellow-400" />
+                  </div>
 
-      {/* ═══════════════════════════════════════════════
-          3. PLATFORM PILLARS
-      ═══════════════════════════════════════════════ */}
-      <section id="platforms" className="py-14 sm:py-24 bg-white dark:bg-[#0B0C10]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10 sm:mb-16 lg:mb-24"
-          >
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black mb-4 sm:mb-6 leading-tight">
-              One Agency.<br />
-              <span className="text-yellow-500">Every Platform. Every Review.</span>
-            </h2>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
-              We don't just manage reviews on one marketplace. We engineer your entire review ecosystem — across all 5 major platforms — simultaneously.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {PLATFORMS.map((platform, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="group relative bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 overflow-hidden transition-all duration-300 hover:shadow-xl"
-                style={{ borderTopColor: platform.color, borderTopWidth: 3 }}
-              >
-                {/* Top accent bar */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl sm:rounded-t-3xl" style={{ background: platform.color }} />
-                {/* Glow on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl sm:rounded-3xl"
-                  style={{ background: `radial-gradient(circle at top left, ${platform.color}08 0%, transparent 60%)` }}
-                />
-
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform"
-                      style={{ background: platform.bg }}
-                    >
-                      {platform.icon}
+                  {/* Top Left */}
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-cyan-400"></div>
+                    <div className="w-14 h-14 rounded-2xl bg-cyan-50 dark:bg-cyan-900/30 text-cyan-500 border border-cyan-100 dark:border-cyan-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-cyan-100 dark:group-hover:bg-cyan-900/50 transition-all">
+                      <Eye className="w-7 h-7" />
                     </div>
-                    <AnimatedStars rating={5} size={13} />
+                    <span className="text-2xl font-black text-slate-900 dark:text-white">93%</span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Read Reviews<br/>Before Buying</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-black mb-2 sm:mb-3" style={{ color: platform.color }}>{platform.name}</h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4 sm:mb-6">{platform.desc}</p>
+                  {/* Top Right */}
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-pink-400"></div>
+                    <div className="w-14 h-14 rounded-2xl bg-pink-50 dark:bg-pink-900/30 text-pink-500 border border-pink-100 dark:border-pink-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-pink-100 dark:group-hover:bg-pink-900/50 transition-all">
+                      <AlertCircle className="w-7 h-7" />
+                    </div>
+                    <span className="text-2xl font-black text-slate-900 dark:text-white">4.0★+</span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Required to<br/>Convert Traffic</span>
+                  </div>
 
-                  <div className="pt-4 sm:pt-5 border-t border-slate-100 dark:border-slate-800">
-                    <p className="text-2xl sm:text-3xl font-black" style={{ color: platform.color }}>{platform.stat}</p>
-                    <p className="text-[10px] sm:text-xs text-slate-500 font-semibold mt-1 uppercase tracking-wider">{platform.statLabel}</p>
+                  {/* Bottom Left */}
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
+                    <div className="w-14 h-14 rounded-2xl bg-yellow-50 dark:bg-yellow-900/30 text-yellow-600 border border-yellow-100 dark:border-yellow-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-yellow-100 dark:group-hover:bg-yellow-900/50 transition-all">
+                      <TrendingUp className="w-7 h-7" />
+                    </div>
+                    <span className="text-2xl font-black text-slate-900 dark:text-white">+9%</span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">Revenue Per<br/>1-Star Lift</span>
+                  </div>
+
+                  {/* Bottom Right */}
+                  <div className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-[2rem] p-6 flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group cursor-default relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-green-400"></div>
+                    <div className="w-14 h-14 rounded-2xl bg-green-50 dark:bg-green-900/30 text-green-500 border border-green-100 dark:border-green-800 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-green-100 dark:group-hover:bg-green-900/50 transition-all">
+                      <Sparkles className="w-7 h-7" />
+                    </div>
+                    <span className="text-2xl font-black text-slate-900 dark:text-white">100%</span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-600 dark:text-slate-400 leading-tight mt-1">White-Hat &amp;<br/>Safe Strategy</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          3. PLATFORM PILLARS (Google Ads Section Design)
+      ═══════════════════════════════════════════════ */}
+      <section id="platforms" className="py-24 bg-white dark:bg-[#0B0C10]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 lg:mb-24">
+            <h2 className="text-3xl md:text-5xl font-black mb-6">
+              One Agency. Every Platform. Every Review.
+            </h2>
+            <p className="text-lg text-slate-650 dark:text-zinc-450 max-w-2xl mx-auto">
+              We don&apos;t just manage reviews on one marketplace. We deploy an integrated review architecture that builds unshakeable buyer trust across all major platforms.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PLATFORMS.map((platform, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-start p-2 sm:p-4 group h-full"
+              >
+                <div 
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm" 
+                >
+                  {platform.logo}
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-black mb-4 text-slate-900 dark:text-white tracking-tight">{platform.name}</h3>
+                <p className="text-base text-slate-600 dark:text-slate-400 leading-relaxed mb-10">
+                  {platform.desc}
+                </p>
+
+                <div className="mt-auto pt-6 border-t-2 w-12 transition-all duration-300 group-hover:w-full" style={{ borderColor: platform.color }}>
+                  <p className="text-4xl font-black tracking-tight" style={{ color: platform.color }}>{platform.stat}</p>
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-2">{platform.statLabel}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════
-          4. THE REVIEW ENGINE (Process Timeline)
+          4. THE REVIEW ENGINE (Our Process Design)
       ═══════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 relative bg-white dark:bg-[#0B0C10]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-          <div className="mb-14 sm:mb-24 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-wide">
-              The{" "}
-              <span className="relative inline-block">
-                Review Engine
-                <span className="absolute -bottom-2 left-0 w-full h-[3px] bg-yellow-400 dark:bg-yellow-500" />
-              </span>
+      <section className="py-16 md:py-24 bg-white dark:bg-[#0B0C10]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-20">
+            <div className="inline-flex items-center gap-2 bg-yellow-50 dark:bg-yellow-500/10 border border-yellow-200 dark:border-yellow-500/20 text-yellow-700 dark:text-yellow-400 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-6">
+              <Sparkles className="w-3.5 h-3.5" /> How It Works
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+              The <span className="text-yellow-500">Review Engine</span>
             </h2>
-            <p className="mt-6 sm:mt-8 text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-2">
+            <p className="mt-4 text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">
               A relentless, 4-phase system engineered to build unassailable review authority across every platform you sell on.
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="relative mt-8 sm:mt-12 mb-12 sm:mb-20">
-            {/* Horizontal line (desktop) */}
-            <div className="hidden md:block absolute top-[4.5rem] left-0 w-full h-[2px] bg-yellow-400 dark:bg-yellow-500" />
-            {/* Vertical line (mobile) */}
-            <div className="block md:hidden absolute left-4 sm:left-6 top-2 bottom-6 w-[2px] bg-yellow-400 dark:bg-yellow-500" />
+          <div className="relative">
+            {/* Connector line */}
+            <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px] bg-slate-100 dark:bg-slate-800" />
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative z-10">
-              {PROCESS_STEPS.map((step, i) => {
-                const isActive = i === 3;
-                return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-4">
+              {PROCESS_STEPS.map((step, i) => (
+                <div key={i} className="flex flex-col items-center text-center relative group">
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.15 }}
-                    className="relative flex md:flex-col items-start md:items-center text-left md:text-center group pl-10 sm:pl-14 md:pl-0"
+                    whileHover={{ scale: 1.1 }}
+                    className="w-20 h-20 rounded-full bg-white dark:bg-slate-900 border-[2px] border-slate-200 dark:border-slate-700 group-hover:border-yellow-400 flex items-center justify-center text-2xl font-black text-slate-300 dark:text-slate-700 group-hover:text-yellow-500 transition-all duration-300 mb-6 relative z-10 shadow-sm"
                   >
-                    <h3 className={`w-24 sm:w-28 md:w-auto text-sm sm:text-base md:text-xl font-bold uppercase tracking-widest md:mb-6 pt-0.5 md:pt-0 ${isActive ? "text-yellow-500" : "text-slate-900 dark:text-white"}`}>
-                      PHASE {step.step}
-                    </h3>
-                    {/* Circle marker */}
-                    <div className={`shrink-0 z-10 flex items-center justify-center bg-yellow-400 dark:bg-yellow-500 rounded-full group-hover:scale-110 transition-transform duration-300 absolute left-[-17px] sm:left-[-23px] md:relative md:left-auto md:mx-auto md:mb-6 ${isActive ? "w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 top-0 md:top-auto" : "w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 top-1 md:top-auto my-0 md:my-2"}`} />
-                    <div className="flex flex-col items-start md:items-center px-1 sm:px-2">
-                      <p className="text-slate-900 dark:text-white text-sm sm:text-base font-extrabold uppercase tracking-wider mb-1 sm:mb-2">{step.title}</p>
-                      <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-medium leading-relaxed max-w-[240px] md:max-w-[220px]">{step.desc}</p>
-                    </div>
+                    {step.step}
                   </motion.div>
-                );
-              })}
+                  <h3 className="text-xl font-black text-slate-900 dark:text-white mb-3 group-hover:text-yellow-500 transition-colors duration-300">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-[200px]">
+                    {step.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center px-2"
-          >
-            <h4 className="text-base sm:text-xl md:text-2xl font-black text-yellow-500 dark:text-yellow-400 uppercase tracking-widest leading-relaxed">
-              Authentic Reviews + Velocity + Protection = Marketplace Dominance.
-            </h4>
-          </motion.div>
         </div>
       </section>
 
