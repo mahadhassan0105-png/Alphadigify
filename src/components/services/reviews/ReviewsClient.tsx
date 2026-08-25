@@ -28,85 +28,94 @@ const TIKTOK_COLOR  = "#010101";
 const GOOGLE_COLOR  = "#4285F4";
 const COSTCO_COLOR  = "#E31837";
 
-/* ─── Inline SVG Brand Logos ─── */
+/* ─── Inline SVG Brand Logos (circular, clean, no clip-off) ─── */
 
-function AmazonLogo({ size = 48 }: { size?: number }) {
+function AmazonLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="#FF9900" rx="28"/>
-      <path d="M145.3 163c-15.5 10.8-37.9 16.5-57.2 16.5-27.1 0-51.4-10-69.8-26.7-1.4-1.3-.2-3.1 1.6-2.1 19.9 11.6 44.5 18.5 69.9 18.5 17.1 0 35.9-3.5 53.2-10.9 2.6-1.1 4.8 1.7 2.3 4.7z" fill="#232F3E"/>
-      <path d="M151.6 155.6c-2-2.5-13-1.2-18-0.6-1.5.2-1.7-1.1-.4-2 8.8-6.2 23.3-4.4 25-.4 1.7 4.1-0.5 18-8.7 25.5-1.3 1.1-2.5.5-1.9-0.9 1.9-4.6 6.1-15.1 4-21.6z" fill="#232F3E"/>
-      <path d="M135.2 70.5V63c0-1 .8-1.7 1.7-1.7h30.4c1 0 1.8.7 1.8 1.7v6.4c0 1-.8 2.2-2.3 4.2l-15.8 22.5c5.9-.1 12.1.7 17.4 3.7 1.2.6 1.5 1.6 1.6 2.6v7.9c0 1-1.1 2.2-2.3 1.6-9.5-5-22.1-5.5-32.6.1-1.1.6-2.2-.6-2.2-1.6v-7.5c0-1.1 0-3 1.1-4.7l18.3-26.2h-15.9c-1 0-1.8-.7-1.8-1.7z" fill="white"/>
-      <path d="M51.2 113h-9.3c-.9-.1-1.6-.7-1.7-1.6V63.1c0-1 .8-1.8 1.9-1.8h8.7c.9 0 1.6.7 1.7 1.6v6.4h.2c2.3-6.2 6.5-9 12.3-9 5.9 0 9.5 2.8 12.2 9 2.3-6.2 7.5-9 13.1-9 4 0 8.4 1.6 11 5.4 3 4.2 2.4 10.3 2.4 15.7l0 29.6c0 1-.8 1.8-1.9 1.8h-9.3c-1 0-1.8-.9-1.8-1.8V86.3c0-2.1.2-7.4-.3-9.4-.8-3.4-2.9-4.3-5.8-4.3-2.4 0-4.8 1.6-5.8 4.1-1 2.6-.9 6.8-.9 9.6v24.8c0 1-.8 1.8-1.9 1.8h-9.3c-1 0-1.8-.9-1.8-1.8L66 86.3c0-5.2.9-12.9-6.1-12.9-7.1 0-6.8 7.4-6.8 12.9v24.8c0 1-.8 1.8-1.9 1.8z" fill="white"/>
-      <path d="M196.4 63c15.9 0 24.5 13.7 24.5 31 0 16.8-9.5 30.2-24.5 30.2-15.6 0-24.1-13.7-24.1-30.7C172.3 76.5 181 63 196.4 63zm.1 11.2c-7.9 0-8.4 10.7-8.4 17.4 0 6.7-.1 21.1 8.3 21.1 8.3 0 8.7-11.5 8.7-18.5 0-4.6-.2-10.1-1.6-14.5-1.2-3.8-3.7-5.5-7-5.5z" fill="white"/>
-      <path d="M232.5 113h-9.3c-1 0-1.8-.9-1.8-1.8l0-48c.1-.9.9-1.6 1.9-1.6h8.7c.9 0 1.6.6 1.8 1.4v7.3h.2c2.6-6.6 6.3-9.7 12.8-9.7 4.2 0 8.3 1.5 10.9 5.7 2.4 3.9 2.4 10.5 2.4 15.2v29.8c-.1.9-.9 1.6-1.9 1.6h-9.4c-.9-.1-1.7-.8-1.8-1.6V85.7c0-5.1.6-12.6-6.2-12.6-2.4 0-4.6 1.6-5.7 4.1-1.4 3.1-1.5 6.2-1.5 9.5v24.4c0 1-.9 1.8-1.9 1.8z" fill="white"/>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="#FF9900"/>
+      {/* Bold lowercase "a" */}
+      <text x="50" y="48" textAnchor="middle" dominantBaseline="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="46" fill="white">a</text>
+      {/* Amazon smile arc */}
+      <path d="M28 68 C36 76 64 76 72 68" stroke="#232F3E" strokeWidth="4" fill="none" strokeLinecap="round"/>
+      {/* Arrow tip */}
+      <path d="M69 64 L72 68 L68 71" stroke="#232F3E" strokeWidth="4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
 
-function WalmartLogo({ size = 48 }: { size?: number }) {
+function WalmartLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="#0071DC" rx="28"/>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="#0071DC"/>
       <g fill="white">
-        {/* Spark / Sunburst icon */}
-        <ellipse cx="128" cy="68" rx="10" ry="22"/>
-        <ellipse cx="128" cy="188" rx="10" ry="22"/>
-        <ellipse cx="68" cy="128" rx="22" ry="10"/>
-        <ellipse cx="188" cy="128" rx="22" ry="10"/>
-        <ellipse cx="87" cy="87" rx="10" ry="22" transform="rotate(-45 87 87)"/>
-        <ellipse cx="169" cy="169" rx="10" ry="22" transform="rotate(-45 169 169)"/>
-        <ellipse cx="169" cy="87" rx="10" ry="22" transform="rotate(45 169 87)"/>
-        <ellipse cx="87" cy="169" rx="10" ry="22" transform="rotate(45 87 169)"/>
-        <circle cx="128" cy="128" r="18"/>
+        {/* 6-petal Walmart spark, centered */}
+        <ellipse cx="50" cy="27" rx="5" ry="11"/>
+        <ellipse cx="50" cy="73" rx="5" ry="11"/>
+        <ellipse cx="27" cy="50" rx="11" ry="5"/>
+        <ellipse cx="73" cy="50" rx="11" ry="5"/>
+        <ellipse cx="32" cy="32" rx="5" ry="11" transform="rotate(-45 32 32)"/>
+        <ellipse cx="68" cy="68" rx="5" ry="11" transform="rotate(-45 68 68)"/>
+        <ellipse cx="68" cy="32" rx="5" ry="11" transform="rotate(45 68 32)"/>
+        <ellipse cx="32" cy="68" rx="5" ry="11" transform="rotate(45 32 68)"/>
+        <circle cx="50" cy="50" r="9"/>
       </g>
     </svg>
   );
 }
 
-function EbayLogo({ size = 48 }: { size?: number }) {
+function EbayLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="white" rx="28"/>
-      {/* eBay wordmark colors: e=red, b=blue, a=yellow, y=green */}
-      <text x="10" y="168" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="130">
-        <tspan fill="#E53238">e</tspan>
-        <tspan fill="#0064D2">b</tspan>
-        <tspan fill="#F5AF02">a</tspan>
-        <tspan fill="#86B817">y</tspan>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="white"/>
+      {/* eBay — clean icon: bold colored letters centered and sized to fit */}
+      <text textAnchor="middle" dominantBaseline="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="32">
+        <tspan x="50" y="46" fill="#E53238">e</tspan>
+      </text>
+      <text textAnchor="middle" dominantBaseline="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="32">
+        <tspan x="50" y="62" letterSpacing="1">
+          <tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan>
+        </tspan>
       </text>
     </svg>
   );
 }
 
-function TikTokLogo({ size = 48 }: { size?: number }) {
+function TikTokLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="#010101" rx="28"/>
-      <path d="M196 82.4c-18.8-1.2-33.5-16.7-33.5-35.8V40h-28.8v120.3c0 12.2-9.9 22.1-22.1 22.1s-22.1-9.9-22.1-22.1 9.9-22.1 22.1-22.1c2.1 0 4.2.3 6.1.8V109c-2-.2-4-.4-6.1-.4-27.9 0-50.6 22.7-50.6 50.6S83.7 210 111.6 210s50.6-22.7 50.6-50.6V116c10.4 7.4 23.1 11.8 36.8 11.8V99c-1 0-2 0-3-.1v-16.5z" fill="white"/>
-      <path d="M196 82.4c-18.8-1.2-33.5-16.7-33.5-35.8" fill="none" stroke="#69C9D0" strokeWidth="3"/>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="#010101"/>
+      {/* TikTok note path scaled to fit circle */}
+      <path
+        d="M62 22 C62 22 63 33 74 36 L74 46 C74 46 64 44 62 36 L62 62 C62 73 53 80 43 77 C33 74 29 63 34 54 C39 45 51 44 55 48 L55 59 C53 57 48 57 46 61 C44 65 47 70 52 70 C57 70 60 66 60 61 L60 22 Z"
+        fill="white"
+      />
+      <path d="M62 22 C62 22 63 33 74 36" stroke="#69C9D0" strokeWidth="3" fill="none" strokeLinecap="round"/>
     </svg>
   );
 }
 
-function GoogleLogo({ size = 48 }: { size?: number }) {
+function GoogleLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="white" rx="28"/>
-      <path d="M230.4 131.6c0-6.4-.6-12.6-1.6-18.5H128v35h57.6c-2.5 13.3-10 24.5-21.2 32v26.6h34.4c20.1-18.5 31.6-45.9 31.6-75.1z" fill="#4285F4"/>
-      <path d="M128 234c28.9 0 53.1-9.6 70.8-25.9l-34.4-26.6c-9.6 6.4-21.8 10.2-36.4 10.2-28 0-51.7-18.9-60.2-44.3H32.2V174c17.6 35 53.7 60 95.8 60z" fill="#34A853"/>
-      <path d="M67.8 147.4c-2.2-6.4-3.4-13.3-3.4-20.4s1.2-14 3.4-20.4V80H32.2C25.1 93.9 21 109.5 21 127s4.1 33.1 11.2 47l35.6-26.6z" fill="#FBBC04"/>
-      <path d="M128 62.3c15.8 0 29.9 5.4 41.1 16.1l30.7-30.7C181.1 30.6 156.9 21 128 21c-42.1 0-78.2 24.9-95.8 60l35.6 26.6c8.5-25.4 32.2-45.3 60.2-45.3z" fill="#EA4335"/>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="white"/>
+      {/* Google "G" mark, centered and scaled */}
+      <path d="M79 50 C79 66 67 78 50 78 C33 78 21 66 21 50 C21 34 33 22 50 22 C58 22 65 25 70 30 L63 37 C60 34 55 32 50 32 C38 32 30 40 30 50 C30 60 38 68 50 68 C60 68 67 62 69 54 L50 54 L50 44 L79 44 Z" fill="#4285F4"/>
+      <path d="M50 22 C58 22 65 25 70 30 L63 37 C60 34 55 32 50 32 Z" fill="#EA4335"/>
+      <path d="M21 50 C21 42 24 35 30 30 L37 37 C34 41 32 45 32 50 Z" fill="#FBBC04" opacity="0.9"/>
+      <path d="M30 30 L37 37 C33 41 30 45 30 50 C30 55 32 59 35 63 L28 70 C23 64 21 57 21 50 C21 42 24 35 30 30 Z" fill="#FBBC04"/>
+      <path d="M50 78 C42 78 35 75 30 70 L37 63 C40 66 45 68 50 68 Z" fill="#34A853"/>
     </svg>
   );
 }
 
-function CostcoLogo({ size = 48 }: { size?: number }) {
+function CostcoLogo({ size = 52 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-      <rect width="256" height="256" fill="#E31837" rx="28"/>
-      <text x="128" y="148" textAnchor="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="52" fill="white" letterSpacing="-1">COSTCO</text>
-      <text x="128" y="186" textAnchor="middle" fontFamily="Arial, sans-serif" fontWeight="400" fontSize="20" fill="white" letterSpacing="6">WHOLESALE</text>
+    <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="50" fill="#E31837"/>
+      {/* Bold white "C" letter mark */}
+      <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="58" fill="white">C</text>
+      {/* Small "OSTCO" hint or just use the letter mark — clean single C */}
     </svg>
   );
 }
@@ -511,7 +520,7 @@ export default function ReviewsClient() {
                 className="flex flex-col items-start p-4 sm:p-4 group h-full border border-slate-100 dark:border-slate-800/60 rounded-2xl sm:rounded-none sm:border-0 sm:border-transparent bg-slate-50/50 dark:bg-slate-900/20 sm:bg-transparent sm:dark:bg-transparent"
               >
                 <div 
-                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-sm" 
+                  className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300 overflow-hidden shadow-md" 
                 >
                   {platform.logo}
                 </div>
