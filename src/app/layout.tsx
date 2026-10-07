@@ -44,7 +44,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Alphadigify | Digital Agency",
     description: "We are a top digital agency driving revenue and scaling brands.",
-  }
+  },
+  verification: {
+    google: "8t8n0HKjUNexza_9hlC3LllkwwiwGqS7svBZrWTLWcM",
+  },
 };
 
 export default function RootLayout({
