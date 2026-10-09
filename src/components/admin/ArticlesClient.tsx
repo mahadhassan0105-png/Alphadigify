@@ -13,7 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Eye, Edit, Trash2, Loader2, Newspaper, Plus, Search } from "lucide-react";
+import { Eye, Edit, Trash2, Newspaper, Plus, Search } from "lucide-react";
 import Link from "next/link";
 
 interface ArticleAdminItem {

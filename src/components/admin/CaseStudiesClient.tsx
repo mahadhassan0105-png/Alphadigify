@@ -9,7 +9,7 @@ import {
   Table, TableBody, TableCell, TableHead,
   TableHeader, TableRow,
 } from "@/components/ui/table";
-import { Eye, Edit, Trash2, Loader2, BookOpen, Plus } from "lucide-react";
+import { Eye, Edit, Trash2, BookOpen, Plus } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
 

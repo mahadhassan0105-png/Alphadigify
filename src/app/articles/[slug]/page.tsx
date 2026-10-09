@@ -17,7 +17,7 @@ async function getArticleBySlug(slug: string): Promise<{ article: ArticleItem | 
   let allArticles: ArticleItem[] = [];
 
   // Query admin name and image to use as the author
-  let adminAuthor = {
+  const adminAuthor = {
     name: "",
     image: "",
     role: "",

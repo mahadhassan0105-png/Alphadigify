@@ -12,7 +12,7 @@ export async function GET(req: Request) {
 
     let articles: ArticleItem[] = [];
 
-    let adminAuthor = {
+    const adminAuthor = {
       name: "",
       image: "",
       role: "",

@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Play, Image as ImageIcon, Trash2, ExternalLink, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Image as ImageIcon, Trash2, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AddPortfolioModal from "./AddPortfolioModal";
 import ConfirmModal from "./ConfirmModal";

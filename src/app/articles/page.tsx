@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 async function getArticles(): Promise<ArticleItem[]> {
-  let adminAuthor = {
+  const adminAuthor = {
     name: "",
     image: "",
     role: "",

@@ -4,7 +4,7 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, animate } from "framer-motion";
-import { Play, Maximize2, ImageIcon, ChevronLeft, ChevronRight, X, Film, ArrowRight, TrendingUp, Filter, Search } from "lucide-react";
+import { Play, Maximize2, ChevronLeft, ChevronRight, X, Film, ArrowRight, TrendingUp, Filter, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
