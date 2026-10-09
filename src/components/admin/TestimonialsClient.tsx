@@ -9,6 +9,7 @@ import {
   TableHeader, TableRow,
 } from "@/components/ui/table";
 import { Trash2, Loader2, MessageSquareQuote, Plus, Edit, Star } from "lucide-react";
+import ConfirmModal from "./ConfirmModal";
 
 interface Testimonial {
   id: string;
@@ -29,7 +30,8 @@ interface TestimonialsClientProps {
 
 export default function TestimonialsClient({ initialItems }: TestimonialsClientProps) {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState("");
 
   // Modal state
@@ -95,21 +97,22 @@ export default function TestimonialsClient({ initialItems }: TestimonialsClientP
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Delete this testimonial? This cannot be undone.")) return;
-    setDeletingId(id);
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
+    setIsDeleting(true);
     setError("");
     try {
-      const res = await fetch(`/api/testimonials/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/testimonials/${confirmDeleteId}`, { method: "DELETE" });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || "Failed to delete.");
       }
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -233,15 +236,11 @@ export default function TestimonialsClient({ initialItems }: TestimonialsClientP
                       <Button
                         variant="ghost"
                         size="icon"
-                        disabled={deletingId === t.id}
-                        onClick={() => handleDelete(t.id)}
+                        onClick={() => setConfirmDeleteId(t.id)}
                         className="h-8 w-8 text-slate-400 hover:text-red-650 dark:text-slate-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                        title="Delete Testimonial"
                       >
-                        {deletingId === t.id ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-red-655 dark:text-red-400" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -370,6 +369,17 @@ export default function TestimonialsClient({ initialItems }: TestimonialsClientP
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Testimonial"
+        description="Are you sure you want to delete this testimonial? It will be permanently removed from your dashboard and from client review carousels across the website."
+        confirmText="Delete Review"
+      />
     </div>
   );
 }

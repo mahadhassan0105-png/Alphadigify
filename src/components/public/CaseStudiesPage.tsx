@@ -3,13 +3,11 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, animate } from "framer-motion";
-import { ArrowUpRight, ArrowRight, BarChart3, Zap } from "lucide-react";
+import { ArrowUpRight, ArrowRight, BarChart3, Zap, Filter, Search, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
-const categories = ["All", "E-Commerce", "B2B SaaS", "Local Business", "Healthcare"];
 
 /* ─── Animated Counter ─── */
 function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: number; prefix?: string; suffix?: string }) {
@@ -36,6 +34,8 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: num
 
 export default function CaseStudiesPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tempSearch, setTempSearch] = useState("");
   const [studies, setStudies] = useState<any[]>([]);
   const [featuredStudy, setFeaturedStudy] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
@@ -65,10 +65,49 @@ export default function CaseStudiesPage() {
     fetchCaseStudies();
   }, []);
 
-  const remainingStudies = studies.filter((s) => s.id !== featuredStudy?.id);
-  const filteredStudies = activeCategory === "All" 
-    ? remainingStudies 
-    : remainingStudies.filter(study => study.category === activeCategory);
+  const allCategories = useMemo(() => {
+    const studyCats = Array.from(
+      new Set(
+        studies
+          .map((s: any) => (typeof s.category === "string" ? s.category.trim() : ""))
+          .filter((cat): cat is string => Boolean(cat))
+      )
+    ).sort();
+    return ["All", ...studyCats];
+  }, [studies]);
+
+  const remainingStudies = useMemo(() => {
+    return studies.filter((s) => s.id !== featuredStudy?.id);
+  }, [studies, featuredStudy]);
+
+  const isFiltering = activeCategory !== "All" || !!searchQuery.trim();
+
+  const filteredStudies = useMemo(() => {
+    const targetStudies = isFiltering ? studies : remainingStudies;
+    return targetStudies.filter((study) => {
+      const matchesCategory =
+        activeCategory === "All" ||
+        (study.category && study.category.toLowerCase() === activeCategory.toLowerCase());
+
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !q ||
+        (study.title && study.title.toLowerCase().includes(q)) ||
+        (study.client && study.client.toLowerCase().includes(q)) ||
+        (study.category && study.category.toLowerCase().includes(q)) ||
+        (study.service && study.service.toLowerCase().includes(q)) ||
+        (study.industry && study.industry.toLowerCase().includes(q)) ||
+        (study.challenge && study.challenge.toLowerCase().includes(q)) ||
+        (study.solution && study.solution.toLowerCase().includes(q));
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [studies, remainingStudies, activeCategory, searchQuery, isFiltering]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchQuery(tempSearch);
+  };
 
   return (
     <div className="w-full bg-white dark:bg-[#0B0C10] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-500 font-sans selection:bg-yellow-500/30" ref={containerRef}>
@@ -118,107 +157,175 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* ═══════════════════════════════════════
+          TOOLBAR: CATEGORIES & SEARCH
+      ═══════════════════════════════════════ */}
+      <section className="sticky top-14 sm:top-16 lg:top-[72px] z-30 bg-white/95 dark:bg-[#0B0C10]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          
+          {/* Category Dropdown */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 shrink-0">
+              <Filter className="w-4 h-4 text-yellow-500" /> Browse by category:
+            </span>
+            <div className="relative">
+              <select
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                className="appearance-none bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs sm:text-sm font-medium rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:border-yellow-400 cursor-pointer shadow-sm"
+              >
+                {allCategories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat === "All" ? "All Categories" : cat}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </div>
+            </div>
+          </div>
+
+          {/* Search Input Bar */}
+          <form onSubmit={handleSearchSubmit} className="flex items-center w-full md:w-80 lg:w-96">
+            <input
+              type="text"
+              placeholder="Search case studies..."
+              value={tempSearch}
+              onChange={(e) => setTempSearch(e.target.value)}
+              className="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-l-xl px-4 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-yellow-400"
+            />
+            <button
+              type="submit"
+              className="bg-yellow-400 hover:bg-yellow-500 text-slate-950 px-4 py-2.5 rounded-r-xl border border-yellow-400 font-bold flex items-center justify-center transition-colors shrink-0"
+              title="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
+
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
           FEATURED CASE STUDY (THE BIG WIN)
       ═══════════════════════════════════════ */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24">
-        {loading ? (
-          <div className="w-full h-[600px] bg-slate-100 dark:bg-slate-900/50 rounded-[3rem] animate-pulse border border-slate-200 dark:border-slate-800" />
-        ) : featuredStudy ? (
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="group relative rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col lg:flex-row hover:shadow-yellow-500/10 transition-all duration-500"
-          >
-            {/* Background Accent */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-yellow-500/10 via-transparent to-transparent pointer-events-none" />
+      {!isFiltering && (
+        <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+          {loading ? (
+            <div className="w-full h-[600px] bg-slate-100 dark:bg-slate-900/50 rounded-[3rem] animate-pulse border border-slate-200 dark:border-slate-800" />
+          ) : featuredStudy ? (
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8 }}
+              className="group relative rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col lg:flex-row hover:shadow-yellow-500/10 transition-all duration-500"
+            >
+              {/* Background Accent */}
+              <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-yellow-500/10 via-transparent to-transparent pointer-events-none" />
 
-            {/* Content Side */}
-            <div className="lg:w-[55%] p-5 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center relative z-20">
-              <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
-                <span className="px-4 py-1.5 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-widest shadow-lg shadow-yellow-400/20">
-                  Featured Case Study
-                </span>
-                <span className="text-slate-500 dark:text-slate-400 font-bold text-sm tracking-wide uppercase flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
-                  {featuredStudy.category}
-                </span>
+              {/* Content Side */}
+              <div className="lg:w-[55%] p-5 sm:p-8 lg:p-12 xl:p-16 flex flex-col justify-center relative z-20">
+                <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
+                  <span className="px-4 py-1.5 bg-yellow-400 text-black rounded-full text-[11px] font-black uppercase tracking-widest shadow-lg shadow-yellow-400/20">
+                    Featured Case Study
+                  </span>
+                  <span className="text-slate-500 dark:text-slate-400 font-bold text-sm tracking-wide uppercase flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-yellow-400"></span>
+                    {featuredStudy.category}
+                  </span>
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-5 text-slate-900 dark:text-white leading-[1.1] tracking-tight group-hover:text-yellow-500 transition-colors duration-500">
+                  {featuredStudy.title}
+                </h2>
+                
+                <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium line-clamp-3">
+                  {featuredStudy.challenge}
+                </p>
+
+                {/* Polished Metrics */}
+                <div className="flex flex-wrap gap-3 mb-10">
+                  {featuredStudy.metrics && Array.isArray(featuredStudy.metrics) && 
+                    featuredStudy.metrics.slice(0, 3).map((metric: any, idx: number) => (
+                      <div key={idx} className="flex-1 min-w-[100px] sm:min-w-[110px] bg-slate-50 dark:bg-slate-900/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/60 dark:border-slate-800 hover:border-yellow-400/50 transition-colors group/metric">
+                        <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 mb-1.5 opacity-50 group-hover/metric:opacity-100 transition-opacity" />
+                        <p className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-0.5 group-hover/metric:text-yellow-400 transition-colors">{metric.value}</p>
+                        <p className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase tracking-widest">{metric.label}</p>
+                      </div>
+                  ))}
+                </div>
+
+                <Link href={`/case-studies/${featuredStudy.slug}`} className="w-fit">
+                  <Button className="group/btn relative overflow-hidden bg-slate-900 text-white dark:bg-white dark:text-slate-900 h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.1)] border-none">
+                    <span className="relative z-10 flex items-center">
+                      Read Full Breakdown 
+                      <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                    </span>
+                    <div className="absolute inset-0 bg-yellow-400 translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-300 ease-in-out" />
+                    <span className="absolute inset-0 flex items-center justify-center z-20 text-black opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ease-in-out font-bold">
+                      Read Full Breakdown <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
+                    </span>
+                  </Button>
+                </Link>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-3 sm:mb-5 text-slate-900 dark:text-white leading-[1.1] tracking-tight group-hover:text-yellow-500 transition-colors duration-500">
-                {featuredStudy.title}
-              </h2>
-              
-              <p className="text-base md:text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium line-clamp-3">
-                {featuredStudy.challenge}
-              </p>
-
-              {/* Polished Metrics */}
-              <div className="flex flex-wrap gap-3 mb-10">
-                {featuredStudy.metrics && Array.isArray(featuredStudy.metrics) && 
-                  featuredStudy.metrics.slice(0, 3).map((metric: any, idx: number) => (
-                    <div key={idx} className="flex-1 min-w-[100px] sm:min-w-[110px] bg-slate-50 dark:bg-slate-900/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-slate-200/60 dark:border-slate-800 hover:border-yellow-400/50 transition-colors group/metric">
-                      <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-500 mb-1.5 opacity-50 group-hover/metric:opacity-100 transition-opacity" />
-                      <p className="text-lg sm:text-xl lg:text-2xl font-black text-slate-900 dark:text-white mb-0.5 group-hover/metric:text-yellow-400 transition-colors">{metric.value}</p>
-                      <p className="text-[8px] sm:text-[9px] font-bold text-slate-500 uppercase tracking-widest">{metric.label}</p>
-                    </div>
-                ))}
+              {/* Image Side */}
+              <div className="lg:w-[45%] relative overflow-hidden min-h-[400px] lg:min-h-full">
+                <div className="absolute inset-0 bg-slate-900/10 dark:bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
+                {/* Sleek fade mask on the left side of the image */}
+                <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white dark:from-slate-950 to-transparent z-20 hidden lg:block pointer-events-none" />
+                <img 
+                  src={featuredStudy.heroImage} 
+                  alt={featuredStudy.title}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
+                  onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"; }}
+                />
               </div>
-
-              <Link href={`/case-studies/${featuredStudy.slug}`} className="w-fit">
-                <Button className="group/btn relative overflow-hidden bg-slate-900 text-white dark:bg-white dark:text-slate-900 h-14 px-8 text-lg font-bold rounded-full transition-all hover:scale-105 shadow-[0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_20px_rgba(255,255,255,0.1)] border-none">
-                  <span className="relative z-10 flex items-center">
-                    Read Full Breakdown 
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
-                  <div className="absolute inset-0 bg-yellow-400 translate-y-[100%] group-hover/btn:translate-y-0 transition-transform duration-300 ease-in-out" />
-                  <span className="absolute inset-0 flex items-center justify-center z-20 text-black opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ease-in-out font-bold">
-                    Read Full Breakdown <ArrowRight className="ml-2 w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
-                </Button>
-              </Link>
-            </div>
-
-            {/* Image Side */}
-            <div className="lg:w-[45%] relative overflow-hidden min-h-[400px] lg:min-h-full">
-              <div className="absolute inset-0 bg-slate-900/10 dark:bg-black/20 z-10 group-hover:bg-transparent transition-colors duration-500" />
-              {/* Sleek fade mask on the left side of the image */}
-              <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white dark:from-slate-950 to-transparent z-20 hidden lg:block pointer-events-none" />
-              <img 
-                src={featuredStudy.heroImage} 
-                alt={featuredStudy.title}
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[1.5s] ease-out"
-                onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop"; }}
-              />
-            </div>
-          </motion.div>
-        ) : null}
-      </section>
+            </motion.div>
+          ) : null}
+        </section>
+      )}
 
       {/* ═══════════════════════════════════════
           FILTER & GRID SECTION
       ═══════════════════════════════════════ */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-24">
         
-        {/* Modern Pill Filters */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-6 border-b border-slate-200 dark:border-slate-800 pb-6">
-          <h3 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">More Success Stories</h3>
-          <div className="flex flex-wrap items-center gap-2 justify-center">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-yellow-400 text-slate-900 shadow-[0_4px_14px_0_rgba(250,204,21,0.39)] hover:bg-yellow-500"
-                    : "bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-yellow-400/50 hover:text-slate-900 dark:hover:text-white"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+        {/* Active filter indication */}
+        {(activeCategory !== "All" || searchQuery) && (
+          <div className="mb-8 flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 flex-wrap">
+            <span>Showing results for:</span>
+            {activeCategory !== "All" && (
+              <span className="font-bold text-yellow-600 dark:text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/20">
+                {activeCategory}
+              </span>
+            )}
+            {searchQuery && (
+              <span className="font-bold text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-full">
+                "{searchQuery}"
+              </span>
+            )}
+            <button
+              onClick={() => {
+                setActiveCategory("All");
+                setSearchQuery("");
+                setTempSearch("");
+              }}
+              className="text-xs font-bold text-red-500 hover:underline ml-2"
+            >
+              Clear all filters
+            </button>
           </div>
+        )}
+
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200 dark:border-slate-800">
+          <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+            {isFiltering ? "Case Studies" : "More Success Stories"}
+          </h3>
+          <span className="text-xs font-bold text-slate-400">
+            {filteredStudies.length} {filteredStudies.length === 1 ? "Study" : "Studies"}
+          </span>
         </div>
 
         {/* Case Studies Grid */}
@@ -227,6 +334,24 @@ export default function CaseStudiesPage() {
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="bg-slate-100 dark:bg-slate-900/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 h-[500px] animate-pulse" />
             ))}
+          </div>
+        ) : filteredStudies.length === 0 ? (
+          <div className="text-center py-20 bg-white dark:bg-slate-900/40 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 my-4">
+            <Search className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">No case studies found</h3>
+            <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto text-sm mb-6">
+              We couldn't find any case studies matching your criteria. Try adjusting your keyword or category.
+            </p>
+            <button
+              onClick={() => {
+                setActiveCategory("All");
+                setSearchQuery("");
+                setTempSearch("");
+              }}
+              className="px-6 py-2.5 rounded-full bg-yellow-400 text-slate-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md"
+            >
+              Reset Search
+            </button>
           </div>
         ) : (
           <motion.div layout className="grid md:grid-cols-2 gap-8">

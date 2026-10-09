@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Plus, Mail, Trash2, Edit, Loader2, Users } from "lucide-react";
 import { format } from "date-fns";
+import ConfirmModal from "./ConfirmModal";
 
 interface TeamMember {
   id: string;
@@ -27,7 +28,8 @@ interface TeamClientProps {
 
 export default function TeamClient({ initialItems }: TeamClientProps) {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState("");
 
   // Modal state
@@ -115,21 +117,22 @@ export default function TeamClient({ initialItems }: TeamClientProps) {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Remove this team member? This cannot be undone.")) return;
-    setDeletingId(id);
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
+    setIsDeleting(true);
     setError("");
     try {
-      const res = await fetch(`/api/team/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/team/${confirmDeleteId}`, { method: "DELETE" });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || "Failed to delete.");
       }
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -215,15 +218,11 @@ export default function TeamClient({ initialItems }: TeamClientProps) {
                       <Button
                         variant="ghost"
                         size="icon"
-                        disabled={deletingId === member.id}
-                        onClick={() => handleDelete(member.id)}
+                        onClick={() => setConfirmDeleteId(member.id)}
                         className="h-8 w-8 text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        title="Remove Team Member"
                       >
-                        {deletingId === member.id ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-red-400" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -349,6 +348,17 @@ export default function TeamClient({ initialItems }: TeamClientProps) {
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Remove Team Member"
+        description="Are you sure you want to remove this team member? This will delete their profile from the team directory and public team listings."
+        confirmText="Remove Member"
+      />
     </div>
   );
 }

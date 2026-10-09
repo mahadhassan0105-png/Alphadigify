@@ -13,12 +13,12 @@ export async function PUT(req: Request) {
 
     const userId = session.user.id;
     const body = await req.json();
-    const { name, email, currentPassword, newPassword } = body;
+    const { name, email, currentPassword, newPassword, image } = body;
 
     // Fetch the current user record
     const user = await db.user.findUnique({ where: { id: userId } });
     if (!user) {
-      return NextResponse.json({ success: false, error: "User profile not found." }, { status: 444 });
+      return NextResponse.json({ success: false, error: "User profile not found." }, { status: 404 });
     }
 
     const updateData: any = {};
@@ -26,6 +26,11 @@ export async function PUT(req: Request) {
     // Handle Name Update
     if (name && name.trim()) {
       updateData.name = name.trim();
+    }
+
+    // Handle Image Update
+    if (image !== undefined) {
+      updateData.image = image ? image : null;
     }
 
     // Handle Email Update
@@ -69,6 +74,24 @@ export async function PUT(req: Request) {
       data: updateData,
     });
 
+    // Sync adminName and adminImage to CompanySettings so public pages (like /articles/[slug]) can access it
+    try {
+      await (db as any).companySettings.upsert({
+        where: { id: "global" },
+        update: {
+          adminName: updatedUser.name,
+          adminImage: (updatedUser as any).image || null,
+        },
+        create: {
+          id: "global",
+          adminName: updatedUser.name,
+          adminImage: (updatedUser as any).image || null,
+        },
+      });
+    } catch (csErr) {
+      console.warn("Could not sync to company settings:", csErr);
+    }
+
     return NextResponse.json({
       success: true,
       message: "Profile updated successfully.",
@@ -77,6 +100,7 @@ export async function PUT(req: Request) {
         name: updatedUser.name,
         email: updatedUser.email,
         role: updatedUser.role,
+        image: (updatedUser as any).image || "",
       },
     });
   } catch (error: any) {

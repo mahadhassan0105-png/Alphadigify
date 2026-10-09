@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Play, Image as ImageIcon, Trash2, ExternalLink, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import AddPortfolioModal from "./AddPortfolioModal";
+import ConfirmModal from "./ConfirmModal";
 
 interface PortfolioItem {
   id: string;
@@ -24,7 +25,8 @@ interface PortfolioClientProps {
 export default function PortfolioClient({ initialItems }: PortfolioClientProps) {
   const router = useRouter();
   const [activeCategory, setActiveCategory] = useState("All");
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState("");
 
   // Track active slide index for each portfolio item ID
@@ -48,14 +50,14 @@ export default function PortfolioClient({ initialItems }: PortfolioClientProps) 
     ? initialItems
     : initialItems.filter(item => item.category === activeCategory);
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this portfolio item?")) return;
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
 
-    setDeletingId(id);
+    setIsDeleting(true);
     setError("");
 
     try {
-      const res = await fetch(`/api/portfolio/${id}`, {
+      const res = await fetch(`/api/portfolio/${confirmDeleteId}`, {
         method: "DELETE",
       });
 
@@ -64,11 +66,12 @@ export default function PortfolioClient({ initialItems }: PortfolioClientProps) 
         throw new Error(errData.error || "Failed to delete item");
       }
 
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message || "Failed to delete the portfolio item.");
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -279,15 +282,11 @@ export default function PortfolioClient({ initialItems }: PortfolioClientProps) 
                       <Button 
                         variant="ghost" 
                         size="icon" 
-                        disabled={deletingId === item.id}
-                        onClick={() => handleDelete(item.id)}
+                        onClick={() => setConfirmDeleteId(item.id)}
                         className="h-8 w-8 text-slate-500 hover:text-red-400 hover:bg-red-500/10 transition-colors"
+                        title="Delete Portfolio Item"
                       >
-                        {deletingId === item.id ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-red-400" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </div>
@@ -297,6 +296,17 @@ export default function PortfolioClient({ initialItems }: PortfolioClientProps) 
           </div>
         )}
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Portfolio Item"
+        description="Are you sure you want to delete this portfolio item? This will permanently remove its media references and showcase card from the portfolio gallery."
+        confirmText="Delete Item"
+      />
     </div>
   );
 }

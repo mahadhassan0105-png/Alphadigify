@@ -101,7 +101,7 @@ export default async function AboutPage() {
 
           {team.length === 0 ? (
             <div className="text-center text-slate-500 py-16 font-medium bg-white dark:bg-slate-950/20 border border-dashed border-slate-200 dark:border-slate-800 rounded-3xl">
-              No team profiles added yet. Visit the Admin Panel to populate.
+              No team profiles added yet.
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">

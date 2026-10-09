@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Trash2, Loader2, Building2, Plus, Edit, Mail, Users, ShieldAlert } from "lucide-react";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 
 interface Client {
   id: string;
@@ -27,7 +28,8 @@ interface ClientsClientProps {
 
 export default function ClientsClient({ initialItems }: ClientsClientProps) {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState("");
 
   // Modal CRUD state
@@ -95,21 +97,22 @@ export default function ClientsClient({ initialItems }: ClientsClientProps) {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure? Deleting this client will permanently remove all their projects and invoices. This cannot be undone.")) return;
-    setDeletingId(id);
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
+    setIsDeleting(true);
     setError("");
     try {
-      const res = await fetch(`/api/clients/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/clients/${confirmDeleteId}`, { method: "DELETE" });
       if (!res.ok) {
         const err = await res.json();
-        throw new Error(err.error || "Failed to delete.");
+        throw new Error(err.error || "Failed to delete client.");
       }
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -233,15 +236,10 @@ export default function ClientsClient({ initialItems }: ClientsClientProps) {
                       <Button
                         variant="ghost"
                         size="icon"
-                        disabled={deletingId === c.id}
-                        onClick={() => handleDelete(c.id)}
+                        onClick={() => setConfirmDeleteId(c.id)}
                         className="h-8 w-8 text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-red-500/10 transition-colors"
                       >
-                        {deletingId === c.id ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-red-500 dark:text-red-400" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -355,6 +353,17 @@ export default function ClientsClient({ initialItems }: ClientsClientProps) {
           </div>
         </div>
       )}
+
+      {/* Modal */}
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Client"
+        description="Are you sure you want to delete this client? Deleting this client will permanently remove all their associated projects and invoices from the database. This cannot be undone."
+        confirmText="Delete Client"
+      />
     </div>
   );
 }

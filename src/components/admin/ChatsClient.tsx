@@ -16,6 +16,7 @@ import {
   Sparkles,
   ArrowRight
 } from "lucide-react";
+import ConfirmModal from "@/components/admin/ConfirmModal";
 
 interface SerializedMessage {
   id: string;
@@ -57,6 +58,8 @@ export default function ChatsClient({ initialSessions }: ChatsClientProps) {
   
   // Mobile-view toggle: 'list' | 'detail'
   const [mobileView, setMobileView] = useState<"list" | "detail">("list");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const selectedSession = sessions.find((s) => s.id === selectedSessionId);
 
@@ -88,31 +91,36 @@ export default function ChatsClient({ initialSessions }: ChatsClientProps) {
     setMobileView("detail");
   };
 
-  const handleDeleteSession = async (id: string, e: React.MouseEvent) => {
+  const handlePromptDelete = (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!confirm("Are you sure you want to delete this chat session? This action cannot be undone.")) {
-      return;
-    }
+    setConfirmDeleteId(id);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
 
     try {
-      const response = await fetch(`/api/chat/${id}`, {
+      setIsDeleting(true);
+      const response = await fetch(`/api/chat/${confirmDeleteId}`, {
         method: "DELETE",
       });
 
       if (response.ok) {
-        setSessions((prev) => prev.filter((s) => s.id !== id));
-        if (selectedSessionId === id) {
-          const remaining = sessions.filter((s) => s.id !== id);
+        setSessions((prev) => prev.filter((s) => s.id !== confirmDeleteId));
+        if (selectedSessionId === confirmDeleteId) {
+          const remaining = sessions.filter((s) => s.id !== confirmDeleteId);
           setSelectedSessionId(remaining.length > 0 ? remaining[0].id : null);
           setMobileView("list");
         }
+        setConfirmDeleteId(null);
       } else {
         const data = await response.json();
-        alert(data.error || "Failed to delete chat session.");
+        console.error("Failed to delete chat session:", data.error);
       }
     } catch (err) {
       console.error("Delete error:", err);
-      alert("Error occurred deleting chat session.");
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -439,7 +447,7 @@ export default function ChatsClient({ initialSessions }: ChatsClientProps) {
                           </span>
                         )}
                         <button
-                          onClick={(e) => handleDeleteSession(session.id, e)}
+                          onClick={(e) => handlePromptDelete(session.id, e)}
                           title="Delete Session"
                           className="text-slate-300 hover:text-red-500 dark:text-zinc-700 dark:hover:text-red-400 p-1 rounded-md transition-colors"
                         >
@@ -594,6 +602,15 @@ export default function ChatsClient({ initialSessions }: ChatsClientProps) {
 
       </div>
 
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Chat Session"
+        description="Are you sure you want to delete this chat session? All chat messages within this conversation will be permanently removed."
+        confirmText="Delete Chat"
+      />
     </div>
   );
 }

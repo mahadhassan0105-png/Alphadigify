@@ -14,6 +14,7 @@ model User {
   password  String   // bcrypt hashed
   name      String
   role      String   @default("admin")
+  image     String?  @db.Text
   createdAt DateTime @default(now())
 }
 
@@ -146,13 +147,38 @@ model ChatMessage {
 }
 
 model CompanySettings {
-  id        String   @id @default("global") // Enforce a single global settings row
-  email     String   @default("strategy@alphadigify.com")
-  phone     String?
-  location  String   @default("Islamabad, Pakistan & Global Remote")
-  facebook  String?
-  twitter   String?
-  instagram String?
-  linkedin  String?
-  updatedAt DateTime @updatedAt
+  id         String   @id @default("global") // Enforce a single global settings row
+  email      String   @default("strategy@alphadigify.com")
+  phone      String?
+  location   String   @default("Islamabad, Pakistan & Global Remote")
+  facebook   String?
+  twitter    String?
+  instagram  String?
+  linkedin   String?
+  adminName  String?
+  adminImage String?  @db.Text
+  adminRole  String?
+  updatedAt  DateTime @updatedAt
+}
+
+model Article {
+  id             String   @id @default(cuid())
+  slug           String   @unique
+  title          String
+  excerpt        String   @db.Text
+  content        String   @db.Text
+  coverImage     String   @db.Text
+  category       String   // e.g., "Amazon Advertising", "Reviews Management", "TikTok Shop", "Google Ads"
+  tags           String[] // Array of tag keywords
+  authorName     String   @default("Alphadigify Strategy Team")
+  authorRole     String   @default("E-Commerce Growth Specialist")
+  authorAvatar   String?  @db.Text
+  readTime       String   @default("8 mins")
+  featured       Boolean  @default(false)
+  published      Boolean  @default(true)
+  publishedAt    DateTime @default(now())
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

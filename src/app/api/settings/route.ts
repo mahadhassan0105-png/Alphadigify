@@ -20,6 +20,9 @@ export async function GET() {
         twitter: null,
         instagram: null,
         linkedin: null,
+        adminName: null,
+        adminImage: null,
+        adminRole: null,
         updatedAt: new Date(),
       };
     }

@@ -39,8 +39,16 @@ export default function Topbar({ onToggleSidebar }: TopbarProps) {
             <span className="text-sm font-semibold text-slate-800 dark:text-slate-100">{session?.user?.name || 'Loading...'}</span>
             <span className="text-xs text-slate-500 dark:text-slate-400">{session?.user?.role || 'Admin'}</span>
           </div>
-          <div className="w-9 h-9 rounded-full bg-slate-100 dark:bg-zinc-900 flex items-center justify-center text-slate-600 dark:text-slate-300">
-            <UserIcon className="w-5 h-5" />
+          <div className="w-9 h-9 rounded-full bg-slate-100 dark:bg-zinc-900 flex items-center justify-center text-slate-600 dark:text-slate-300 overflow-hidden border border-slate-200 dark:border-zinc-800">
+            {session?.user?.image ? (
+              <img
+                src={session.user.image}
+                alt={session.user.name || "Admin"}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              <UserIcon className="w-5 h-5" />
+            )}
           </div>
           <button 
             onClick={() => signOut()}

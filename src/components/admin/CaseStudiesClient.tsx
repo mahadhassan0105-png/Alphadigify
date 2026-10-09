@@ -24,30 +24,34 @@ interface CaseStudy {
   createdAt: string;
 }
 
+import ConfirmModal from "@/components/admin/ConfirmModal";
+
 interface CaseStudiesClientProps {
   initialItems: CaseStudy[];
 }
 
 export default function CaseStudiesClient({ initialItems }: CaseStudiesClientProps) {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState("");
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this case study? This cannot be undone.")) return;
-    setDeletingId(id);
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
+    setIsDeleting(true);
     setError("");
     try {
-      const res = await fetch(`/api/case-studies/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/case-studies/${confirmDeleteId}`, { method: "DELETE" });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || "Failed to delete case study.");
       }
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message || "An error occurred.");
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -178,15 +182,10 @@ export default function CaseStudiesClient({ initialItems }: CaseStudiesClientPro
                         <Button
                           variant="ghost"
                           size="icon"
-                          disabled={deletingId === cs.id}
-                          onClick={() => handleDelete(cs.id)}
+                          onClick={() => setConfirmDeleteId(cs.id)}
                           className="h-8 w-8 text-slate-500 hover:text-red-400 hover:bg-red-500/10 border dark:border-transparent dark:hover:border-red-500/20 transition-colors"
                         >
-                          {deletingId === cs.id ? (
-                            <Loader2 className="w-4 h-4 animate-spin text-red-400" />
-                          ) : (
-                            <Trash2 className="w-4 h-4" />
-                          )}
+                          <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
                     </TableCell>
@@ -197,6 +196,16 @@ export default function CaseStudiesClient({ initialItems }: CaseStudiesClientPro
           </div>
         )}
       </div>
+
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Case Study"
+        description="Are you sure you want to delete this case study? This action is permanent and cannot be undone."
+        confirmText="Delete Case Study"
+      />
     </div>
   );
 }

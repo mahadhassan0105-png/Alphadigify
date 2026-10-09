@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users, UserPlus, MessageSquare, FolderKanban, FileSpreadsheet, Settings, Building2, Image as ImageIcon, BookOpen, MessageSquareQuote, X } from "lucide-react";
+import { LayoutDashboard, Users, UserPlus, MessageSquare, FolderKanban, FileSpreadsheet, Settings, Building2, Image as ImageIcon, BookOpen, MessageSquareQuote, Newspaper, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -14,6 +14,7 @@ const navItems = [
   { name: "Projects", href: "/admin/projects", icon: FolderKanban },
   { name: "Portfolio", href: "/admin/portfolio", icon: ImageIcon },
   { name: "Case Studies", href: "/admin/case-studies", icon: BookOpen },
+  { name: "Articles", href: "/admin/articles", icon: Newspaper },
   { name: "Testimonials", href: "/admin/testimonials", icon: MessageSquareQuote },
   { name: "Invoices", href: "/admin/invoices", icon: FileSpreadsheet },
   { name: "Team", href: "/admin/team", icon: Users },

@@ -2,25 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useTransform, animate } from "framer-motion";
-import { Play, Maximize2, ImageIcon, ChevronLeft, ChevronRight, X, Film, ArrowRight, TrendingUp } from "lucide-react";
+import { Play, Maximize2, ImageIcon, ChevronLeft, ChevronRight, X, Film, ArrowRight, TrendingUp, Filter, Search } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
-const categories = [
-  "All",
-  "Amazon",
-  "TikTok Shop",
-  "Social Media",
-  "Web SEO",
-  "Google Ads",
-  "Web Development",
-  "Graphics Designing",
-  "Video Ads",
-  "Account Reinstatement",
-  "AI Solutions"
-];
 
 interface PortfolioItem {
   id: string;
@@ -56,6 +43,8 @@ function Counter({ from, to, prefix = "", suffix = "" }: { from: number; to: num
 
 export default function PortfolioPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tempSearch, setTempSearch] = useState("");
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -89,20 +78,38 @@ export default function PortfolioPage() {
     fetchPortfolio();
   }, []);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") handleLightboxPrev();
-      if (e.key === "ArrowRight") handleLightboxNext();
-    };
-    if (lightboxProject) window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lightboxProject, lightboxIndex]);
+  const allCategories = useMemo(() => {
+    const itemCats = Array.from(
+      new Set(
+        portfolioItems
+          .map((p) => (typeof p.category === "string" ? p.category.trim() : ""))
+          .filter((cat): cat is string => Boolean(cat))
+      )
+    ).sort();
+    return ["All", ...itemCats];
+  }, [portfolioItems]);
 
-  const filteredItems = activeCategory === "All" 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeCategory);
+  const filteredItems = useMemo(() => {
+    return portfolioItems.filter((item) => {
+      const matchesCategory =
+        activeCategory === "All" ||
+        item.category.toLowerCase() === activeCategory.toLowerCase();
+
+      const query = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !query ||
+        item.title.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query) ||
+        (item.type && item.type.toLowerCase().includes(query));
+
+      return matchesCategory && matchesSearch;
+    });
+  }, [portfolioItems, activeCategory, searchQuery]);
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchQuery(tempSearch);
+  };
 
   const handlePrevSlide = (e: React.MouseEvent, item: PortfolioItem) => {
     e.stopPropagation();
@@ -192,26 +199,86 @@ export default function PortfolioPage() {
       </section>
 
       {/* ═══════════════════════════════════════
+          TOOLBAR: CATEGORIES & SEARCH
+      ═══════════════════════════════════════ */}
+      <section className="sticky top-14 sm:top-16 lg:top-[72px] z-30 bg-white/95 dark:bg-[#0B0C10]/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          
+          {/* Category Dropdown */}
+          <div className="flex items-center gap-3">
+            <span className="text-xs sm:text-sm font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 shrink-0">
+              <Filter className="w-4 h-4 text-yellow-500" /> Browse by category:
+            </span>
+            <div className="relative">
+              <select
+                value={activeCategory}
+                onChange={(e) => setActiveCategory(e.target.value)}
+                className="appearance-none bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white text-xs sm:text-sm font-medium rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:border-yellow-400 cursor-pointer shadow-sm"
+              >
+                {allCategories.map((cat) => (
+                  <option key={cat} value={cat}>
+                    {cat === "All" ? "All Categories" : cat}
+                  </option>
+                ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-500 dark:text-slate-400">
+                <ChevronRight className="w-4 h-4 rotate-90" />
+              </div>
+            </div>
+          </div>
+
+          {/* Search Input Bar */}
+          <form onSubmit={handleSearchSubmit} className="flex items-center w-full md:w-80 lg:w-96">
+            <input
+              type="text"
+              placeholder="Search portfolio..."
+              value={tempSearch}
+              onChange={(e) => setTempSearch(e.target.value)}
+              className="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-l-xl px-4 py-2.5 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:border-yellow-400"
+            />
+            <button
+              type="submit"
+              className="bg-yellow-400 hover:bg-yellow-500 text-slate-950 px-4 py-2.5 rounded-r-xl border border-yellow-400 font-bold flex items-center justify-center transition-colors shrink-0"
+              title="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          </form>
+
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
           FILTER & GRID SECTION
       ═══════════════════════════════════════ */}
-      <section className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+      <section className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
         
-        {/* Modern Pill Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-16">
-          {categories.map(category => (
+        {/* Active filter indication */}
+        {(activeCategory !== "All" || searchQuery) && (
+          <div className="mb-8 flex items-center gap-3 text-sm text-slate-600 dark:text-slate-400 flex-wrap">
+            <span>Showing results for:</span>
+            {activeCategory !== "All" && (
+              <span className="font-bold text-yellow-600 dark:text-yellow-400 bg-yellow-400/10 px-3 py-1 rounded-full border border-yellow-400/20">
+                {activeCategory}
+              </span>
+            )}
+            {searchQuery && (
+              <span className="font-bold text-slate-900 dark:text-white bg-slate-200 dark:bg-slate-800 px-3 py-1 rounded-full">
+                "{searchQuery}"
+              </span>
+            )}
             <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-yellow-400 text-slate-900 shadow-[0_4px_14px_0_rgba(250,204,21,0.39)] hover:bg-yellow-500 hover:shadow-[0_6px_20px_rgba(250,204,21,0.23)] border border-yellow-400"
-                  : "bg-white dark:bg-[#111827] text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-yellow-400/50 hover:text-slate-900 dark:hover:text-white"
-              }`}
+              onClick={() => {
+                setActiveCategory("All");
+                setSearchQuery("");
+                setTempSearch("");
+              }}
+              className="text-xs font-bold text-red-500 hover:underline ml-2"
             >
-              {category}
+              Clear all filters
             </button>
-          ))}
-        </div>
+          </div>
+        )}
 
         {/* The Showcase Grid */}
         {loading ? (
@@ -228,10 +295,22 @@ export default function PortfolioPage() {
             <p className="text-slate-500 dark:text-slate-400">{error}</p>
           </div>
         ) : filteredItems.length === 0 ? (
-          <div className="text-center p-16 bg-white dark:bg-slate-900/50 rounded-[2rem] border border-slate-200 dark:border-slate-800 max-w-2xl mx-auto">
-            <ImageIcon className="w-16 h-16 mx-auto mb-6 text-slate-300 dark:text-slate-700" />
-            <p className="text-2xl text-slate-900 dark:text-white font-black mb-2 tracking-tight">No engineering data found.</p>
-            <p className="text-slate-500 dark:text-slate-400 text-lg">Adjust your filters to view active case studies.</p>
+          <div className="text-center py-20 bg-white dark:bg-slate-900/40 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 max-w-2xl mx-auto my-8">
+            <Search className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">No projects found</h3>
+            <p className="text-slate-500 dark:text-slate-400 max-w-md mx-auto text-sm mb-6">
+              We couldn't find any portfolio projects matching your search criteria. Try a different keyword or category.
+            </p>
+            <button
+              onClick={() => {
+                setActiveCategory("All");
+                setSearchQuery("");
+                setTempSearch("");
+              }}
+              className="px-6 py-2.5 rounded-full bg-yellow-400 text-slate-950 font-bold text-sm hover:bg-yellow-500 transition-all shadow-md"
+            >
+              Reset Search
+            </button>
           </div>
         ) : (
           <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">

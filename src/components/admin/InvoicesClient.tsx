@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Trash2, Loader2, Plus, Edit, Calendar, FileSpreadsheet, DollarSign, Clock, CheckCircle, Search, DownloadCloud } from "lucide-react";
 import { format } from "date-fns";
+import ConfirmModal from "./ConfirmModal";
 
 interface Client {
   id: string;
@@ -43,7 +44,9 @@ interface InvoicesClientProps {
 
 export default function InvoicesClient({ initialItems, clients, projects }: InvoicesClientProps) {
   const router = useRouter();
-  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [receiptModalInvoice, setReceiptModalInvoice] = useState<Invoice | null>(null);
   const [error, setError] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("All");
@@ -147,21 +150,22 @@ export default function InvoicesClient({ initialItems, clients, projects }: Invo
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure? Deleting this invoice is permanent and cannot be undone.")) return;
-    setDeletingId(id);
+  const handleConfirmDelete = async () => {
+    if (!confirmDeleteId) return;
+    setIsDeleting(true);
     setError("");
     try {
-      const res = await fetch(`/api/invoices/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/invoices/${confirmDeleteId}`, { method: "DELETE" });
       if (!res.ok) {
         const err = await res.json();
-        throw new Error(err.error || "Failed to delete.");
+        throw new Error(err.error || "Failed to delete invoice.");
       }
+      setConfirmDeleteId(null);
       router.refresh();
     } catch (err: any) {
       setError(err.message);
     } finally {
-      setDeletingId(null);
+      setIsDeleting(false);
     }
   };
 
@@ -337,9 +341,7 @@ export default function InvoicesClient({ initialItems, clients, projects }: Invo
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => {
-                          alert(`Receipt Download Simulation:\nInvoice ID: INV-${invoice.id.toUpperCase()}\nClient: ${invoice.client?.name}\nAmount: ${formatMoney(invoice.amount, invoice.currency)}\nStatus: ${invoice.status}`);
-                        }}
+                        onClick={() => setReceiptModalInvoice(invoice)}
                         className="h-8 w-8 text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-zinc-900 hover:bg-slate-200 dark:hover:bg-zinc-800 hover:text-slate-900 dark:hover:text-white transition-colors"
                         title="Download Invoice Summary"
                       >
@@ -356,15 +358,11 @@ export default function InvoicesClient({ initialItems, clients, projects }: Invo
                       <Button
                         variant="ghost"
                         size="icon"
-                        disabled={deletingId === invoice.id}
-                        onClick={() => handleDelete(invoice.id)}
+                        onClick={() => setConfirmDeleteId(invoice.id)}
                         className="h-8 w-8 text-slate-400 hover:text-red-650 dark:text-slate-500 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-500/10 transition-colors"
+                        title="Delete Invoice"
                       >
-                        {deletingId === invoice.id ? (
-                          <Loader2 className="w-4 h-4 animate-spin text-red-650 dark:text-red-400" />
-                        ) : (
-                          <Trash2 className="w-4 h-4" />
-                        )}
+                        <Trash2 className="w-4 h-4" />
                       </Button>
                     </div>
                   </TableCell>
@@ -516,6 +514,33 @@ export default function InvoicesClient({ initialItems, clients, projects }: Invo
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <ConfirmModal
+        isOpen={!!confirmDeleteId}
+        onClose={() => setConfirmDeleteId(null)}
+        onConfirm={handleConfirmDelete}
+        loading={isDeleting}
+        title="Delete Invoice"
+        description="Are you sure you want to delete this invoice record? This will permanently remove all billing data and history associated with this invoice."
+        confirmText="Delete Invoice"
+      />
+
+      {/* Receipt Info Modal */}
+      <ConfirmModal
+        isOpen={!!receiptModalInvoice}
+        onClose={() => setReceiptModalInvoice(null)}
+        onConfirm={() => setReceiptModalInvoice(null)}
+        variant="info"
+        title={receiptModalInvoice ? `Invoice INV-${receiptModalInvoice.id.slice(-6).toUpperCase()}` : "Invoice Summary"}
+        description={
+          receiptModalInvoice
+            ? `Client: ${receiptModalInvoice.client?.company || receiptModalInvoice.client?.name || "N/A"}\nAmount: ${formatMoney(receiptModalInvoice.amount, receiptModalInvoice.currency)}\nStatus: ${receiptModalInvoice.status}\nDue Date: ${format(new Date(receiptModalInvoice.dueDate), "MMM d, yyyy")}\nNotes: ${receiptModalInvoice.notes || "None"}`
+            : ""
+        }
+        confirmText="Close"
+        cancelText=""
+      />
     </div>
   );
 }
