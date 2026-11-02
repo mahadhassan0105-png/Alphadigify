@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Montserrat, Great_Vibes } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Chatbot from "@/components/public/Chatbot";
@@ -63,6 +64,19 @@ export default function RootLayout({
           <Chatbot />
         </ThemeProvider>
       </body>
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-TJLL17KHNJ"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-TJLL17KHNJ');
+        `}
+      </Script>
     </html>
   );
 }
